@@ -4,7 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "start-process eleventy --serve; start-process npm run styles:watch; start-process npm run js:watch",
+    "build": "npm run styles && npm run js && eleventy",
+    "clean": "rmdir /s /q dist",
+    "styles": "sass src/styles/main.scss src/styles/main.css && postcss src/styles/main.css -o dist/css/main.css",
+    "styles:watch": "sass --watch src/styles/main.scss:src/styles/main.css | postcss src/styles/main.css -o dist/css/main.css --watch",
+    "js": "esbuild src/scripts/index.js --bundle --outfile=dist/js/bundle.js --target=es2017",
+    "js:watch": "esbuild src/scripts/index.js --bundle --outfile=dist/js/bundle.js --target=es2017 --watch",
+    "lint": "echo 'Add linting commands here if needed'"
   },
   "keywords": [],
   "author": "",
