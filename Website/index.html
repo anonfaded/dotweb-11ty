@@ -1,0 +1,2892 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="Eventseiten.ch - Professionelle Webseiten für lokale Events und Dorffeste in der Schweiz">
+  <meta name="keywords" content="Dorffest, Event Webseite, lokale Veranstaltungen, Schweiz, Dorfwebseite">
+  <title>Eventseiten.ch - Professionelle Webseiten für lokale Events</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/preloader.css">
+  <link rel="stylesheet" href="css/radial-menu.css">
+  <style>
+    /* Mobile Footer Implementation - Industry Standard */
+    @media (max-width: 768px) {
+      .footer {
+        padding: 40px 20px 30px; /* More top/side padding, slightly less bottom */
+      }
+      
+      .footer-grid {
+        display: block;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .footer-brand-column {
+        width: 100%;
+        margin: 0 0 30px 0; /* More space below brand column */
+        padding: 0;
+        text-align: center;
+      }
+      
+      .footer-nav-columns {
+        display: none; /* Hide navigation columns on mobile */
+      }
+      
+      .footer-contact-column {
+        display: none; /* Remove contact column on mobile */
+      }
+
+      /* Mobile Legal Dropdown - Redesigned & Compact */
+      .mobile-legal-dropdown {
+        display: block;
+        margin: 20px auto 0;
+        max-width: 200px; /* Smaller width */
+        position: relative;
+      }
+
+      .legal-dropdown-toggle {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.05); /* Subtle background */
+        border: 1px solid rgba(255, 255, 255, 0.15); /* Subtle border */
+        border-radius: 6px; /* Smaller radius */
+        padding: 8px 12px; /* Smaller padding */
+        color: rgba(255, 255, 255, 0.8); /* Softer text color */
+        font-size: 12px; /* Smaller font */
+        font-weight: 500; /* Less bold */
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: all 0.2s ease;
+        font-family: inherit;
+        outline: none;
+        position: relative;
+        z-index: 10;
+      }
+
+      .legal-dropdown-toggle:hover {
+        background: rgba(255, 255, 255, 0.08); /* Subtle hover */
+        border-color: rgba(255, 255, 255, 0.25); /* Slightly brighter border */
+        transform: none;
+      }
+
+      .legal-dropdown-toggle:focus {
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2); /* Subtle focus ring */
+      }
+
+      .legal-dropdown-icon {
+        transition: transform 0.2s ease;
+        color: rgba(255, 255, 255, 0.6); /* Subtle icon color */
+        flex-shrink: 0;
+        width: 12px; /* Smaller icon */
+        height: 12px;
+      }
+
+      .legal-dropdown-toggle.active {
+        background: rgba(255, 255, 255, 0.1); /* Slightly more prominent when active */
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+
+      .legal-dropdown-toggle.active .legal-dropdown-icon {
+        transform: rotate(180deg);
+      }
+
+      /* Compact dropdown menu */
+      .legal-dropdown-menu {
+        position: absolute;
+        bottom: 100%; /* Goes up */
+        left: 0;
+        right: 0;
+        background: rgba(26, 26, 26, 0.95); /* Semi-transparent background */
+        backdrop-filter: blur(10px); /* Subtle blur */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 6px;
+        margin-bottom: 6px; /* Smaller gap */
+        padding: 4px 0; /* Smaller padding */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(8px); /* Smaller transform */
+        transition: all 0.2s ease;
+        box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        z-index: 20;
+        overflow: hidden;
+      }
+
+      .legal-dropdown-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .legal-dropdown-item {
+        display: block;
+        padding: 8px 12px; /* Smaller padding */
+        color: rgba(255, 255, 255, 0.75); /* Softer text */
+        text-decoration: none;
+        font-size: 11px; /* Smaller font */
+        font-weight: 400; /* Normal weight */
+        transition: all 0.15s ease;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Very subtle separator */
+        position: relative;
+      }
+
+      .legal-dropdown-item:last-child {
+        border-bottom: none;
+      }
+
+      .legal-dropdown-item:hover {
+        background: rgba(255, 255, 255, 0.08); /* Subtle hover */
+        color: rgba(255, 255, 255, 0.9); /* Brighter on hover */
+        padding-left: 16px; /* Small indent on hover */
+      }
+
+      .legal-dropdown-item:active {
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      /* Mobile Footer Padding Adjustments */
+      .footer {
+        padding: 40px 20px 30px;
+      }
+
+      .footer-brand-column {
+        margin-bottom: 30px;
+      }
+
+      .footer-bottom {
+        padding-top: 25px;
+      }
+    }
+
+    /* ENSURE HIDDEN ON DESKTOP - Complete Reset */
+    @media (min-width: 769px) {
+      .mobile-legal-dropdown {
+        display: none !important;
+      }
+      
+      /* Restore desktop footer layout */
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2.5fr 1.2fr 1fr 1.8fr;
+        gap: 2.5rem;
+        align-items: start;
+      }
+      
+      .footer-nav-columns {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 2.5rem;
+        grid-column: 2 / 4;
+      }
+      
+      .footer-contact-column {
+        display: block;
+      }
+      
+      .footer-bottom-links {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      
+      .footer-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+        text-align: left;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 2rem;
+      }
+      
+      .footer-copyright {
+        margin: 0;
+        padding: 0;
+        text-align: left;
+        display: block;
+        width: auto;
+      }
+      
+      .footer-scroll-top {
+        display: block;
+      }
+    }
+      
+      .footer-bottom {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      
+      .footer-bottom-links {
+        display: none; /* Remove legal links and separators on mobile */
+      }
+      
+      .footer-copyright {
+        width: 100%;
+        margin: 0;
+        padding: 15px 0 0px 0; /* Adjusted padding for better centering */
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .footer-scroll-top {
+        display: none; /* Hide scroll to top button on mobile */
+      }
+      
+      /* Remove decorations on mobile for cleaner view */
+      .footer-decorations {
+        display: none;
+      }
+
+      /* Hide mobile legal dropdown on desktop */
+      .mobile-legal-dropdown {
+        display: none;
+      }
+
+    /* Enhanced Footer Grid Structure */
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2.5fr 1.2fr 1fr 1.8fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .footer-nav-columns {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2.5rem;
+      grid-column: 2 / 4;
+    }
+
+    /* Ensure single-line industry links */
+    .footer-nav-column .footer-link {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    /* Better visual hierarchy */
+    .footer-tagline {
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      max-width: 90%;
+    }
+
+    .footer-heading {
+      margin-bottom: 1.2rem;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.6rem;
+    }
+
+    @media (min-width: 769px) {
+      .footer-brand-column {
+        max-width: none;
+        padding-right: 1.5rem;
+      }
+      
+      .footer-contact-column {
+        padding-left: 1.5rem;
+      }
+      
+      /* Ensure industry column has enough width */
+      .footer-nav-columns .footer-nav-column:first-child {
+        min-width: 200px;
+      }
+    }
+
+    /* Make Swiss flag plus bigger and more visible */
+    .hero-badge-icon.swiss-flag {
+      width: 24px;
+      height: 24px;
+    }
+    
+    .hero-badge-icon.swiss-flag::before {
+      width: 70%;
+      height: 70%;
+    }
+
+    /* Fix pulse animation for project badge */
+    @keyframes pulse {
+      0% {
+        transform: scale(0.8);
+        opacity: 0.8;
+      }
+      70% {
+        transform: scale(1.5);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+    }
+
+    /* Navigation Dropdown - Professional Integration */
+    .nav-dropdown {
+      position: relative;
+    }
+
+    .nav-dropdown::before {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      height: 12px;
+      background: transparent;
+      z-index: 999;
+    }
+
+    .nav-dropdown-toggle {
+      display: flex;
+      align-items: center;
+      gap: 4px; /* Reduced from 8px to match visual spacing of other nav items */
+      padding: 0; /* Remove background pills */
+      color: var(--gray-700);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all var(--transition-smooth); /* Changed to 'all' for smoother transitions */
+      position: relative;
+      white-space: nowrap;
+      flex-shrink: 0;
+      height: 100%;
+      justify-content: center;
+      min-width: fit-content;
+      cursor: pointer; /* Explicit cursor pointer for better UX */
+    }
+
+    .nav-dropdown-icon {
+      width: 12px; /* Increased from 8px for better visibility */
+      height: 12px;
+      transition: transform var(--transition-smooth);
+      color: var(--gray-600); /* Slightly darker for better contrast */
+      margin-left: 4px; /* Increased margin for better separation */
+      stroke-width: 2.5; /* Slightly thicker stroke for clarity */
+    }
+
+    .nav-dropdown:hover .nav-dropdown-toggle {
+      color: var(--primary); /* Brand red on hover */
+      background: none; /* No background pills */
+      transform: none; /* No lift effect */
+    }
+
+    .nav-dropdown:hover .nav-dropdown-icon {
+      transform: rotate(180deg) scale(1.1); /* Slight scale on hover for emphasis */
+      color: var(--primary);
+    }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 4px); /* Reduced from 12px to 4px for slight header overlap */
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-xs);
+      min-width: 260px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(-50%) translateY(-8px);
+      transition: all var(--transition-smooth);
+      z-index: 1000;
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown-toggle[aria-expanded="true"] + .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-dropdown-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .nav-dropdown-link {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      color: var(--gray-700);
+      transition: all var(--transition-fast);
+      font-size: 13px;
+    }
+
+    .nav-dropdown-link:hover {
+      background: var(--gray-50);
+      color: var(--gray-900);
+      transform: translateX(2px);
+    }
+
+
+
+    .nav-dropdown-link-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background: var(--gray-100);
+      border-radius: var(--radius-sm);
+      color: var(--gray-600);
+      flex-shrink: 0;
+      transition: all var(--transition-fast);
+    }
+
+    .nav-dropdown-link:hover .nav-dropdown-link-icon {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .nav-dropdown-link-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .nav-dropdown-link-title {
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--gray-900);
+      line-height: 1.3;
+      margin-bottom: 2px;
+    }
+
+    .nav-dropdown-link-desc {
+      font-size: 11px;
+      color: var(--gray-500);
+      line-height: 1.3;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    
+
+      /* Mobile Navigation Dropdown Styles - REMOVED (using simple fullscreen navigation) */
+
+          /* Fortune 500 Navigation - Integrated Header Layout */
+    .main-navigation {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      position: relative;
+      height: 100%;
+      width: 100%;
+    }
+
+    /* Primary Navigation - Fortune 500 Mathematical Precision */
+    .nav-primary {
+      display: flex;
+      align-items: center;
+      gap: 12px; /* Reverted back to 12px spacing */
+      position: absolute;
+      left: 140px; /* Account for logo width + proper spacing */
+      right: 220px; /* Adjusted to ensure perfect divider centering */
+      height: 100%;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 8px; /* Exact 8px breathing gap */
+      padding: 0; /* Remove background pills */
+      color: var(--gray-700);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color var(--transition-smooth);
+      position: relative;
+      white-space: nowrap;
+      flex-shrink: 0;
+      height: 100%;
+      justify-content: center;
+      min-width: fit-content;
+    }
+
+    .nav-link:hover {
+      color: var(--primary); /* Brand red on hover */
+      background: none; /* No background pills */
+      transform: none; /* No lift effect */
+    }
+
+    .nav-link:active {
+      transform: none; /* No active transform */
+    }
+
+    /* Gliding Underline Effect */
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-link:hover::after {
+      width: 100%; /* Glides across full width of label */
+    }
+
+    .nav-link.active {
+      color: var(--primary);
+      font-weight: 600;
+      position: relative;
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%; /* Active state shows full underline */
+      height: 2px;
+      background: var(--primary);
+      border-radius: 1px;
+    }
+
+    /* Remove old active animation */
+    @keyframes activeIndicator {
+      0% {
+        width: 0;
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        width: 100%;
+        opacity: 1;
+      }
+    }
+
+    /* Navigation Dropdown - Clean Integration */
+    .nav-dropdown {
+      position: relative;
+    }
+
+    .nav-dropdown::before {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      height: 12px;
+      background: transparent;
+      z-index: 999;
+    }
+
+    .nav-dropdown-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px; /* Exact 8px breathing gap */
+      padding: 0; /* Remove background pills */
+      color: var(--gray-700);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color var(--transition-smooth);
+      position: relative;
+      white-space: nowrap;
+      flex-shrink: 0;
+      height: 100%;
+      justify-content: center;
+      min-width: fit-content;
+    }
+
+    .nav-dropdown:hover .nav-dropdown-toggle {
+      color: var(--primary); /* Brand red on hover */
+      background: none; /* No background pills */
+      transform: none; /* No lift effect */
+    }
+
+    /* Gliding Underline for Dropdown Toggle */
+    .nav-dropdown-toggle::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-dropdown:hover .nav-dropdown-toggle::after {
+      width: 100%; /* Glides across full width */
+    }
+
+    .nav-dropdown-icon {
+      width: 12px; /* Increased from 8px for better visibility */
+      height: 12px;
+      transition: transform var(--transition-smooth);
+      color: var(--gray-600); /* Slightly darker for better contrast */
+      margin-left: 4px; /* Increased margin for better separation */
+      stroke-width: 2.5; /* Slightly thicker stroke for clarity */
+    }
+
+    .nav-dropdown:hover .nav-dropdown-icon {
+      transform: rotate(180deg) scale(1.1); /* Slight scale on hover for emphasis */
+      color: var(--primary);
+    }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 4px); /* Reduced from 12px to 4px for slight header overlap */
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-xs);
+      min-width: 260px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(-50%) translateY(-8px);
+      transition: all var(--transition-smooth);
+      z-index: 1000;
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown-toggle[aria-expanded="true"] + .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-dropdown-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .nav-dropdown-link {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      color: var(--gray-700);
+      transition: all var(--transition-fast);
+      font-size: 13px;
+    }
+
+    .nav-dropdown-link:hover {
+      background: var(--gray-50);
+      color: var(--gray-900);
+      transform: translateX(2px);
+    }
+
+
+
+    .nav-dropdown-link-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background: var(--gray-100);
+      border-radius: var(--radius-sm);
+      color: var(--gray-600);
+      flex-shrink: 0;
+      transition: all var(--transition-fast);
+    }
+
+    .nav-dropdown-link:hover .nav-dropdown-link-icon {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .nav-dropdown-link-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .nav-dropdown-link-title {
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--gray-900);
+      line-height: 1.3;
+      margin-bottom: 2px;
+    }
+
+    .nav-dropdown-link-desc {
+      font-size: 11px;
+      color: var(--gray-500);
+      line-height: 1.3;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    
+
+      /* Mobile Navigation Dropdown Styles - REMOVED (using simple fullscreen navigation) */
+
+          /* Fortune 500 Navigation - Integrated Header Layout */
+    .main-navigation {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      position: relative;
+      height: 100%;
+      width: 100%;
+    }
+
+    /* Primary Navigation - Perfectly Centered Between Logo and Divider */
+    .nav-primary {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      position: absolute;
+      left: 0;
+      right: 200px; /* Space for language switcher + CTA + divider */
+      height: 100%;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: var(--spacing-sm) var(--spacing-md);
+      color: var(--gray-700);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: var(--radius-md);
+      transition: all var(--transition-smooth);
+      position: relative;
+      white-space: nowrap;
+      flex-shrink: 0;
+      height: 100%;
+      justify-content: center;
+      min-width: fit-content;
+    }
+
+    /* Old duplicate styles removed - using clean styles above */
+
+    .nav-link.active {
+      color: var(--primary);
+      font-weight: 600;
+      position: relative;
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 2px;
+      background: var(--primary);
+      border-radius: 1px;
+      animation: activeIndicator 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes activeIndicator {
+      0% {
+        width: 0;
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        width: 24px;
+        opacity: 1;
+      }
+    }
+
+    /* Secondary Actions - Professional Right Alignment */
+    .nav-secondary {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      flex-shrink: 0;
+      position: absolute;
+      right: 0;
+      height: 100%;
+    }
+
+    /* Divider removed for minimalistic design */
+
+      /* Language Switcher - Perfect Symmetry */
+      .language-switcher {
+        position: relative;
+      }
+
+      .language-switcher-toggle {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-md);
+        padding: 0 var(--spacing-sm);
+        color: var(--gray-700);
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all var(--transition-smooth);
+        font-family: inherit;
+        min-width: 70px;
+        justify-content: center;
+        height: 40px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      }
+
+      .language-switcher-toggle::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        transition: left 0.6s ease;
+      }
+
+      .language-globe-icon {
+        color: var(--gray-500);
+        width: 14px;
+        height: 14px;
+        transition: all var(--transition-smooth);
+      }
+
+      .language-switcher:hover .language-switcher-toggle {
+        border-color: var(--primary);
+        color: var(--primary);
+        transform: translateY(-1px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .language-switcher:hover .language-switcher-toggle::before {
+        left: 100%;
+      }
+
+      .language-switcher:hover .language-globe-icon {
+        color: var(--primary);
+        transform: rotate(15deg) scale(1.05);
+      }
+
+      .language-current {
+        font-weight: 600;
+        font-size: 12px;
+        color: var(--gray-800);
+        letter-spacing: 0.3px;
+        transition: color var(--transition-smooth);
+      }
+
+      .language-switcher:hover .language-current {
+        color: var(--primary);
+      }
+
+      /* CTA Button - Premium Micro-Interactions */
+      .nav-cta-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--primary);
+        color: var(--white);
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 0 var(--spacing-md);
+        border-radius: var(--radius-md);
+        transition: all var(--transition-smooth);
+        border: none;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        height: 40px;
+        justify-content: center;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-cta-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.6s ease;
+      }
+
+      .nav-cta-btn::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        opacity: 0;
+        transition: opacity var(--transition-smooth);
+      }
+
+      .nav-cta-btn:hover {
+        background: var(--primary-dark);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .nav-cta-btn:hover::before {
+        left: 100%;
+      }
+
+      .nav-cta-btn:hover::after {
+        opacity: 1;
+      }
+
+      .nav-cta-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-cta-btn svg {
+        width: 14px;
+        height: 14px;
+        transition: transform var(--transition-smooth);
+        position: relative;
+        z-index: 1;
+      }
+
+      .nav-cta-btn:hover svg {
+        transform: translateX(2px);
+      }
+
+      /* Header Container - Fortune 500 Layout */
+      .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        max-width: var(--content-width);
+        margin: 0 auto;
+        padding: 0 var(--spacing-md);
+      }
+
+      /* Logo positioning */
+      .logo {
+        position: relative;
+        z-index: 10;
+        flex-shrink: 0;
+      }
+
+      /* Mobile Navigation Toggle positioning */
+      .mobile-nav-toggle {
+        position: relative;
+        z-index: 10;
+        flex-shrink: 0;
+      }
+
+          /* Responsive Design - Professional Scaling */
+    @media (max-width: 1400px) {
+      .nav-secondary {
+        gap: var(--spacing-xs);
+      }
+    }
+
+    @media (max-width: 1200px) {
+      .nav-link {
+        font-size: 13px;
+        gap: 6px; /* Slightly tighter breathing gap */
+      }
+      
+      .nav-dropdown-toggle {
+        font-size: 13px;
+        gap: 6px; /* Match nav-link spacing */
+      }
+      
+      .nav-secondary {
+        gap: var(--spacing-xs);
+      }
+      
+      .nav-primary {
+        gap: 10px; /* Reduce from 12px to 10px for tighter screens */
+        left: 120px; /* Adjust for smaller logo */
+        right: 180px; /* Adjust for tighter spacing */
+      }
+    }
+
+    @media (max-width: 1100px) {
+      .nav-link {
+        font-size: 13px;
+        gap: 6px;
+      }
+      
+      .nav-dropdown-toggle {
+        font-size: 13px;
+        gap: 6px;
+      }
+      
+      .language-switcher-toggle {
+        padding: var(--spacing-xs) var(--spacing-xs);
+        font-size: 12px;
+        min-width: 60px;
+        height: 32px;
+      }
+      
+      .nav-cta-btn {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: 12px;
+        height: 32px;
+      }
+      
+      .nav-primary {
+        gap: 8px; /* Further reduce spacing */
+        left: 100px; /* Smaller logo space */
+        right: 160px; /* Adjust for smaller elements */
+      }
+    }
+
+    @media (max-width: 992px) {
+      .main-navigation {
+        display: none;
+      }
+    }
+
+    /* Sticky Header Element Resizing - Make elements 15-20% smaller when scrolled */
+    .header.scrolled .logo {
+      font-size: 1.3rem; /* 15% reduction from 1.5rem */
+    }
+
+    .header.scrolled .logo-icon {
+      width: 34px; /* 15% reduction from 40px */
+      height: 34px; /* 15% reduction from 40px */
+    }
+
+    .header.scrolled .language-switcher-toggle {
+      height: 34px; /* 15% reduction from 40px */
+      font-size: 11px; /* 15% reduction from 13px */
+      min-width: 58px; /* 17% reduction from 70px */
+    }
+
+    .header.scrolled .nav-cta-btn {
+      height: 34px; /* 15% reduction from 40px */
+      font-size: 11px; /* 15% reduction from 13px */
+    }
+
+    /* Header Container - Match Site Container Width */
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      width: 100%;
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 var(--spacing-md);
+    }
+
+    /* Logo positioning - Left */
+    .logo {
+      position: relative;
+      z-index: 10;
+      flex-shrink: 0;
+    }
+
+    /* Mobile Navigation Toggle positioning - Right on mobile */
+    .mobile-nav-toggle {
+      position: relative;
+      z-index: 10;
+      flex-shrink: 0;
+    }
+
+
+
+
+
+
+
+      .language-switcher-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: var(--white);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        border-radius: 12px;
+        padding: 6px;
+        min-width: 180px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px);
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+        margin-top: 6px;
+        backdrop-filter: blur(16px);
+      }
+
+      .language-switcher:hover .language-switcher-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .language-switcher-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .language-option {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 8px;
+        text-decoration: none;
+        color: var(--gray-700);
+        transition: all 0.2s ease;
+        font-size: 13px;
+        font-weight: 500;
+      }
+
+      .language-option:hover {
+        background: var(--gray-50);
+        color: var(--gray-900);
+        transform: translateX(1px);
+      }
+
+      .language-option.active {
+        background: var(--primary-light);
+        color: var(--primary);
+        font-weight: 600;
+      }
+
+      .language-flag-emoji {
+        font-size: 16px;
+        line-height: 1;
+      }
+
+      .language-name {
+        font-weight: 500;
+        font-size: 13px;
+      }
+
+      /* CTA Button - High-Grade Professional Design */
+      .nav-cta-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(135deg, var(--primary) 0%, #d63031 100%);
+        color: var(--white);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 12px 24px;
+        border-radius: 12px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+        min-height: 44px;
+        justify-content: center;
+      }
+
+      .nav-cta-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.6s ease;
+      }
+
+      .nav-cta-btn::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .nav-cta-btn:hover {
+        background: linear-gradient(135deg, #d63031 0%, #b71c1c 100%);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        scale: 1.02;
+      }
+
+      .nav-cta-btn:hover::before {
+        left: 100%;
+      }
+
+      .nav-cta-btn:hover::after {
+        opacity: 1;
+      }
+
+      .nav-cta-btn:active {
+        scale: 0.98;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-cta-btn svg {
+        width: 16px;
+        height: 16px;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        z-index: 1;
+      }
+
+      .nav-cta-btn:hover svg {
+        transform: translateX(3px) rotate(5deg);
+      }
+  </style>
+</head>
+<body>
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-content">
+      <!-- Minimalist preloader content -->
+      
+      <!-- Minimalist brand presentation -->
+      <div class="preloader-brand-container">
+        <div class="preloader-logo">
+          <div class="preloader-logo-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" d="M1.5 6.375c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v3.026a.75.75 0 0 1-.375.65 2.249 2.249 0 0 0 0 3.898.75.75 0 0 1 .375.65v3.026c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 0 1 1.5 17.625v-3.026a.75.75 0 0 1 .374-.65 2.249 2.249 0 0 0 0-3.898.75.75 0 0 1-.374-.65V6.375Zm15-1.125a.75.75 0 0 1 .75.75v.75a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Zm.75 4.5a.75.75 0 0 0-1.5 0v.75a.75.75 0 0 0 1.5 0v-.75Zm-.75 3a.75.75 0 0 1 .75.75v.75a.75.75 0 0 1-1.5 0v-.75a.75.75 0 0 1 .75-.75Zm.75 4.5a.75.75 0 0 0-1.5 0V18a.75.75 0 0 0 1.5 0v-.75ZM6 12a.75.75 0 0 1 .75-.75H12a.75.75 0 0 1 0 1.5H6.75A.75.75 0 0 1 6 12Zm.75 2.25a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-3Z" clip-rule="evenodd" />
+            </svg>
+          </div>
+        </div>
+        
+        <!-- Brand name only -->
+        <div class="preloader-brand-identity">
+          <div class="preloader-text">
+            Event<span class="preloader-highlight">seiten.ch</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Streamlined progress indicator -->
+      <div class="preloader-progress-element">
+        <div class="preloader-progress-container">
+          <div class="preloader-progress-bar" id="preloaderProgressBar"></div>
+        </div>
+        <div class="preloader-progress-percentage" id="preloaderProgressPercentage">0%</div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Header with Navigation -->
+  <header class="header" id="header">
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+    <div class="container header-container">
+      <a href="#" class="logo animate fade-in-down" data-animation="initial" data-delay="100">
+        <span class="logo-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd" d="M1.5 6.375c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v3.026a.75.75 0 0 1-.375.65 2.249 2.249 0 0 0 0 3.898.75.75 0 0 1 .375.65v3.026c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 0 1 1.5 17.625v-3.026a.75.75 0 0 1 .374-.65 2.249 2.249 0 0 0 0-3.898.75.75 0 0 1-.374-.65V6.375Zm15-1.125a.75.75 0 0 1 .75.75v.75a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Zm.75 4.5a.75.75 0 0 0-1.5 0v.75a.75.75 0 0 0 1.5 0v-.75Zm-.75 3a.75.75 0 0 1 .75.75v.75a.75.75 0 0 1-1.5 0v-.75a.75.75 0 0 1 .75-.75Zm.75 4.5a.75.75 0 0 0-1.5 0V18a.75.75 0 0 0 1.5 0v-.75ZM6 12a.75.75 0 0 1 .75-.75H12a.75.75 0 0 1 0 1.5H6.75A.75.75 0 0 1 6 12Zm.75 2.25a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-3Z" clip-rule="evenodd" />
+          </svg>
+        </span>
+        Event<span class="logo-highlight">seiten.ch</span>
+      </a>
+      
+      <!-- Mobile Language Switcher -->
+      <div class="mobile-language-switcher">
+        <button class="mobile-language-toggle" id="mobileLanguageToggle" aria-label="Sprache wählen">
+          <span class="mobile-language-code">DE</span>
+        </button>
+      </div>
+      
+      <button class="mobile-nav-toggle animate fade-in" data-animation="initial" data-delay="200" id="navToggle" aria-label="Navigation ein/ausblenden" aria-expanded="false" aria-controls="mobileNavOverlay">
+        <span class="hamburger-icon">
+          <span class="hamburger-line" aria-hidden="true"></span>
+          <span class="hamburger-line" aria-hidden="true"></span>
+          <span class="hamburger-line" aria-hidden="true"></span>
+        </span>
+        <span class="sr-only">Menü</span>
+      </button>
+      
+      <nav class="main-navigation" aria-label="Hauptnavigation">
+        <!-- Primary Navigation -->
+        <div class="nav-primary">
+          <a href="#portfolio" class="nav-link">Projekte</a>
+          <div class="nav-dropdown">
+            <a href="#" class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+              Eventarten
+              <svg class="nav-dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </a>
+            <div class="nav-dropdown-menu mega-menu">
+              <div class="mega-menu-container">
+                <!-- Left Side: Event Types -->
+                <div class="mega-menu-content">
+                  <div class="mega-menu-section">
+                    <h3 class="mega-menu-section-title">Eventarten</h3>
+                    <div class="mega-menu-links">
+                      <a href="konferenzen-kongresse.html" class="nav-dropdown-link">
+                        <div class="nav-dropdown-link-icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-presentation">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M3 4l18 0" />
+                            <path d="M4 4v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-10" />
+                            <path d="M12 16l0 4" />
+                            <path d="M9 20l6 0" />
+                            <path d="M8 12l3 -3l2 2l3 -3" />
+                          </svg>
+                        </div>
+                        <div class="nav-dropdown-link-content">
+                          <span class="nav-dropdown-link-title">Konferenzen & Kongresse</span>
+                          <span class="nav-dropdown-link-desc">Professionelle Events für Fachpublikum</span>
+                        </div>
+                      </a>
+                      <a href="messen-ausstellungen.html" class="nav-dropdown-link">
+                        <div class="nav-dropdown-link-icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-building-store">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M3 21l18 0" />
+                            <path d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2 -4h14l2 4" />
+                            <path d="M5 21l0 -10.15" />
+                            <path d="M19 21l0 -10.15" />
+                            <path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4" />
+                          </svg>
+                        </div>
+                        <div class="nav-dropdown-link-content">
+                          <span class="nav-dropdown-link-title">Messen & Ausstellungen</span>
+                          <span class="nav-dropdown-link-desc">Präsentationen und Produktshows</span>
+                        </div>
+                      </a>
+                      <a href="sport-lauf-events.html" class="nav-dropdown-link">
+                        <div class="nav-dropdown-link-icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-run">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M13 4m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                            <path d="M4 17l5 1l.75 -1.5" />
+                            <path d="M15 21l0 -4l-4 -3l1 -6" />
+                            <path d="M7 12l0 -3l5 -1l3 3l3 1" />
+                          </svg>
+                        </div>
+                        <div class="nav-dropdown-link-content">
+                          <span class="nav-dropdown-link-title">Sport- & Lauf-Events</span>
+                          <span class="nav-dropdown-link-desc">Wettkämpfe und Sportveranstaltungen</span>
+                        </div>
+                      </a>
+                      <a href="outdoor-kultur-festivals.html" class="nav-dropdown-link">
+                        <div class="nav-dropdown-link-icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-music">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M3 17a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                            <path d="M13 17a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                            <path d="M9 17v-13h10v13" />
+                            <path d="M9 8h10" />
+                          </svg>
+                        </div>
+                        <div class="nav-dropdown-link-content">
+                          <span class="nav-dropdown-link-title">Outdoor & Kultur Festivals</span>
+                          <span class="nav-dropdown-link-desc">Musik, Kunst und Kulturveranstaltungen</span>
+                        </div>
+                      </a>
+                      <a href="dorf-quartierfeste.html" class="nav-dropdown-link">
+                        <div class="nav-dropdown-link-icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-building-circus">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M4 11h16" />
+                            <path d="M12 6.5c0 1 -5 4.5 -8 4.5" />
+                            <path d="M12 6.5c0 1 5 4.5 8 4.5" />
+                            <path d="M6 11c-.333 5.333 -1 8.667 -2 10h4c1 0 4 -4 4 -9v-1" />
+                            <path d="M18 11c.333 5.333 1 8.667 2 10h-4c-1 0 -4 -4 -4 -9v-1" />
+                            <path d="M12 7v-4l2 1h-2" />
+                          </svg>
+                        </div>
+                        <div class="nav-dropdown-link-content">
+                          <span class="nav-dropdown-link-title">Dorf- & Quartierfeste</span>
+                          <span class="nav-dropdown-link-desc">Lokale Gemeinschaftsveranstaltungen</span>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Right Side: Promotional Card -->
+                <div class="mega-menu-promo">
+                  <div class="promo-card">
+                    <div class="promo-card-header">
+                      <div class="promo-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        14 TAGE
+                      </div>
+                      <h4 class="promo-title">Neue Event-Website</h4>
+                      <p class="promo-description">Ihre professionelle Event-Website – schnell, modern und vollständig optimiert.</p>
+                    </div>
+                    <div class="promo-card-features">
+                      <div class="promo-feature">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>SEO-optimiert</span>
+                      </div>
+                      <div class="promo-feature">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Interaktive Event-Karte</span>
+                      </div>
+                      <div class="promo-feature">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span>Sponsor-Integration</span>
+                      </div>
+                    </div>
+                    <a href="#testimonials" class="promo-cta">
+                      Jetzt anfragen
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="#process" class="nav-link">Prozess</a>
+          <a href="#testimonials" class="nav-link">Kontakt</a>
+        </div>
+        
+
+
+        <!-- Secondary Actions -->
+        <div class="nav-secondary">
+          <div class="language-switcher">
+            <button class="language-switcher-toggle" aria-expanded="false" aria-haspopup="true" aria-label="Sprache wählen">
+              <svg class="language-globe-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+              <span class="language-current">DE</span>
+            </button>
+            <div class="language-switcher-menu">
+              <div class="language-switcher-content">
+                <a href="#" class="language-option active" data-lang="de">
+                  <div class="language-code">DE</div>
+                  <div class="language-details">
+                    <span class="language-name">Deutsch</span>
+                    <span class="language-region">Switzerland</span>
+                  </div>
+                </a>
+                <a href="#" class="language-option" data-lang="fr">
+                  <div class="language-code">FR</div>
+                  <div class="language-details">
+                    <span class="language-name">Français</span>
+                    <span class="language-region">Suisse</span>
+                  </div>
+                </a>
+                <a href="#" class="language-option" data-lang="it">
+                  <div class="language-code">IT</div>
+                  <div class="language-details">
+                    <span class="language-name">Italiano</span>
+                    <span class="language-region">Svizzera</span>
+                  </div>
+                </a>
+                <a href="#" class="language-option" data-lang="en">
+                  <div class="language-code">EN</div>
+                  <div class="language-details">
+                    <span class="language-name">English</span>
+                    <span class="language-region">International</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <a href="#testimonials" class="nav-cta-btn">
+            Offerte Beantragen
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+  <!-- Premium Mobile Navigation -->
+  <div class="premium-mobile-nav" id="mobileNavOverlay" data-active="false" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
+    <!-- Navigation Content -->
+    <div class="mobile-nav-content">
+      <nav class="mobile-nav-main" aria-label="Mobile Navigation">
+      <ul class="mobile-nav-menu">
+        <!-- Top Section - 50-50 Split -->
+        <li class="mobile-nav-item">
+          <div class="mobile-nav-top-section">
+            <!-- Language Switcher (Left) -->
+            <div class="mobile-nav-language-section">
+              <button class="mobile-nav-language-toggle" id="mobileNavLanguageToggle">
+                <div class="mobile-nav-language-content">
+                  <div class="mobile-nav-language-badge">
+                    <span id="mobileNavLanguageCode">DE</span>
+                  </div>
+                  <div class="mobile-nav-language-details">
+                    <span class="mobile-nav-language-name" id="mobileNavLanguageName">Deutsch</span>
+                    <span class="mobile-nav-language-region" id="mobileNavLanguageRegion">Schweiz</span>
+                  </div>
+                </div>
+                <svg class="mobile-nav-language-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+            </div>
+            
+            <!-- Legal Drawer (Right) -->
+            <div class="mobile-nav-legal-section">
+              <button class="mobile-nav-legal-toggle" id="mobileNavLegalToggle">
+                <div class="mobile-nav-legal-content">
+                  <div class="mobile-nav-legal-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                      <polyline points="14,2 14,8 20,8"></polyline>
+                      <line x1="16" y1="13" x2="8" y2="13"></line>
+                      <line x1="16" y1="17" x2="8" y2="17"></line>
+                      <polyline points="10,9 9,9 8,9"></polyline>
+                    </svg>
+                  </div>
+                  <div class="mobile-nav-legal-details">
+                    <span class="mobile-nav-legal-name">Rechtliches</span>
+                    <span class="mobile-nav-legal-region">AGB & Datenschutz</span>
+                  </div>
+                </div>
+                <svg class="mobile-nav-legal-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </li>
+        
+
+          
+          <!-- FOUNDER-LEVEL EVENTARTEN SECTION - Streamlined & Polished -->
+          <li class="mobile-nav-item mobile-nav-section">
+            <button class="mobile-nav-section-header" aria-expanded="true" aria-controls="eventartenSubmenu" onclick="toggleEventartenSubmenu()">
+              <span class="mobile-nav-section-title">Eventarten</span>
+              <svg class="mobile-nav-dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <ul class="mobile-nav-submenu" id="eventartenSubmenu">
+              <li class="mobile-nav-subitem">
+                <a href="konferenzen-kongresse.html" class="mobile-nav-sublink">
+                  <span class="mobile-nav-sublink-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-presentation">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                      <path d="M3 4l18 0" />
+                      <path d="M4 4v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-10" />
+                      <path d="M12 16l0 4" />
+                      <path d="M9 20l6 0" />
+                      <path d="M8 12l3 -3l2 2l3 -3" />
+                    </svg>
+                  </span>
+                  <span class="mobile-nav-sublink-text">Konferenzen & Kongresse</span>
+                </a>
+        </li>
+              <li class="mobile-nav-subitem">
+                <a href="messen-ausstellungen.html" class="mobile-nav-sublink">
+                  <span class="mobile-nav-sublink-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-building-store">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                      <path d="M3 21l18 0" />
+                      <path d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2 -4h14l2 4" />
+                      <path d="M5 21l0 -10.15" />
+                      <path d="M19 21l0 -10.15" />
+                      <path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4" />
+                    </svg>
+                  </span>
+                  <span class="mobile-nav-sublink-text">Messen & Ausstellungen</span>
+                </a>
+        </li>
+              <li class="mobile-nav-subitem">
+                <a href="sport-lauf-events.html" class="mobile-nav-sublink">
+                  <span class="mobile-nav-sublink-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-run">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                      <path d="M13 4m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                      <path d="M4 17l5 1l.75 -1.5" />
+                      <path d="M15 21l0 -4l-4 -3l1 -6" />
+                      <path d="M7 12l0 -3l5 -1l3 3l3 1" />
+              </svg>
+                  </span>
+                  <span class="mobile-nav-sublink-text">Sport- & Lauf-Events</span>
+                </a>
+        </li>
+              <li class="mobile-nav-subitem">
+                <a href="outdoor-kultur-festivals.html" class="mobile-nav-sublink">
+                  <span class="mobile-nav-sublink-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-music">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                      <path d="M3 17a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                      <path d="M13 17a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+                      <path d="M9 17v-13h10v13" />
+                      <path d="M9 8h10" />
+            </svg>
+                  </span>
+                  <span class="mobile-nav-sublink-text">Outdoor & Kultur Festivals</span>
+                </a>
+        </li>
+              <li class="mobile-nav-subitem">
+                <a href="dorf-quartierfeste.html" class="mobile-nav-sublink">
+                  <span class="mobile-nav-sublink-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-building-circus">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                      <path d="M4 11h16" />
+                      <path d="M12 6.5c0 1 -5 4.5 -8 4.5" />
+                      <path d="M12 6.5c0 1 5 4.5 8 4.5" />
+                      <path d="M6 11c-.333 5.333 -1 8.667 -2 10h4c1 0 4 -4 4 -9v-1" />
+                      <path d="M18 11c.333 5.333 1 8.667 2 10h-4c-1 0 -4 -4 -4 -9v-1" />
+                      <path d="M12 7v-4l2 1h-2" />
+            </svg>
+                  </span>
+                  <span class="mobile-nav-sublink-text">Dorf- & Quartierfeste</span>
+                </a>
+        </li>
+      </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Contact Section - Minimal Footer Style -->
+      <div class="mobile-nav-contact-section">
+        <ul class="mobile-nav-contact-list">
+          <li class="mobile-nav-contact-item">
+            <a href="mailto:support@eventseiten.ch" class="mobile-nav-contact-link">
+              <div class="mobile-nav-contact-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div class="mobile-nav-contact-content">
+                <span class="mobile-nav-contact-value">support@eventseiten.ch</span>
+              </div>
+            </a>
+          </li>
+          <li class="mobile-nav-contact-item">
+            <a href="tel:+43677620312150" class="mobile-nav-contact-link">
+              <div class="mobile-nav-contact-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </div>
+              <div class="mobile-nav-contact-content">
+                <span class="mobile-nav-contact-value">+43 677 62031215</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="mobile-nav-cta-section">
+        <a href="#testimonials" class="mobile-nav-cta-button">
+          <span class="mobile-nav-cta-text">Offerte Beantragen</span>
+          <span class="mobile-nav-cta-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <main>
+    <!-- Hero Section with Premium Enterprise Design -->
+    <section class="hero">
+      <div class="hero-bg">
+        <video class="hero-video" autoplay muted loop playsinline>
+          <source src="images/1-hero-bg-video.mp4" type="video/mp4">
+          <img class="hero-image" src="images/hero-bg-home.jpg" alt="Event-Webseiten Hintergrund" loading="eager">
+        </video>
+      </div>
+      <div class="hero-overlay"></div>
+      
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-heading">
+            <div class="hero-title-line">Erfolgreiche</div>
+            <div class="hero-title-line hero-title-highlight">Event-Webseiten</div>
+            <div class="hero-title-line">in nur 14 Tagen</div>
+          </div>
+          
+          <p class="hero-subheading">Ihre Veranstaltung verdient maximale Sichtbarkeit. Mit professionellen Eventseiten steigern Sie Ihre Reichweite, gewinnen neue Teilnehmer und schaffen bereits vor dem Event die Basis für erfolgreiche Partnerschaften.</p>
+          
+          <div class="hero-actions">
+            <a href="#testimonials" class="btn btn-primary">
+              Unverbindlich starten
+              <span class="btn-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </span>
+            </a>
+            <a href="#portfolio" class="btn btn-outline">
+              Projekte ansehen
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <a href="#portfolio" class="scroll-indicator">
+        <div class="scroll-mouse">
+          <div class="scroll-wheel"></div>
+        </div>
+      </a>
+      
+      <div class="hero-bottom">
+        <div class="hero-divider"></div>
+        <div class="hero-bottom-gradient"></div>
+      </div>
+    </section>
+    
+    <!-- Portfolio Showcase Section -->
+    <section class="portfolio-showcase" id="portfolio">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title animate" data-effect="fade-in-up">Ihr Event im Fokus, weniger Stress für Sie</h2>
+          <p class="section-description animate" data-effect="fade-in-up" data-delay="100">Von der Karte bis zur Hotline: Alles für reibungslose Abläufe und maximale Reichweite.</p>
+        </div>
+        
+        <div class="showcase-container">
+          <div class="project-card animate" data-effect="fade-in-up" data-delay="200">
+            <div class="project-media">
+              <img src="http://dotweb.agency/wp-content/uploads/2025/05/Huettikerfest-1-1.jpg" alt="Hüttikerfest Webseite" class="project-image">
+              <div class="project-badge">
+                <span class="badge-pulse"></span>
+                <span>Aktuelles Projekt</span>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-header">
+                <div class="project-title-row">
+                  <h3 class="project-title">Hüttikerfest</h3>
+                  <div class="project-year">2025</div>
+                </div>
+                <div class="project-location">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                  <span>Hüttikon, Zürich</span>
+                </div>
+              </div>
+              
+              <div class="project-summary">
+                <p class="project-description">Modern, klar und benutzerfreundlich, für das Hüttikerfest schufen wir eine Plattform, die durch Sponsorenpräsentation und Kartenübersicht 30% mehr Besucher gewann.</p>
+                
+                <ul class="project-highlights">
+                  <li>Interaktiver Festgeländeplan</li>
+                  <li>Mehrstufiges Sponsoren-Widget</li>
+                  <li>Übersichtliche Programm-Tabelle</li>
+                </ul>
+              </div>
+              
+              <div class="metrics-container">
+                <div class="metric-item">
+                  <div class="metric-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="9" cy="7" r="4"></circle>
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                  </div>
+                  <div class="metric-data">
+                    <div class="metric-value">+30%</div>
+                    <div class="metric-label">Besucher</div>
+                  </div>
+                  <div class="metric-bg"></div>
+                </div>
+                
+                <div class="metric-item">
+                  <div class="metric-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                  </div>
+                  <div class="metric-data">
+                    <div class="metric-value">14</div>
+                    <div class="metric-label">Tage Lieferzeit</div>
+                  </div>
+                  <div class="metric-bg"></div>
+                </div>
+                
+                <div class="metric-item">
+                  <div class="metric-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20.2 7.8l-7.7 7.7-4-4-5.7 5.7"></path>
+                      <path d="M15 7h6v6"></path>
+                    </svg>
+                  </div>
+                  <div class="metric-data">
+                    <div class="metric-value">18</div>
+                    <div class="metric-label">Sponsoren</div>
+                  </div>
+                  <div class="metric-bg"></div>
+                </div>
+              </div>
+              
+              <div class="project-actions">
+                <a href="https://huettikerfest.ch" class="primary-action" target="_blank" rel="noopener">
+                  <span>Zur Webseite</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+                <button class="secondary-action" aria-label="Kontakt">
+                  <span>Ähnliches Projekt anfragen</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="features-section">
+            <div class="features-header">
+              <h3 class="features-title">Wie Eventseiten.ch Ihren Event sichtbar macht</h3>
+              <p class="features-subtitle">Wir vereinen Karten, Sponsoren und smarte Technik für mehr Erfolg.</p>
+            </div>
+            <div class="features-grid">
+              <!-- Feature 1: Blitzschnell Online -->
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                  </svg>
+                </div>
+                <div class="feature-content">
+                  <h3 class="feature-title">KI Event Hotline</h3>
+                  <p class="feature-description">KI Hotline als Widget & Telefon, beantwortet Fragen sofort und liefert wichtige Protokolle und Mitschnitte direkt an Sie.</p>
+                  <div class="feature-benefits">
+                    <div class="feature-benefit">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      <span>24 Stunden erreichbar</span>
+                    </div>
+                    <div class="feature-benefit">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      <span>Automatische Mitschnitte</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Feature 2: Interaktive Event-Features -->
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+                <div class="feature-content">
+                  <h3 class="feature-title">Event Bausteine </h3>
+                  <p class="feature-description">Karten, Programm-Tabellen und smarte Features, für reibungslose Abläufe und ein beeindruckendes Event-Erlebnis.</p>
+                  <div class="feature-benefits">
+                    <div class="feature-benefit">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      <span>Interaktive Festgeländekarten</span>
+                    </div>
+                    <div class="feature-benefit">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      <span>Übersichtliche Programm-Tabellen</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Feature 3: Intelligente Sponsoren-Widgets -->
+              <div class="feature-card">
+                <div class="feature-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="9" cy="7" r="4"></circle>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                  </svg>
+                </div>
+                <div class="feature-content">
+                  <h3 class="feature-title">Sponsoren Tools</h3>
+                  <p class="feature-description">Strukturierte Sponsoren-Tools mit klarer Übersicht, für eine starke Partnerpräsenz und mühelose Sponsorengewinnung.</p>
+                  <div class="feature-benefits">
+                    <div class="feature-benefit">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      <span>Frühe Sponsoren-Präsentation</span>
+                    </div>
+                    <div class="feature-benefit">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      <span>Hierarchische Sponsor-Darstellung</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Process Timeline Section -->
+    <section class="process" id="process">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title animate" data-effect="fade-in-up">Strukturierter Prozess, klare Wirkung</h2>
+          <p class="section-description animate" data-effect="fade-in-up" data-delay="100">Analyse und Umsetzung, für eine sichtbare und starke Event-Präsenz.</p>
+        </div>
+        
+        <div class="process-container">
+          <div class="process-timeline">
+            <div class="timeline-progress">
+              <div class="timeline-progress-indicator"></div>
+            </div>
+            
+            <!-- Step 1: Strategische Bedarfsanalyse -->
+            <div class="process-step">
+              <div class="process-step-number">
+                <span>01</span>
+              </div>
+              <div class="process-step-content">
+                <h3 class="process-step-title">Präzise 360°-Analyse</h3>
+                <p class="process-step-description">Mit unserer 360°-Analyse schaffen wir ein tiefes Verständnis Ihrer Ziele, damit Ihre Event-Präsenz messbar wirkt und langfristig bestehen bleibt.</p>
+                <div class="process-step-features">
+                  <div class="process-step-feature">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <span>Datengestützte Analyse</span>
+                  </div>
+                  <div class="process-step-feature">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <span>ROI-optimierte Planung</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Step 2: Experience Design & Entwicklung -->
+            <div class="process-step">
+              <div class="process-step-number">
+                <span>02</span>
+              </div>
+              <div class="process-step-content">
+                <h3 class="process-step-title">Erlebnisorientiertes Design</h3>
+                <p class="process-step-description">Unsere UX-Experten schaffen eine digitale Bühne, die Ihre Besucher begeistert und sich nahtlos in Ihr Eventerlebnis integriert und dieses perfekt unterstützt.</p>
+                <div class="process-step-features">
+                  <div class="process-step-feature">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <span>Nutzerzentrierte UX</span>
+                  </div>
+                  <div class="process-step-feature">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <span>Modulare Umsetzung</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Step 3: Accelerated Launch & Optimierung -->
+            <div class="process-step">
+              <div class="process-step-number">
+                <span>03</span>
+              </div>
+              <div class="process-step-content">
+                <h3 class="process-step-title">Rascher Markteintritt, nachhaltige Wirkung</h3>
+                <p class="process-step-description">Wir realisieren Ihren Go-Live in nur 14 Tagen, nicht nur schnell, sondern strategisch durchdacht. So erzielen Sie maximale Sichtbarkeit, von Anfang an.</p>
+                <div class="process-step-features">
+                  <div class="process-step-feature">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <span>14-Tage-Launch</span>
+                  </div>
+                  <div class="process-step-feature">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <span>SEO-Optimierung</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Step 4: Premium Support & Continuous Evolution -->
+            <div class="process-step">
+              <div class="process-step-number">
+                <span>04</span>
+              </div>
+              <div class="process-step-content">
+                <h3 class="process-step-title">Persönlicher Support & Updates</h3>
+                <p class="process-step-description">Wir bieten schnellen Support mit Reaktionszeiten unter 4 Stunden und integrieren neue Features oder Verbesserungen direkt in Ihre Eventseite.</p>
+                <div class="process-step-features">
+                  <div class="process-step-feature">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <span>Reaktionszeit unter 4h</span>
+                  </div>
+                  <div class="process-step-feature">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <span>Stetige Aktualisierungen</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Integrated Testimonials & Contact Section -->
+    <section class="integrated-section" id="testimonials">
+      <div class="container">
+        <div class="integrated-header">
+          <h2 class="section-title animate" data-effect="fade-in-up">Ihre <strong>Eventpräsenz</strong> beginnt hier</h2>
+          <p class="section-description animate" data-effect="fade-in-up" data-delay="100">Professionelle Beratung und effizienten Umsetzung für Ihren lokalen Event</p>
+        </div>
+        
+        <div class="integrated-content">
+          <div class="contact-column animate" data-effect="fade-in-left" data-delay="200" id="kontakt">
+            <div class="contact-form">
+              <div class="form-header">
+                <h3 class="form-title">Richtofferte beantragen</h3>
+                <p class="form-subtitle">Erhalten Sie eine massgeschneiderte Lösung für Ihr Event. Unverbindlich und binnen 24 Stunden.</p>
+              </div>
+              
+              <form id="eventWebsiteForm" method="POST">
+                <div class="form-grid">
+                  <div class="form-field">
+                    <label for="name" class="form-label">Name / Organisation</label>
+                    <div class="input-wrapper">
+                      <span class="input-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                          <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                      </span>
+                      <input type="text" id="name" name="name" class="form-input" placeholder="Ihr Name oder Organisation" required>
+                    </div>
+                  </div>
+                  
+                  <div class="form-field">
+                    <label for="email" class="form-label">E-Mail</label>
+                    <div class="input-wrapper">
+                      <span class="input-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                          <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                      </span>
+                      <input type="email" id="email" name="email" class="form-input" placeholder="Ihre E-Mail-Adresse" required>
+                    </div>
+                  </div>
+                  
+                  <div class="form-field">
+                    <label for="eventName" class="form-label">Name des Events</label>
+                    <div class="input-wrapper">
+                      <span class="input-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                          <line x1="16" y1="2" x2="16" y2="6"></line>
+                          <line x1="8" y1="2" x2="8" y2="6"></line>
+                          <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                      </span>
+                      <input type="text" id="eventName" name="eventName" class="form-input" placeholder="Bezeichnung der Veranstaltung" required>
+                    </div>
+                  </div>
+                  
+                  <div class="form-field">
+                    <label for="eventDate" class="form-label">Datum des Events <span class="optional-mark">(optional)</span></label>
+                    <div class="input-wrapper">
+                      <span class="input-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                          <line x1="16" y1="2" x2="16" y2="6"></line>
+                          <line x1="8" y1="2" x2="8" y2="6"></line>
+                          <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                      </span>
+                      <input type="text" id="eventDate" name="eventDate" class="form-input" placeholder="z.B. 15. Juli 2024" required>
+                    </div>
+                  </div>
+                  
+                  <div class="form-field full-width">
+                    <label for="message" class="form-label">Beschreibung & Anforderungen</label>
+                    <div class="input-wrapper textarea-wrapper">
+                      <textarea id="message" name="message" class="form-textarea without-icon" placeholder="Beschreiben Sie Ihr Event und Ihre spezifischen Anforderungen..." required></textarea>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="form-footer">
+                  <div class="form-privacy">
+                    <div class="checkbox-wrapper">
+                      <input type="checkbox" id="privacy" name="privacy" required>
+                      <label for="privacy">Ich akzeptiere die <a href="datenschutz.html">Datenschutzerklärung</a> und <a href="agb.html">AGB</a></label>
+                    </div>
+                  </div>
+                  
+                  <button type="submit" class="form-submit">
+                    <span>Kostenlos anfordern</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="form-submit-icon">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </button>
+                </div>
+              </form>
+              
+              <div class="form-success-message" id="successMessage">
+                <div class="success-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <h4 class="success-title">Vielen Dank für Ihre Anfrage!</h4>
+                <p class="success-message">Wir melden uns innerhalb von 24 Stunden persönlich bei Ihnen mit einem massgeschneiderten Angebot.</p>
+                <div class="success-features">
+                  <div class="success-feature">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Kostenlose Beratung</span>
+                  </div>
+                  <div class="success-feature">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Unverbindliches Angebot</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonials-column animate" data-effect="fade-in-right" data-delay="200">
+            <div class="service-guarantees guarantees-section">
+              <h3 class="guarantees-title">Unsere Garantie</h3>
+              <div class="guarantees-list">
+                <div class="guarantee-item">
+                  <div class="guarantee-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                  </div>
+                  <div class="guarantee-content">
+                    <h4 class="guarantee-title">24h Reaktion</h4>
+                    <p class="guarantee-description">Garantierte Antwort innerhalb eines Werktages</p>
+                  </div>
+                </div>
+
+                <div class="guarantee-item">
+                  <div class="guarantee-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                  </div>
+                  <div class="guarantee-content">
+                    <h4 class="guarantee-title">14-Tage-Launch</h4>
+                    <p class="guarantee-description">Vom Konzept zur Live-Webseite in zwei Wochen</p>
+                  </div>
+                </div>
+
+                <div class="guarantee-item">
+                  <div class="guarantee-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                  </div>
+                  <div class="guarantee-content">
+                    <h4 class="guarantee-title">Sicherheit</h4>
+                    <p class="guarantee-description">SSL-Verschlüsselung und DSGVO-konformer Datenschutz</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="service-guarantees review-card animate" data-effect="fade-in-right" data-delay="300">
+              <div class="card-header">
+                <h3 class="guarantees-title">Kundenstimme</h3>
+                <div class="review-stars">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                </div>
+              </div>
+              <blockquote class="review-quote">
+                "Die Webseite hat unsere Erwartungen übertroffen! Wir konnten unsere Besucherzahlen um 30% steigern und haben deutlich mehr Sponsoren für unser Dorffest gewonnen."
+              </blockquote>
+              <div class="review-author-row">
+                <div class="review-author-info">
+                  <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Markus Meier" class="review-avatar" />
+                  <div>
+                    <div class="reviewer-name">Giovanni Barone</div>
+                    <div class="reviewer-title">Organisator, Hüttikerfest</div>
+                  </div>
+                </div>
+                <a href="#portfolio" class="review-link">
+                  <span>Projekt ansehen</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Footer Section -->
+  <footer class="footer" id="footer">
+    <div class="footer-decorations">
+      <div class="footer-wave"></div>
+      <div class="footer-particle footer-particle-1"></div>
+      <div class="footer-particle footer-particle-2"></div>
+      <div class="footer-particle footer-particle-3"></div>
+    </div>
+
+    <div class="container">
+      <div class="footer-grid animate" data-effect="fade-in-up">
+        <!-- Brand Column -->
+        <div class="footer-brand-column">
+          <a href="#" class="footer-logo">
+            <span class="footer-logo-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path fill-rule="evenodd" d="M1.5 6.375c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v3.026a.75.75 0 0 1-.375.65 2.249 2.249 0 0 0 0 3.898.75.75 0 0 1 .375.65v3.026c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 0 1 1.5 17.625v-3.026a.75.75 0 0 1 .374-.65 2.249 2.249 0 0 0 0-3.898.75.75 0 0 1-.374-.65V6.375Zm15-1.125a.75.75 0 0 1 .75.75v.75a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Zm.75 4.5a.75.75 0 0 0-1.5 0v.75a.75.75 0 0 0 1.5 0v-.75Zm-.75 3a.75.75 0 0 1 .75.75v.75a.75.75 0 0 1-1.5 0v-.75a.75.75 0 0 1 .75-.75Zm.75 4.5a.75.75 0 0 0-1.5 0V18a.75.75 0 0 0 1.5 0v-.75ZM6 12a.75.75 0 0 1 .75-.75H12a.75.75 0 0 1 0 1.5H6.75A.75.75 0 0 1 6 12Zm.75 2.25a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-3Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Event<span class="footer-logo-highlight">seiten.ch</span>
+          </a>
+          
+          <p class="footer-tagline">Professionelle Webseiten für lokale Events und Dorffeste in der Schweiz. Massgeschneiderte digitale Lösungen für erfolgreiche Veranstaltungen.</p>
+          
+          <div class="footer-cta">
+            <a href="#testimonials" class="footer-cta-button">
+              <span>Offerte beantragen</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Mobile Legal Dropdown -->
+          <div class="mobile-legal-dropdown">
+            <button type="button" class="legal-dropdown-toggle" id="legalDropdownToggle" aria-expanded="false" aria-haspopup="true" aria-controls="legalDropdownMenu">
+              <span>Rechtliche Informationen</span>
+              <svg class="legal-dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="legal-dropdown-menu" id="legalDropdownMenu" role="menu" aria-labelledby="legalDropdownToggle">
+              <a href="impressum.html" class="legal-dropdown-item" role="menuitem">Impressum</a>
+              <a href="datenschutz.html" class="legal-dropdown-item" role="menuitem">Datenschutz</a>
+              <a href="agb.html" class="legal-dropdown-item" role="menuitem">AGB</a>
+              <a href="widerrufsrecht.html" class="legal-dropdown-item" role="menuitem">Widerrufsbelehrung</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Navigation Columns -->
+        <div class="footer-nav-columns">
+          <div class="footer-nav-column">
+            <h3 class="footer-heading">Eventarten</h3>
+            <ul class="footer-links">
+              <li><a href="konferenzen-kongresse.html" class="footer-link">Konferenzen & Kongresse</a></li>
+              <li><a href="messen-ausstellungen.html" class="footer-link">Messen & Ausstellungen</a></li>
+              <li><a href="sport-lauf-events.html" class="footer-link">Sport- & Lauf-Events</a></li>
+              <li><a href="outdoor-kultur-festivals.html" class="footer-link">Outdoor & Kultur Festivals</a></li>
+              <li><a href="dorf-quartierfeste.html" class="footer-link">Dorf- & Quartierfeste</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-nav-column">
+            <h3 class="footer-heading">Rechtliches</h3>
+            <ul class="footer-links">
+              <li><a href="impressum.html" class="footer-link">Impressum</a></li>
+              <li><a href="datenschutz.html" class="footer-link">Datenschutz</a></li>
+              <li><a href="agb.html" class="footer-link">AGB</a></li>
+              <li><a href="widerrufsrecht.html" class="footer-link">Widerrufsbelehrung</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Contact Column (Simplified) -->
+        <div class="footer-contact-column">
+          <h3 class="footer-heading">Kontakt</h3>
+          <ul class="footer-contact-list">
+            <li class="footer-contact-item">
+              <div class="contact-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div class="contact-content">
+                <span class="contact-label">Email</span>
+                <a href="mailto:support@eventseiten.ch" class="contact-value">support@eventseiten.ch</a>
+              </div>
+            </li>
+            <li class="footer-contact-item">
+              <div class="contact-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </div>
+              <div class="contact-content">
+                <span class="contact-label">Telefon</span>
+                <a href="tel:+43677620312150" class="contact-value">+43 677 62031215</a>
+              </div>
+            </li>
+            <li class="footer-contact-item">
+              <div class="contact-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div class="contact-content">
+                <span class="contact-label">Geschäftsanschrift</span>
+                <span class="contact-value">30 N Gould St, Ste R<br>Sheridan, WY 82801, USA</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="footer-bottom-links">
+          <a href="impressum.html" class="footer-bottom-link">Impressum</a>
+          <span class="footer-separator">|</span>
+          <a href="datenschutz.html" class="footer-bottom-link">Datenschutz</a>
+          <span class="footer-separator">|</span>
+          <a href="agb.html" class="footer-bottom-link">AGB</a>
+        </div>
+        
+        <div class="footer-copyright">
+          © 2025 Eventseiten.ch. Alle Rechte vorbehalten.
+        </div>
+        
+        <div class="footer-scroll-top">
+          <a href="#" class="scroll-top-button" aria-label="Zum Seitenanfang scrollen">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <polyline points="18 15 12 9 6 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <!-- Mobile Language Sheet -->
+  <div class="mobile-language-overlay" id="mobileLanguageOverlay"></div>
+  <div class="mobile-language-sheet" id="mobileLanguageSheet">
+    <div class="mobile-language-header">
+      <h3 class="mobile-language-title">Sprache wählen</h3>
+      <button class="mobile-language-close" id="mobileLanguageClose">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="mobile-language-content">
+      <div class="mobile-language-list">
+        <a href="#" class="mobile-language-option active" data-lang="de">
+          <div class="mobile-lang-code">DE</div>
+          <span class="mobile-lang-name">Deutsch</span>
+        </a>
+        <a href="#" class="mobile-language-option" data-lang="fr">
+          <div class="mobile-lang-code">FR</div>
+          <span class="mobile-lang-name">Français</span>
+        </a>
+        <a href="#" class="mobile-language-option" data-lang="it">
+          <div class="mobile-lang-code">IT</div>
+          <span class="mobile-lang-name">Italiano</span>
+        </a>
+        <a href="#" class="mobile-language-option" data-lang="en">
+          <div class="mobile-lang-code">EN</div>
+          <span class="mobile-lang-name">English</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script defer src="js/preloader.js"></script>
+  <script defer src="js/animations.js"></script>
+  <script defer src="js/main.js"></script>
+  <script defer src="js/radial-menu.js"></script>
+  
+  <!-- Navigation Dropdown Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Desktop Navigation Dropdown
+      const navDropdownToggle = document.querySelector('.nav-dropdown-toggle');
+      const navDropdownMenu = document.querySelector('.nav-dropdown-menu');
+      
+      if (navDropdownToggle && navDropdownMenu) {
+        navDropdownToggle.addEventListener('click', function(event) {
+          event.preventDefault();
+          const isExpanded = navDropdownToggle.getAttribute('aria-expanded') === 'true';
+          navDropdownToggle.setAttribute('aria-expanded', !isExpanded);
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+          if (!navDropdownToggle.contains(event.target) && !navDropdownMenu.contains(event.target)) {
+            navDropdownToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+      // Desktop Language Switcher (Hover-based like Eventarten)
+      const languageSwitcher = document.querySelector('.language-switcher');
+      const languageSwitcherToggle = document.querySelector('.language-switcher-toggle');
+      const languageSwitcherMenu = document.querySelector('.language-switcher-menu');
+      
+      if (languageSwitcher && languageSwitcherToggle && languageSwitcherMenu) {
+        // Handle language selection
+        const languageOptions = document.querySelectorAll('.language-option');
+        languageOptions.forEach(option => {
+          option.addEventListener('click', function(event) {
+            event.preventDefault();
+            const lang = this.getAttribute('data-lang');
+            
+            // Get language code from data attribute or text
+            let langCode = 'DE';
+            switch(lang) {
+              case 'de': langCode = 'DE'; break;
+              case 'fr': langCode = 'FR'; break;
+              case 'it': langCode = 'IT'; break;
+              case 'en': langCode = 'EN'; break;
+            }
+            
+            // Update current language display with animation
+            const currentElement = document.querySelector('.language-current');
+            if (currentElement.textContent !== langCode) {
+              currentElement.classList.add('changing');
+              
+              setTimeout(() => {
+                currentElement.textContent = langCode;
+              }, 200);
+              
+              setTimeout(() => {
+                currentElement.classList.remove('changing');
+              }, 400);
+            }
+            
+            // Update active state
+            languageOptions.forEach(opt => opt.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Here you would typically handle the language change
+            console.log('Language changed to:', lang);
+          });
+        });
+      }
+
+      // Mobile Language Sheet (from mobile nav)
+      const mobileNavLanguageToggle = document.getElementById('mobileNavLanguageToggle');
+      const mobileLanguageOverlay = document.getElementById('mobileLanguageOverlay');
+      const mobileLanguageSheet = document.getElementById('mobileLanguageSheet');
+      const mobileLanguageClose = document.getElementById('mobileLanguageClose');
+      
+      if (mobileNavLanguageToggle && mobileLanguageOverlay && mobileLanguageSheet && mobileLanguageClose) {
+        // Handle mobile language selection
+        const mobileLanguageOptions = document.querySelectorAll('.mobile-language-option');
+        
+        // Open mobile language sheet
+        mobileNavLanguageToggle.addEventListener('click', function(event) {
+          event.preventDefault();
+          mobileLanguageOverlay.classList.add('active');
+          mobileLanguageSheet.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+
+        // Close mobile language sheet
+        function closeMobileLanguageSheet() {
+          mobileLanguageOverlay.classList.remove('active');
+          mobileLanguageSheet.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+
+        mobileLanguageClose.addEventListener('click', closeMobileLanguageSheet);
+        mobileLanguageOverlay.addEventListener('click', closeMobileLanguageSheet);
+
+        // Handle language selection
+        mobileLanguageOptions.forEach(option => {
+          option.addEventListener('click', function(event) {
+            event.preventDefault();
+            const lang = this.getAttribute('data-lang');
+            
+            // Get language details
+            let langCode = 'DE', langName = 'Deutsch', langRegion = 'Schweiz';
+            switch(lang) {
+              case 'de': 
+                langCode = 'DE'; 
+                langName = 'Deutsch'; 
+                langRegion = 'Schweiz'; 
+                break;
+              case 'fr': 
+                langCode = 'FR'; 
+                langName = 'Français'; 
+                langRegion = 'Suisse'; 
+                break;
+              case 'it': 
+                langCode = 'IT'; 
+                langName = 'Italiano'; 
+                langRegion = 'Svizzera'; 
+                break;
+              case 'en': 
+                langCode = 'EN'; 
+                langName = 'English'; 
+                langRegion = 'International'; 
+                break;
+            }
+            
+            // Update mobile nav language display
+            document.getElementById('mobileNavLanguageCode').textContent = langCode;
+            document.getElementById('mobileNavLanguageName').textContent = langName;
+            document.getElementById('mobileNavLanguageRegion').textContent = langRegion;
+            
+            // Update desktop language display with animation
+            const currentElement = document.querySelector('.language-current');
+            if (currentElement && currentElement.textContent !== langCode) {
+              currentElement.classList.add('changing');
+              
+              setTimeout(() => {
+                currentElement.textContent = langCode;
+              }, 200);
+              
+              setTimeout(() => {
+                currentElement.classList.remove('changing');
+              }, 400);
+            }
+            
+            // Update active state
+            mobileLanguageOptions.forEach(opt => opt.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Close the sheet
+            closeMobileLanguageSheet();
+            
+            // Here you would typically handle the language change
+            console.log('Mobile language changed to:', lang);
+          });
+        });
+      }
+
+      // TASK 2: Mobile Eventarten Toggle Functionality
+      window.toggleEventartenSubmenu = function() {
+        const header = document.querySelector('.mobile-nav-section-header');
+        const submenu = document.getElementById('eventartenSubmenu');
+        const isExpanded = header.getAttribute('aria-expanded') === 'true';
+        
+        header.setAttribute('aria-expanded', !isExpanded);
+      };
+
+      // Legal Dropdown (existing functionality)
+      const legalDropdownToggle = document.getElementById('legalDropdownToggle');
+      const legalDropdownMenu = document.getElementById('legalDropdownMenu');
+      
+      if (legalDropdownToggle && legalDropdownMenu) {
+        // Prevent any default button behavior
+        legalDropdownToggle.addEventListener('click', function(event) {
+          event.preventDefault();
+          event.stopPropagation();
+          
+          const isActive = legalDropdownToggle.classList.contains('active');
+          
+          if (isActive) {
+            // Close dropdown
+            legalDropdownToggle.classList.remove('active');
+            legalDropdownMenu.classList.remove('active');
+            legalDropdownToggle.setAttribute('aria-expanded', 'false');
+          } else {
+            // Open dropdown
+            legalDropdownToggle.classList.add('active');
+            legalDropdownMenu.classList.add('active');
+            legalDropdownToggle.setAttribute('aria-expanded', 'true');
+          }
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+          const isClickInsideDropdown = legalDropdownToggle.contains(event.target) || 
+                                       legalDropdownMenu.contains(event.target);
+          
+          if (!isClickInsideDropdown) {
+            legalDropdownToggle.classList.remove('active');
+            legalDropdownMenu.classList.remove('active');
+            legalDropdownToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        // Handle keyboard navigation
+        legalDropdownToggle.addEventListener('keydown', function(event) {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            legalDropdownToggle.click();
+          }
+          if (event.key === 'Escape') {
+            legalDropdownToggle.classList.remove('active');
+            legalDropdownMenu.classList.remove('active');
+            legalDropdownToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        // Ensure dropdown items work properly
+        const dropdownItems = legalDropdownMenu.querySelectorAll('.legal-dropdown-item');
+        dropdownItems.forEach(item => {
+          item.addEventListener('click', function(event) {
+            // Allow normal link behavior for dropdown items
+            // Close dropdown after click
+            setTimeout(() => {
+              legalDropdownToggle.classList.remove('active');
+              legalDropdownMenu.classList.remove('active');
+              legalDropdownToggle.setAttribute('aria-expanded', 'false');
+            }, 100);
+          });
+        });
+      }
+
+      // Mobile Legal Bottom Sheet functionality
+      const mobileLegalPill = document.getElementById('mobileLegalPill');
+      const mobileLegalOverlay = document.getElementById('mobileLegalOverlay');
+      const mobileLegalSheet = document.getElementById('mobileLegalSheet');
+      const sheetClose = document.getElementById('sheetClose');
+
+      if (mobileLegalPill && mobileLegalOverlay && mobileLegalSheet && sheetClose) {
+        let lastScrollY = window.scrollY;
+        let isVisible = false;
+
+        // Initially hide the pill completely
+        mobileLegalPill.style.opacity = '0';
+        mobileLegalPill.style.transform = 'translateY(100px) scale(0.8)';
+        mobileLegalPill.style.visibility = 'hidden';
+
+        // Function to check if we're in the last 25-30% of the page
+        function checkScrollPosition() {
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          const documentHeight = document.documentElement.scrollHeight;
+          const windowHeight = window.innerHeight;
+          const scrollPercentage = (scrollTop + windowHeight) / documentHeight;
+          
+          // Show pill when in last 30% of the page
+          const shouldShow = scrollPercentage >= 0.7;
+          
+          if (shouldShow && !isVisible) {
+            // Show with smooth animation
+            isVisible = true;
+            mobileLegalPill.style.visibility = 'visible';
+            mobileLegalPill.style.transition = 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            mobileLegalPill.style.opacity = '1';
+            mobileLegalPill.style.transform = 'translateY(0) scale(1)';
+            
+            // Add a subtle bounce effect
+            setTimeout(() => {
+              mobileLegalPill.style.transform = 'translateY(-5px) scale(1.05)';
+              setTimeout(() => {
+                mobileLegalPill.style.transform = 'translateY(0) scale(1)';
+              }, 200);
+            }, 300);
+            
+          } else if (!shouldShow && isVisible) {
+            // Hide with smooth animation
+            isVisible = false;
+            mobileLegalPill.style.transition = 'all 0.4s ease-out';
+            mobileLegalPill.style.opacity = '0';
+            mobileLegalPill.style.transform = 'translateY(50px) scale(0.9)';
+            
+            setTimeout(() => {
+              mobileLegalPill.style.visibility = 'hidden';
+            }, 400);
+          }
+        }
+
+        // Throttled scroll listener for better performance
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+          if (scrollTimeout) {
+            clearTimeout(scrollTimeout);
+          }
+          scrollTimeout = setTimeout(checkScrollPosition, 10);
+        });
+
+        // Initial check
+        checkScrollPosition();
+
+        // Open bottom sheet
+        mobileLegalPill.addEventListener('click', () => {
+          mobileLegalOverlay.classList.add('active');
+          mobileLegalSheet.classList.add('active');
+          document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+
+        // Close bottom sheet - close button
+        sheetClose.addEventListener('click', () => {
+          closeBottomSheet();
+        });
+
+        // Close bottom sheet - overlay click
+        mobileLegalOverlay.addEventListener('click', () => {
+          closeBottomSheet();
+        });
+
+        // Close bottom sheet - swipe down (touch)
+        let startY = 0;
+        let currentY = 0;
+        let isDragging = false;
+
+        mobileLegalSheet.addEventListener('touchstart', (e) => {
+          startY = e.touches[0].clientY;
+          isDragging = true;
+        });
+
+        mobileLegalSheet.addEventListener('touchmove', (e) => {
+          if (!isDragging) return;
+          
+          currentY = e.touches[0].clientY;
+          const deltaY = currentY - startY;
+          
+          if (deltaY > 0) {
+            // Dragging down
+            mobileLegalSheet.style.transform = `translateY(${deltaY}px)`;
+          }
+        });
+
+        mobileLegalSheet.addEventListener('touchend', (e) => {
+          if (!isDragging) return;
+          
+          const deltaY = currentY - startY;
+          
+          if (deltaY > 100) {
+            // Swipe down threshold reached - close sheet
+            closeBottomSheet();
+          } else {
+            // Snap back to original position
+            mobileLegalSheet.style.transform = 'translateY(0)';
+          }
+          
+          isDragging = false;
+        });
+
+        // Close function
+        function closeBottomSheet() {
+          mobileLegalOverlay.classList.remove('active');
+          mobileLegalSheet.classList.remove('active');
+          mobileLegalSheet.style.transform = ''; // Reset transform
+          document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        // Keyboard support
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && mobileLegalSheet.classList.contains('active')) {
+            closeBottomSheet();
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html> 

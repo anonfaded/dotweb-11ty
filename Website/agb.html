@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="AGB - Eventseiten.ch - Allgemeine Geschäftsbedingungen für Webdesign und Event-Webseiten">
+  <meta name="keywords" content="AGB, Geschäftsbedingungen, Eventseiten.ch, Webdesign, Terms">
+  <title>AGB - Eventseiten.ch</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Mobile Footer Implementation - Industry Standard */
+    @media (max-width: 768px) {
+      .footer {
+        padding: 20px 0 20px 0;
+      }
+      
+      .footer-grid {
+        display: block;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .footer-brand-column {
+        width: 100%;
+        margin: 0 0 15px 0;
+        padding: 0;
+        text-align: center;
+      }
+      
+      .footer-nav-columns {
+        display: none;
+      }
+      
+      .footer-contact-column {
+        display: none;
+      }
+      
+      .footer-bottom {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      
+      .footer-bottom-links {
+        display: none;
+      }
+      
+      .footer-copyright {
+        width: 100%;
+        margin: 0;
+        padding: 10px 0 0px 0;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .footer-scroll-top {
+        display: none;
+      }
+      
+      .footer-decorations {
+        display: none;
+      }
+    }
+
+    /* AGB specific styles */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      background: #FBFBFB;
+    }
+
+    .header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1rem 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    .logo-icon {
+      margin-right: 8px;
+      color: #dc2626;
+    }
+
+    .logo-highlight {
+      color: #dc2626;
+    }
+
+    .main-navigation {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .main-navigation {
+        display: block;
+      }
+
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 2rem;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        color: #64748b;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+
+      .nav-link:hover {
+        color: #dc2626;
+      }
+
+      .nav-cta-btn {
+        background: #dc2626;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: background 0.2s;
+      }
+
+      .nav-cta-btn:hover {
+        background: #b91c1c;
+      }
+    }
+
+    .mobile-nav-toggle {
+      display: block;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    @media (min-width: 768px) {
+      .mobile-nav-toggle {
+        display: none;
+      }
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .hamburger-line {
+      width: 24px;
+      height: 2px;
+      background: #1e293b;
+      transition: all 0.2s;
+    }
+
+    .agb-section {
+      padding: 60px 0 80px 0;
+      background: linear-gradient(135deg, #FBFBFB 0%, #f0efef 100%);
+      min-height: 100vh;
+    }
+
+    .agb-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      padding: 60px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(226, 232, 240, 0.6);
+    }
+
+    .agb-header {
+      text-align: center;
+      margin-bottom: 50px;
+      padding-bottom: 30px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    .agb-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .agb-subtitle {
+      font-size: 1.125rem;
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    .agb-content {
+      line-height: 1.8;
+    }
+
+    .agb-section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin: 40px 0 20px 0;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .agb-section-title:first-of-type {
+      margin-top: 0;
+    }
+
+    .agb-text {
+      font-size: 1rem;
+      color: #475569;
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+
+    .agb-list {
+      margin: 20px 0;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .agb-list li {
+      margin: 12px 0;
+      padding-left: 25px;
+      position: relative;
+      color: #475569;
+      line-height: 1.7;
+    }
+
+    .agb-list li::before {
+      content: "•";
+      color: #dc2626;
+      font-weight: bold;
+      position: absolute;
+      left: 8px;
+    }
+
+    .agb-highlight {
+      background: #fef2f2;
+      border-left: 4px solid #dc2626;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+
+    .agb-highlight h4 {
+      color: #dc2626;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .agb-highlight p {
+      margin: 0;
+      color: #7f1d1d;
+    }
+
+    .agb-contact-info {
+      background: linear-gradient(135deg, #FBFBFB 0%, #f0efef 100%);
+      padding: 30px;
+      border-radius: 12px;
+      margin: 30px 0;
+      border-left: 4px solid #dc2626;
+    }
+
+    .agb-contact-info h3 {
+      color: #1e293b;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .agb-contact-info p {
+      margin: 8px 0;
+      color: #475569;
+    }
+
+    .agb-link {
+      color: #dc2626;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .agb-link:hover {
+      color: #b91c1c;
+      text-decoration: underline;
+    }
+
+    .back-to-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #dc2626;
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 30px;
+      transition: all 0.2s ease;
+    }
+
+    .back-to-home:hover {
+      color: #b91c1c;
+      transform: translateX(-4px);
+    }
+
+    .back-to-home svg {
+      transition: transform 0.2s ease;
+    }
+
+    .back-to-home:hover svg {
+      transform: translateX(-2px);
+    }
+
+    .agb-numbered-list {
+      counter-reset: agb-counter;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .agb-numbered-list li {
+      counter-increment: agb-counter;
+      margin: 15px 0;
+      padding-left: 35px;
+      position: relative;
+      line-height: 1.7;
+    }
+
+    .agb-numbered-list li::before {
+      content: counter(agb-counter) ".";
+      position: absolute;
+      left: 0;
+      color: #dc2626;
+      font-weight: 600;
+    }
+
+    /* Mobile Optimization */
+    @media (max-width: 768px) {
+      .agb-section {
+        padding: 100px 0 40px 0;
+      }
+
+      .agb-container {
+        margin: 0 15px;
+        padding: 30px 20px;
+        border-radius: 12px;
+      }
+
+      .agb-title {
+        font-size: 1.75rem;
+        line-height: 1.3;
+      }
+
+      .agb-subtitle {
+        font-size: 1rem;
+      }
+
+      .agb-header {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+      }
+
+      .agb-section-title {
+        font-size: 1.25rem;
+        margin: 30px 0 15px 0;
+      }
+
+      .agb-text {
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+      }
+
+      .agb-contact-info {
+        padding: 20px 15px;
+        margin: 20px 0;
+      }
+
+      .agb-contact-info h3 {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+      }
+
+      .agb-contact-info p {
+        font-size: 0.9rem;
+        margin: 6px 0;
+      }
+
+      .back-to-home {
+        margin-bottom: 20px;
+        font-size: 0.9rem;
+      }
+
+      .container {
+        padding: 0 15px;
+      }
+
+      .header {
+        padding: 0.75rem 0;
+      }
+
+      .logo {
+        font-size: 1.25rem;
+      }
+
+      .agb-list li {
+        padding-left: 20px;
+      }
+
+      .agb-numbered-list li {
+        padding-left: 30px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .agb-container {
+        margin: 0 10px;
+        padding: 25px 15px;
+      }
+
+      .agb-title {
+        font-size: 1.5rem;
+      }
+
+      .agb-subtitle {
+        font-size: 0.95rem;
+      }
+
+      .agb-section-title {
+        font-size: 1.1rem;
+      }
+
+      .agb-text {
+        font-size: 0.9rem;
+      }
+
+      .agb-contact-info {
+        padding: 15px 12px;
+      }
+
+      .container {
+        padding: 0 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  
+  <main>
+    <!-- AGB Section -->
+    <section class="agb-section">
+      <div class="container">
+        <div class="agb-container">
+          <a href="index.html" class="back-to-home">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Zurück zur Startseite
+          </a>
+          
+          <div class="agb-header">
+            <h1 class="agb-title">Allgemeine Geschäftsbedingungen</h1>
+            <p class="agb-subtitle">Rechtliche Bedingungen für die Nutzung unserer Event-Webseiten Services</p>
+          </div>
+          
+          <div class="agb-content">
+            <div class="agb-contact-info">
+              <h3>Vertragspartner</h3>
+              <p><strong>ELK Media L.L.C.</strong><br>
+              Betreiber von Eventseiten.ch</p>
+              <p><strong>Rechtsform:</strong> Limited Liability Company (LLC)<br>
+              <strong>Registriert in:</strong> Wyoming, USA</p>
+              <p><strong>Geschäftsführung:</strong> Karim El Kanfoud</p>
+              <p><strong>E-Mail:</strong> <a href="mailto:support@eventseiten.ch" class="agb-link">support@eventseiten.ch</a><br>
+              <strong>Telefon:</strong> <a href="tel:+43677620312150" class="agb-link">+43 677 62031215</a></p>
+            </div>
+
+            <h2 class="agb-section-title">1. Geltungsbereich</h2>
+            <p class="agb-text">
+              Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle Verträge zwischen ELK Media L.L.C. und unseren Kunden über die Erstellung von Event-Webseiten, Webdesign-Dienstleistungen und verwandte digitale Services. Sie gelten insbesondere für Kunden in der Schweiz, Deutschland, Österreich und anderen deutschsprachigen Märkten.
+            </p>
+            <p class="agb-text">
+              Abweichende, entgegenstehende oder ergänzende Allgemeine Geschäftsbedingungen des Kunden werden nur dann Vertragsbestandteil, wenn wir ihrer Geltung ausdrücklich schriftlich zugestimmt haben.
+            </p>
+
+            <h2 class="agb-section-title">2. Vertragsschluss</h2>
+            <ol class="agb-numbered-list">
+              <li>Der Vertrag kommt durch die Annahme unseres Angebots durch den Kunden oder durch unsere Bestätigung der Kundenbestellung zustande.</li>
+              <li>Alle Angebote sind freibleibend und unverbindlich, soweit nicht ausdrücklich als verbindlich bezeichnet.</li>
+              <li>Vertragssprache ist Deutsch. Der Vertragstext wird von uns gespeichert und dem Kunden auf Wunsch übermittelt.</li>
+              <li>Die Projektlaufzeit beträgt standardmässig 14 Werktage ab Vertragsschluss und vollständiger Bereitstellung aller notwendigen Inhalte durch den Kunden.</li>
+            </ol>
+
+            <h2 class="agb-section-title">3. Leistungsumfang Event-Webseiten</h2>
+            <p class="agb-text">Unsere Hauptleistungen umfassen:</p>
+            <ul class="agb-list">
+              <li>Professionelle Webseiten-Entwicklung für lokale Events, Dorffeste und Veranstaltungen</li>
+              <li>Responsive Design für optimale Darstellung auf allen Geräten</li>
+              <li>Integration von Event-spezifischen Features (Programm-Tabellen, Festgeländekarten, etc.)</li>
+              <li>Sponsoren-Widget mit hierarchischer Darstellung</li>
+              <li>KI Event Hotline (optional, als Widget und Telefon-Service)</li>
+              <li>SEO-Grundoptimierung für bessere Sichtbarkeit</li>
+              <li>Technischer Support während der Projektlaufzeit</li>
+            </ul>
+
+            <div class="agb-highlight">
+              <h4>14-Tage-Garantie</h4>
+              <p>Wir garantieren die Fertigstellung Ihrer Event-Webseite innerhalb von 14 Werktagen nach Vertragsschluss und vollständiger Bereitstellung aller Materialien durch den Kunden.</p>
+            </div>
+
+            <h2 class="agb-section-title">4. Mitwirkungspflichten des Kunden</h2>
+            <ol class="agb-numbered-list">
+              <li>Der Kunde stellt alle notwendigen Inhalte (Texte, Bilder, Logos, Sponsoren-Informationen) vollständig und rechtzeitig zur Verfügung.</li>
+              <li>Alle bereitgestellten Materialien müssen rechtlich einwandfrei und frei von Rechten Dritter sein.</li>
+              <li>Der Kunde prüft Entwürfe und Zwischenstände zeitnah und teilt Änderungswünsche binnen 48 Stunden mit.</li>
+              <li>Technische Zugangsdaten (Domain, Hosting) werden vom Kunden bereitgestellt oder können über uns vermittelt werden.</li>
+            </ol>
+
+            <h2 class="agb-section-title">5. Preise und Zahlungsbedingungen</h2>
+            <ol class="agb-numbered-list">
+              <li>Alle Preise verstehen sich in Schweizer Franken (CHF) oder Euro (EUR) je nach Kundenstandort.</li>
+              <li>Für Schweizer Geschäftskunden gilt die Reverse-Charge-Regelung bezüglich Mehrwertsteuer.</li>
+              <li>Die Zahlung erfolgt zu 50% bei Vertragsschluss, 50% bei Projektabschluss.</li>
+              <li>Zahlungsziel: 14 Tage netto ab Rechnungsdatum.</li>
+              <li>Bei Zahlungsverzug behalten wir uns vor, Verzugszinsen von 5% p.a. zu berechnen.</li>
+            </ol>
+
+            <div class="agb-highlight">
+              <h4>Zusatzleistungen</h4>
+              <p>Zusätzliche Funktionen, umfangreiche Änderungen nach Projektabschluss oder erweiterte Support-Leistungen werden nach Aufwand zu unserem aktuellen Stundensatz berechnet.</p>
+            </div>
+
+            <h2 class="agb-section-title">6. Urheberrecht und Nutzungsrechte</h2>
+            <ol class="agb-numbered-list">
+              <li>Der Kunde erhält nach vollständiger Bezahlung die unbeschränkten Nutzungsrechte an der erstellten Webseite.</li>
+              <li>Wir behalten uns das Recht vor, das Projekt zu Referenzzwecken zu verwenden.</li>
+              <li>Der Kunde garantiert, dass alle bereitgestellten Inhalte frei von Rechten Dritter sind.</li>
+              <li>Stock-Bilder und Premium-Plugins werden entsprechend ihren Lizenzbestimmungen verwendet.</li>
+            </ol>
+
+            <h2 class="agb-section-title">7. Gewährleistung und Haftung</h2>
+            <p class="agb-text">
+              Wir gewährleisten die vertragsgemässe Beschaffenheit unserer Leistungen zum Zeitpunkt der Übergabe. Die Gewährleistungsfrist beträgt 12 Monate für Mängel, die bei Übergabe bereits vorhanden waren.
+            </p>
+            <ol class="agb-numbered-list">
+              <li>Mängel sind uns unverzüglich, spätestens binnen 7 Tagen schriftlich anzuzeigen.</li>
+              <li>Wir haften nicht für Schäden durch unsachgemässe Nutzung oder nachträgliche Änderungen durch Dritte.</li>
+              <li>Die Haftung für leichte Fahrlässigkeit ist auf vorhersehbare, typische Schäden begrenzt.</li>
+              <li>Für indirekte Schäden, entgangenen Gewinn oder Folgeschäden haften wir nur bei Vorsatz oder grober Fahrlässigkeit.</li>
+            </ol>
+
+            <h2 class="agb-section-title">8. Support und Wartung</h2>
+            <p class="agb-text">
+              Im Projektpreis enthalten ist technischer Support für 30 Tage nach Go-Live. Dieser umfasst:
+            </p>
+            <ul class="agb-list">
+              <li>Behebung von technischen Fehlern und Bugs</li>
+              <li>Unterstützung bei kleineren Anpassungen</li>
+              <li>Reaktionszeit unter 4 Stunden während der Geschäftszeiten</li>
+              <li>Einweisung in die Nutzung des Content Management Systems</li>
+            </ul>
+
+            <h2 class="agb-section-title">9. Kündigung und Stornierung</h2>
+            <ol class="agb-numbered-list">
+              <li>Der Kunde kann das Projekt bis 48 Stunden nach Vertragsschluss kostenfrei stornieren.</li>
+              <li>Bei späteren Stornierungen werden bereits erbrachte Leistungen nach Aufwand berechnet.</li>
+              <li>Wir können bei wiederholten Vertragsverletzungen des Kunden fristlos kündigen.</li>
+              <li>Bei Stornierung durch den Kunden nach Projektbeginn werden mindestens 50% der Vertragssumme fällig.</li>
+            </ol>
+
+            <h2 class="agb-section-title">10. Datenschutz</h2>
+            <p class="agb-text">
+              Der Schutz Ihrer persönlichen Daten ist uns wichtig. Wir beachten die Bestimmungen der schweizerischen Datenschutzgesetzgebung sowie der DSGVO für EU-Kunden. Detaillierte Informationen finden Sie in unserer <a href="datenschutz.html" class="agb-link">Datenschutzerklärung</a>.
+            </p>
+
+            <h2 class="agb-section-title">11. Anwendbares Recht und Gerichtsstand</h2>
+            <ol class="agb-numbered-list">
+              <li>Für Verträge mit schweizerischen Kunden gilt schweizerisches Recht unter Ausschluss der Bestimmungen des Internationalen Privatrechts.</li>
+              <li>Gerichtsstand für Streitigkeiten ist, soweit gesetzlich zulässig, Zürich, Schweiz.</li>
+              <li>Zwingende verbraucherschutzrechtliche Bestimmungen des Wohnsitzstaates des Kunden bleiben unberührt.</li>
+              <li>Bei Unwirksamkeit einzelner Bestimmungen bleibt die Gültigkeit der übrigen AGB bestehen.</li>
+            </ol>
+
+            <h2 class="agb-section-title">12. Streitbeilegung</h2>
+            <p class="agb-text">
+              Bei Streitigkeiten bemühen wir uns zunächst um eine aussergerichtliche Lösung. Für Verbraucher aus der EU steht die Plattform zur Online-Streitbeilegung (OS) der Europäischen Kommission zur Verfügung: <a href="https://ec.europa.eu/consumers/odr/" class="agb-link" target="_blank" rel="noopener">ec.europa.eu/consumers/odr/</a>
+            </p>
+
+            <h2 class="agb-section-title">13. Schlussbestimmungen</h2>
+            <ol class="agb-numbered-list">
+              <li>Änderungen und Ergänzungen dieser AGB bedürfen der Schriftform.</li>
+              <li>Sollten einzelne Bestimmungen unwirksam sein, bleibt die Gültigkeit der übrigen Bestimmungen unberührt.</li>
+              <li>Wir behalten uns vor, diese AGB mit einer Frist von 30 Tagen zu ändern. Bestehende Verträge bleiben davon unberührt.</li>
+            </ol>
+
+            <div class="agb-contact-info">
+              <h3>Kontakt bei Fragen zu den AGB</h3>
+              <p><strong>ELK Media L.L.C.</strong><br>
+              30 N Gould St, Ste R<br>
+              Sheridan, WY 82801, USA</p>
+              <p><strong>E-Mail:</strong> <a href="mailto:support@eventseiten.ch" class="agb-link">support@eventseiten.ch</a><br>
+              <strong>Telefon:</strong> <a href="tel:+43677620312150" class="agb-link">+43 677 62031215</a><br>
+              <strong>Geschäftszeiten:</strong> Montag bis Freitag, 09:00 - 17:00 Uhr (CET)</p>
+            </div>
+
+            <p class="agb-text" style="margin-top: 40px; font-size: 0.9rem; color: #64748b;">
+              <strong>Stand:</strong> Januar 2025<br>
+              <strong>Letzte Aktualisierung:</strong> Januar 2025<br>
+              <strong>Gültig ab:</strong> 1. Januar 2025
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Footer Section -->
+  <footer class="footer" id="footer">
+    <div class="footer-decorations">
+      <div class="footer-wave"></div>
+      <div class="footer-particle footer-particle-1"></div>
+      <div class="footer-particle footer-particle-2"></div>
+      <div class="footer-particle footer-particle-3"></div>
+    </div>
+
+    <div class="container">
+      <div class="footer-grid animate" data-effect="fade-in-up">
+        <!-- Brand Column -->
+        <div class="footer-brand-column">
+          <a href="index.html" class="footer-logo">
+            <span class="footer-logo-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+            </span>
+            Event<span class="footer-logo-highlight">seiten.ch</span>
+          </a>
+          
+          <p class="footer-tagline">Professionelle Webseiten für lokale Events und Dorffeste in der Schweiz.</p>
+          
+          <div class="footer-cta">
+            <a href="index.html#kontakt" class="footer-cta-button">
+              <span>Jetzt anfragen</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Navigation Columns -->
+        <div class="footer-nav-columns">
+          <div class="footer-nav-column">
+            <h3 class="footer-heading">Navigation</h3>
+            <ul class="footer-links">
+              <li><a href="index.html" class="footer-link">Startseite</a></li>
+              <li><a href="index.html#portfolio" class="footer-link">Portfolio</a></li>
+              <li><a href="index.html#process" class="footer-link">Prozess</a></li>
+              <li><a href="index.html#testimonials" class="footer-link">Teilen Sie Ihre Vision</a></li>
+              <li><a href="index.html#contact" class="footer-link">Kontakt</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-nav-column">
+            <h3 class="footer-heading">Services</h3>
+            <ul class="footer-links">
+              <li><a href="#" class="footer-link">Event-Webseiten</a></li>
+              <li><a href="#" class="footer-link">Dorffest-Portale</a></li>
+              <li><a href="#" class="footer-link">Festival-Websites</a></li>
+              <li><a href="#" class="footer-link">Vereins-Webseiten</a></li>
+              <li><a href="#" class="footer-link">Lokale Marketing</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-nav-column">
+            <h3 class="footer-heading">Rechtliches</h3>
+            <ul class="footer-links">
+              <li><a href="impressum.html" class="footer-link">Impressum</a></li>
+              <li><a href="datenschutz.html" class="footer-link">Datenschutz</a></li>
+              <li><a href="agb.html" class="footer-link">AGB</a></li>
+              <li><a href="#" class="footer-link">Cookies</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Contact Column (Simplified) -->
+        <div class="footer-contact-column">
+          <h3 class="footer-heading">Kontakt</h3>
+          <ul class="footer-contact-list">
+            <li class="footer-contact-item">
+              <div class="contact-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div class="contact-content">
+                <span class="contact-label">Email</span>
+                <a href="mailto:support@eventseiten.ch" class="contact-value">support@eventseiten.ch</a>
+              </div>
+            </li>
+            <li class="footer-contact-item">
+              <div class="contact-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </div>
+              <div class="contact-content">
+                <span class="contact-label">Telefon</span>
+                <a href="tel:+43677620312150" class="contact-value">+43 677 62031215</a>
+              </div>
+            </li>
+            <li class="footer-contact-item">
+              <div class="contact-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div class="contact-content">
+                <span class="contact-label">Adresse</span>
+                <span class="contact-value">Musterstrasse 123, 8001 Zürich</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="footer-bottom-links">
+          <a href="impressum.html" class="footer-bottom-link">Impressum</a>
+          <span class="footer-separator">|</span>
+          <a href="datenschutz.html" class="footer-bottom-link">Datenschutz</a>
+          <span class="footer-separator">|</span>
+          <a href="agb.html" class="footer-bottom-link">AGB</a>
+        </div>
+        
+        <div class="footer-copyright">
+          © 2025 ELK Media L.L.C. Alle Rechte vorbehalten.
+        </div>
+        
+        <div class="footer-scroll-top">
+          <a href="#" class="scroll-top-button" aria-label="Zum Seitenanfang scrollen">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <polyline points="18 15 12 9 6 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple mobile menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const navToggle = document.getElementById('navToggle');
+      const navMenu = document.getElementById('navMenu');
+      
+      if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function() {
+          navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+      }
+    });
+  </script>
+</body>
+</html> 
