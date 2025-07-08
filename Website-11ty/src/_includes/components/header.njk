@@ -1,0 +1,64 @@
+<header class="header" id="header">
+  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+  <div class="container header-container">
+    <a href="#" class="logo animate fade-in-down" data-animation="initial" data-delay="100">
+      <span class="logo-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path fill-rule="evenodd" d="M1.5 6.375c0-1.036.84-1.875 1.875-1.875h17.25c1.035 0 1.875.84 1.875 1.875v3.026a.75.75 0 0 1-.375.65 2.249 2.249 0 0 0 0 3.898.75.75 0 0 1 .375.65v3.026c0 1.035-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 0 1 1.5 17.625v-3.026a.75.75 0 0 1 .374-.65 2.249 2.249 0 0 0 0-3.898.75.75 0 0 1-.374-.65V6.375Zm15-1.125a.75.75 0 0 1 .75.75v.75a.75.75 0 0 1-1.5 0V6a.75.75 0 0 1 .75-.75Zm.75 4.5a.75.75 0 0 0-1.5 0v.75a.75.75 0 0 0 1.5 0v-.75Zm-.75 3a.75.75 0 0 1 .75.75v.75a.75.75 0 0 1-1.5 0v-.75a.75.75 0 0 1 .75-.75Zm.75 4.5a.75.75 0 0 0-1.5 0V18a.75.75 0 0 0 1.5 0v-.75ZM6 12a.75.75 0 0 1 .75-.75H12a.75.75 0 0 1 0 1.5H6.75A.75.75 0 0 1 6 12Zm.75 2.25a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-3Z" clip-rule="evenodd" />
+        </svg>
+      </span>
+      Event<span class="logo-highlight">seiten.ch</span>
+    </a>
+    <div class="mobile-language-switcher">
+      <button class="mobile-language-toggle" id="mobileLanguageToggle" aria-label="Sprache wählen">
+        <span class="mobile-language-code">DE</span>
+      </button>
+    </div>
+    <button class="mobile-nav-toggle animate fade-in" data-animation="initial" data-delay="200" id="navToggle" aria-label="Navigation ein/ausblenden" aria-expanded="false" aria-controls="mobileNavOverlay">
+      <span class="hamburger-icon">
+        <span class="hamburger-line" aria-hidden="true"></span>
+        <span class="hamburger-line" aria-hidden="true"></span>
+        <span class="hamburger-line" aria-hidden="true"></span>
+      </span>
+      <span class="sr-only">Menü</span>
+    </button>
+    <nav class="main-navigation" aria-label="Hauptnavigation">
+      <!-- Primary Navigation -->
+      <div class="nav-primary">
+        <a href="#portfolio" class="nav-link">Projekte</a>
+        <div class="nav-dropdown">
+          <a href="#" class="nav-link nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            Eventarten
+            <svg class="nav-dropdown-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <!-- Mega menu and event types go here (see original HTML) -->
+        </div>
+        <a href="#process" class="nav-link">Prozess</a>
+        <a href="#testimonials" class="nav-link">Kontakt</a>
+      </div>
+      <!-- Secondary Actions -->
+      <div class="nav-secondary">
+        <div class="language-switcher">
+          <button class="language-switcher-toggle" aria-expanded="false" aria-haspopup="true" aria-label="Sprache wählen">
+            <svg class="language-globe-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span class="language-current">DE</span>
+          </button>
+          <!-- Language switcher menu goes here (see original HTML) -->
+        </div>
+        <a href="#testimonials" class="nav-cta-btn">
+          Offerte Beantragen
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header> 
