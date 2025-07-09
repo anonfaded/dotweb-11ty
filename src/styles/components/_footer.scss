@@ -1,0 +1,488 @@
+/* 4.2 Footer */
+.footer {
+  background: linear-gradient(to bottom, var(--gray-50), #fff);
+  position: relative;
+  padding: 4rem 0 4rem; /* Task 5: Fixed footer padding symmetry */
+  overflow: hidden;
+  border-top: 1px solid var(--gray-200);
+  z-index: 5;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px; /* Original: 4px */
+  background: linear-gradient(90deg, var(--primary-dark), var(--primary), var(--primary-dark));
+  z-index: 10;
+}
+
+.footer-decorations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.footer-wave {
+  position: absolute;
+  top: -70px; /* Adjust as needed for visual effect */
+  left: 0;
+  width: 100%;
+  height: 70px; /* Adjust to match visual effect */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%23f0f2f5' opacity='0.1'%3E%3C/path%3E%3C/svg%3E"); /* Example, adjust fill and opacity */
+  background-size: cover;
+  z-index: 1;
+}
+
+.footer-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-translucent), transparent);
+  opacity: 0.1; /* Adjust for subtlety */
+  z-index: 0;
+}
+
+.footer-particle-1 {
+  width: 300px;
+  height: 300px;
+  top: -150px;
+  right: -50px;
+  animation: floatParticle 15s ease-in-out infinite alternate;
+}
+
+.footer-particle-2 {
+  width: 200px;
+  height: 200px;
+  bottom: -100px;
+  left: 10%;
+  opacity: 0.05;
+  animation: floatParticle 20s ease-in-out infinite alternate-reverse;
+}
+
+.footer-particle-3 {
+  width: 100px;
+  height: 100px;
+  top: 30%;
+  left: 20%;
+  opacity: 0.07;
+  animation: floatParticle 12s ease-in-out infinite;
+}
+
+@keyframes floatParticle {
+  0% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) translateX(10px) rotate(15deg); }
+  100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr; /* Four equal columns */
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 5;
+}
+
+.footer-brand-column {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px; /* Control width */
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--gray-900);
+  font-weight: 700;
+  font-size: 1.75rem;
+  margin-bottom: 1.25rem; /* var(--spacing-md) */
+  transition: color 0.3s ease;
+}
+
+.footer-logo:hover {
+  color: var(--primary);
+}
+
+.footer-logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  border-radius: 8px; /* var(--radius-md) */
+  margin-right: 10px; /* var(--spacing-xs) */
+  transition: all 0.3s ease;
+}
+
+.footer-logo:hover .footer-logo-icon {
+  background-color: var(--primary);
+  color: var(--white);
+  transform: rotate(5deg) scale(1.05);
+}
+
+.footer-logo-highlight {
+  color: var(--primary);
+  position: relative; /* For potential ::after pseudo-elements if needed */
+}
+
+.footer-tagline {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--gray-600);
+  margin-bottom: 1.5rem; /* var(--spacing-md) */
+  max-width: 320px;
+}
+
+.footer-cta {
+  margin-bottom: 0rem; /* var(--spacing-md) */
+}
+
+.footer-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem; /* var(--spacing-xs) */
+  padding: 0.7rem 1.5rem; /* Approximates var(--spacing-sm) var(--spacing-lg) */
+  background-color: var(--primary);
+  color: var(--white);
+  border-radius: 8px; /* var(--radius-md) */
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(233, 37, 31, 0.2);
+}
+
+.footer-cta-button:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(233, 37, 31, 0.3);
+}
+
+.footer-cta-button svg {
+  transition: transform 0.3s ease;
+}
+
+.footer-cta-button:hover svg {
+  transform: translateX(4px);
+}
+
+.footer-social {
+  display: flex;
+  gap: 0.875rem; /* var(--spacing-sm) adjusted */
+  margin-bottom: 0;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--white);
+  color: var(--gray-600);
+  border: 1px solid var(--gray-200);
+  transition: all 0.3s ease; /* var(--transition-fast) */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* var(--shadow-sm) */
+}
+
+.social-link:hover, .social-link:focus { /* Added focus */
+  background-color: var(--primary);
+  color: var(--white);
+  border-color: var(--primary);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(233, 37, 31, 0.2); /* var(--shadow-md) with primary color tint */
+}
+
+.social-link svg {
+  width: 18px;
+  height: 18px;
+  transform: scale(0.9); /* Ensure icon fits well */
+}
+
+.footer-nav-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem; /* var(--spacing-lg) */
+}
+
+.footer-heading {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--gray-800);
+  margin-bottom: 1.25rem; /* var(--spacing-md) */
+  position: relative;
+  padding-bottom: 0.5rem; /* Reduced from 0.75rem */
+}
+
+.footer-heading::after { /* This selector is used globally */
+  content: '';
+  display: block;
+  width: 40px; /* Reduced from 80px for consistency */
+  height: 3px; /* Slightly reduced from 4px for more refined look */
+  background: var(--primary);
+  margin-top: 0.5rem; /* Controlled spacing */
+  margin-bottom: 0; /* Remove any bottom margin */
+  margin-left: 0; /* Ensure alignment to the left */
+  margin-right: auto; /* Let it expand to the right */
+  border-radius: 2px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.625rem; /* var(--spacing-xs) */
+}
+
+.footer-link {
+  text-decoration: none;
+  color: var(--gray-600);
+  font-size: 0.95rem; /* Original: 0.9rem */
+  transition: all 0.2s ease; /* var(--transition-fast) */
+  position: relative;
+  display: inline-block; /* For ::before positioning */
+  /* Remove underline effect */
+}
+
+.footer-link::before {
+  display: none !important;
+}
+
+.footer-link:hover, .footer-link:focus { /* Added focus */
+  color: var(--primary);
+  transform: translateX(3px);
+  /* No underline on hover/focus */
+}
+
+.footer-link:hover::before, .footer-link:focus::before {
+  width: 100%;
+}
+
+.footer-contact-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem; /* Reduced from 2rem */
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem; /* Slightly reduced from 1rem */
+  margin-bottom: 1.25rem; /* Increased from 1rem for better vertical spacing */
+}
+
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px; /* var(--radius-md) */
+  background-color: var(--primary-light);
+  color: var(--primary);
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  margin-top: 3px; /* Added to properly align icon with title */
+}
+
+.footer-contact-item:hover .contact-icon {
+  background-color: var(--primary);
+  color: var(--white);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(233, 37, 31, 0.2);
+}
+
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* Added proper spacing between title and value */
+}
+
+.contact-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--gray-500);
+  line-height: 1.2;
+}
+
+.contact-value {
+  font-size: 0.95rem; /* Original: 0.9rem */
+  color: var(--gray-700); /* Original: var(--gray-600) */
+  text-decoration: none;
+  transition: color 0.2s ease; /* var(--transition-fast) */
+  line-height: 1.4;
+}
+
+a.contact-value:hover, a.contact-value:focus { /* Added focus */
+  color: var(--primary);
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 2rem; /* Reduced from 1.5rem for better symmetry */
+  border-top: 1px solid var(--gray-200);
+  position: relative; /* Ensure z-index works */
+  z-index: 5;
+}
+
+.footer-copyright {
+  width: 100%;
+  margin: 0;
+  padding: 5px 0 0px 0; /* BABY SAVED: Changed from 15px to 5px */
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.875rem; /* Original: 0.85rem */
+  color: var(--gray-500);
+}
+
+.footer-bottom-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* var(--spacing-xs) */
+}
+
+.footer-bottom-link {
+  font-size: 0.875rem;
+  color: var(--gray-500);
+  text-decoration: none;
+  transition: color 0.2s ease; /* var(--transition-fast) */
+}
+
+.footer-bottom-link:hover, .footer-bottom-link:focus { /* Added focus */
+  color: var(--primary);
+}
+
+.footer-separator {
+  color: var(--gray-300);
+  font-size: 0.875rem;
+  margin: 0 0.25rem; /* Added slight margin */
+}
+
+.footer-scroll-top {
+  position: relative; /* For potential future badge or animation */
+}
+
+.scroll-top-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--white);
+  color: var(--gray-600);
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  position: relative;
+  z-index: 5;
+  transition: all 0.3s ease;
+  border: 1px solid var(--gray-200);
+  overflow: visible;
+}
+
+.scroll-top-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.scroll-top-button svg polyline {
+  stroke: currentColor; /* Ensures SVG inherits color from parent */
+}
+
+.scroll-top-button.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1200px) {
+  .footer-grid {
+    gap: 2rem; /* var(--spacing-lg) */
+  }
+}
+
+@media (max-width: 992px) {
+  .footer {
+    padding: 3.5rem 0 2rem;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem 2rem; /* var(--spacing-xl) and var(--spacing-lg) */
+  }
+  .footer-brand-column {
+    grid-column: 1 / -1;
+    max-width: 500px; /* Or 100% */
+    margin: 0 auto 1.5rem auto; /* Center it */
+    text-align: center; /* Center text for brand */
+  }
+  .footer-social {
+    justify-content: center; /* Center social icons */
+  }
+  .footer-nav-columns {
+    grid-column: auto;
+  }
+  .footer-contact-column {
+    grid-column: auto;
+  }
+  .footer-tagline {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 3rem 0 1.5rem;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .footer-brand-column,
+  .footer-nav-columns,
+  .footer-contact-column {
+    width: 100%;
+  }
+  .footer-brand-column {
+    margin-bottom: 0px!important; /* FINAL FIX: Removed 30px bottom margin completely */
+  }
+  .footer-nav-columns {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .footer-heading::after {
+    margin-left: 0; /* Ensure consistent left alignment */
+    margin-right: auto;
+    width: 40px; /* Keep the same width as desktop */
+  }
+  .footer-contact-column {
+    text-align: center; /* Center contact details */
+  }
+  .footer-contact-item {
+    justify-content: center; /* Center individual contact items */
+    text-align: left; /* Keep text within item left-aligned */
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1rem; /* var(--spacing-sm) */
+    text-align: center;
+  }
+} 

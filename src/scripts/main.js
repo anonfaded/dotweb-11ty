@@ -1,4 +1,5 @@
 import { initContactAnimations } from './animations';
+import { initFooterAnimations } from './animations';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize Header Scroll Effects
@@ -34,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize On-Scroll Animations
   animateOnScroll();
   initContactAnimations();
+  initFooterAnimations();
 });
 
 // Handle Header Scroll Effects

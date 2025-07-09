@@ -245,15 +245,15 @@ export function initContactAnimations() {
 /**
  * Footer animations
  */
-function initFooterAnimations() {
+export function initFooterAnimations() {
   const footer = document.querySelector('.footer');
   if (!footer) return;
-  
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('animate-in');
-        
+
         // Animate footer columns with stagger
         const footerColumns = entry.target.querySelectorAll('.footer-brand-column, .footer-nav-column, .footer-contact-column');
         footerColumns.forEach((column, index) => {
@@ -261,7 +261,7 @@ function initFooterAnimations() {
             column.classList.add('animate-in');
           }, 100 + (index * 100));
         });
-        
+
         observer.unobserve(entry.target);
       }
     });
@@ -269,7 +269,7 @@ function initFooterAnimations() {
     threshold: 0.2,
     rootMargin: '0px 0px -5% 0px'
   });
-  
+
   observer.observe(footer);
 }
 
