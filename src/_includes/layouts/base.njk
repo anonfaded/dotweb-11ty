@@ -9,7 +9,10 @@
 <body>
   {% include "components/preloader.njk" %}
   {% include "components/header.njk" %}
-  {{ content | safe }}
+  <div class="page-content">
+    {{ content | safe }}
+  </div>
+  {% include "components/footer.njk" %}
   <script src="/js/bundle.js" defer></script>
 </body>
 </html> 

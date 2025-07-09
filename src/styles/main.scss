@@ -10,4 +10,13 @@
 @use 'components/process' as *;
 @use "components/integrated-section";
 @use "components/footer";
+@use "components/impressum";
+@use "components/datenschutz";
+
+
+@media (max-width: 768px) {
+  .page-content {
+    margin-top: 70px;
+  }
+}
 
