@@ -1,3 +1,5 @@
+import { initContactAnimations } from './animations';
+
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize Header Scroll Effects
   initHeaderScroll();
@@ -31,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Initialize On-Scroll Animations
   animateOnScroll();
+  initContactAnimations();
 });
 
 // Handle Header Scroll Effects
@@ -619,12 +622,10 @@ function initProcessTimeline() {
     return;
   }
 
-  // Define the precise trigger point (57% of viewport height - just below center)
   function getTriggerPoint() {
     return window.innerHeight * 0.57;
   }
 
-  // Handle hover effects for enhanced timeline progress
   function setupHoverEffects() {
     processSteps.forEach((step) => {
       step.addEventListener('mouseenter', () => {
@@ -643,7 +644,7 @@ function initProcessTimeline() {
     if (scrollTimeout) {
       window.cancelAnimationFrame(scrollTimeout);
     }
-    lastScrollY = window.scrollY; // Update lastScrollY here
+    lastScrollY = window.scrollY;
     scrollTimeout = window.requestAnimationFrame(updateScrollProgress);
   }
 
@@ -680,11 +681,10 @@ function initProcessTimeline() {
     if (entries[0].isIntersecting) {
       timelineIndicator.style.opacity = '1';
       window.addEventListener('scroll', handleScroll, { passive: true });
-      handleScroll(); 
-      updateScrollProgress(); 
+      handleScroll();
+      updateScrollProgress();
     } else {
       window.removeEventListener('scroll', handleScroll);
-      // timelineIndicator.style.opacity = '0'; // Optional: hide when out of view
     }
   }, { threshold: 0.1 });
 
@@ -878,3 +878,15 @@ function initVideoFallback() {
     window.addEventListener('resize', adjustHeroHeight);
   }
 } 
+
+// Scroll Progress Bar logic
+function updateScrollProgressBar() {
+  const progressBar = document.getElementById('scrollProgressBar');
+  if (!progressBar) return;
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  progressBar.style.width = progress + '%';
+}
+window.addEventListener('scroll', updateScrollProgressBar, { passive: true });
+document.addEventListener('DOMContentLoaded', updateScrollProgressBar); 

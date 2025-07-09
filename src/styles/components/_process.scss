@@ -1,0 +1,369 @@
+// Process Section Styles
+@use '../_theme.scss' as *;
+
+.process {
+  padding: var(--section-padding);
+  background-color: var(--gray-50);
+  position: relative;
+  overflow: hidden;
+}
+
+.process::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gray-300), transparent);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.process-container {
+  margin-top: 4rem;
+  position: relative;
+}
+
+.process-timeline {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.timeline-progress {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background-color: var(--gray-200);
+  transform: translateX(-50%);
+  z-index: 1;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.timeline-progress-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0%;
+  width: 100%;
+  background: linear-gradient(to bottom, var(--primary) 0%, var(--primary-dark) 100%);
+  transition: height 0.05s linear;
+  opacity: 1;
+  will-change: height;
+  pointer-events: none;
+}
+
+.timeline-progress::before,
+.timeline-progress::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background-color: var(--white);
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(233, 37, 31, 0.25);
+}
+
+.timeline-progress::before {
+  top: -6px;
+}
+
+.timeline-progress::after {
+  bottom: -6px;
+}
+
+.process-step {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  margin-bottom: var(--spacing-xxl);
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(var(--delay, 0) * 0.2s);
+  cursor: pointer;
+}
+
+.process-step:last-child {
+  margin-bottom: 0;
+}
+
+.process-step-number {
+  aspect-ratio: 1/1;
+  overflow: visible;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--gray-400) 0%, var(--gray-500) 100%);
+  border-radius: 50%;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-right: var(--spacing-lg);
+  flex-shrink: 0;
+  box-shadow: 0 8px 25px rgba(120, 120, 120, 0.12); // gray shadow when inactive
+  position: relative;
+  z-index: 2;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 4px solid rgba(255, 255, 255, 0.15);
+}
+
+.process-step.animated .process-step-number {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  box-shadow: 0 8px 25px rgba(233, 37, 31, 0.25); // red shadow when active
+}
+
+.process-step-number::before {
+  aspect-ratio: 1/1;
+  overflow: visible;
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border-radius: 50%;
+  background: rgba(120, 120, 120, 0.10); // gray background for inactive/hover
+  z-index: -1;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+}
+
+.process-step.animated .process-step-number::before {
+  background: rgba(233, 37, 31, 0.10); // red background for active
+}
+
+.process-step:hover .process-step-number {
+  transform: scale(1.1);
+  box-shadow: 0 12px 30px rgba(120, 120, 120, 0.18); // gray shadow on hover if inactive
+}
+
+.process-step.animated:hover .process-step-number {
+  box-shadow: 0 12px 30px rgba(233, 37, 31, 0.35); // red shadow on hover if active
+}
+
+.process-step:hover .process-step-number::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.process-step-content {
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  flex: 1;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--gray-200);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.process-step-content::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 15% 15%, rgba(233, 37, 31, 0.03), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.process-step:hover .process-step-content {
+  border-color: var(--gray-300);
+}
+
+.process-step:hover .process-step-content::after {
+  opacity: 1;
+}
+
+.process-step-title {
+  color: var(--gray-900);
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: var(--spacing-sm);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.process-step-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background-color: var(--primary);
+  border-radius: 2px;
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.process-step:hover .process-step-title::after,
+.process-step.animated .process-step-title::after {
+  width: 120px;
+}
+
+.process-step:hover .process-step-title {
+  color: var(--primary);
+}
+
+.process-step-description {
+  color: var(--gray-700);
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.process-step-features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+
+.process-step-feature {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--gray-50);
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--gray-800);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-200);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  justify-content: center;
+}
+
+.process-step-feature svg {
+  color: var(--primary);
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+
+.process-step-feature:hover {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.process-step-feature:hover svg {
+  color: var(--white);
+}
+
+// Alternate layout for even steps
+.process-step:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.process-step:nth-child(even) .process-step-number {
+  margin-right: 0;
+  margin-left: var(--spacing-lg);
+}
+
+.process-step:nth-child(even) .process-step-title::after {
+  left: 0;
+  right: auto;
+}
+
+.process-step:nth-child(even) .process-step-content::after {
+  background: radial-gradient(circle at 85% 15%, rgba(233, 37, 31, 0.03), transparent 60%);
+}
+
+@media (max-width: 992px) {
+  .process-timeline {
+    max-width: 100%;
+  }
+  .process-step,
+  .process-step:nth-child(even) {
+    flex-direction: row;
+  }
+  .process-step-number,
+  .process-step:nth-child(even) .process-step-number {
+    margin-right: var(--spacing-md);
+    margin-left: 0;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+  .process-step:nth-child(even) .process-step-content::after {
+    background: radial-gradient(circle at 15% 15%, rgba(233, 37, 31, 0.03), transparent 60%);
+  }
+  .process-step,
+  .process-step-number,
+  .process-step-content {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 768px) {
+  .process {
+    padding: var(--spacing-lg) 0;
+  }
+  .process-step-content {
+    padding: var(--spacing-md);
+  }
+  .process-step-title {
+    font-size: 1.2rem;
+  }
+  .process-step-description {
+    font-size: 1rem;
+  }
+  .process-step-features {
+    gap: 0.5rem;
+  }
+  .process-step-feature {
+    font-size: 0.95rem;
+    padding: 0.3rem 0.7rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .process-step-number {
+    width: 48px;
+    height: 48px;
+    font-size: 1.1rem;
+    margin-right: var(--spacing-md);
+  }
+  .process-step-number,
+  .process-step:nth-child(even) .process-step-number {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    margin-right: var(--spacing-sm);
+  }
+  .process-step-features {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xxs);
+    margin-top: var(--spacing-sm);
+  }
+}
+
+@keyframes fade-in-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} 

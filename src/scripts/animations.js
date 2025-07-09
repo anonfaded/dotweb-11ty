@@ -190,10 +190,7 @@ function initProcessAnimations() {
   observer.observe(processSection);
 }
 
-/**
- * Contact/Testimonials section animations
- */
-function initContactAnimations() {
+export function initContactAnimations() {
   const contactSection = document.querySelector('.integrated-section');
   if (!contactSection) return;
   
