@@ -6,4 +6,17 @@
 @use 'animations' as *;
 @use 'components/header' as *;
 @use 'components/hero' as *;
+@use 'components/portfolio-showcase' as *;
+
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--primary);
+  z-index: 2000;
+  opacity: 1;
+  transition: width 0.2s;
+}
 
