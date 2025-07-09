@@ -1,0 +1,31 @@
+{
+  "name": "website-11ty",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm-run-all --parallel eleventy:serve styles:watch js:watch",
+    "eleventy:serve": "eleventy --serve",
+    "build": "npm run styles && npm run js && eleventy",
+    "clean": "rmdir /s /q dist",
+    "styles": "sass src/styles/main.scss src/styles/main.css && postcss src/styles/main.css -o dist/css/main.css",
+    "styles:watch": "sass --watch src/styles/main.scss:src/styles/main.css | postcss src/styles/main.css -o dist/css/main.css --watch",
+    "js": "esbuild src/scripts/index.js --bundle --outfile=dist/js/bundle.js --target=es2017",
+    "js:watch": "esbuild src/scripts/index.js --bundle --outfile=dist/js/bundle.js --target=es2017 --watch",
+    "lint": "echo 'Add linting commands here if needed'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "autoprefixer": "^10.4.21",
+    "cssnano": "^7.0.7",
+    "esbuild": "^0.25.6",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "sass": "^1.89.2",
+    "npm-run-all": "^4.1.5"
+  }
+}

@@ -1,0 +1,9 @@
+// Entry point for all styles
+@use 'theme' as *;
+@use 'base' as *;
+@use 'layout' as *;
+@use 'preloader' as *;
+@use 'animations' as *;
+@use 'components/header' as *;
+@use 'components/hero' as *;
+
