@@ -5190,6 +5190,267 @@ a.contact-value:hover, a.contact-value:focus { /* Added focus */
     padding: 0 10px;
   }
 }
+.inner-page-hero {
+  background-color: var(--gray-900);
+  background-image: linear-gradient(rgba(229, 62, 62, 0.18), rgba(229, 62, 62, 0.13)), url("/images/hero-bg-konferenzen-kongresse.png");
+  background-size: cover, cover;
+  background-position: center, center;
+  background-attachment: scroll;
+  background-blend-mode: normal, luminosity;
+  position: relative;
+  z-index: 1;
+  margin-top: 0px;
+  padding: 100px 0;
+  min-height: 320px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.inner-page-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%);
+  z-index: 1;
+}
+
+.inner-page-hero .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.inner-hero-content {
+  max-width: 540px;
+  padding-right: 20px;
+}
+
+.inner-hero-title {
+  font-size: 42px;
+  line-height: 1.2;
+  margin-bottom: 24px;
+  color: white;
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.inner-hero-subtitle {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+  color: rgba(255, 255, 255, 0.95);
+  max-width: 540px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.inner-hero-media {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+@media (max-width: 991px) {
+  .inner-page-hero .container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .inner-hero-content {
+    max-width: 100%;
+    padding-right: 0;
+    text-align: center;
+  }
+  .inner-hero-title {
+    font-size: 36px;
+    white-space: normal;
+  }
+  .inner-hero-media {
+    justify-content: center;
+    margin-top: 20px;
+  }
+}
+.inner-breadcrumbs {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 767px) {
+  .inner-breadcrumbs {
+    justify-content: center;
+  }
+}
+.inner-breadcrumbs-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.inner-breadcrumbs-item {
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.inner-breadcrumbs-item a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.inner-breadcrumbs-item a:hover {
+  color: var(--white);
+}
+
+.inner-breadcrumbs-separator {
+  margin: 0 10px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 767px) {
+  .inner-page-hero {
+    margin-top: 0px;
+    padding: 80px 0;
+    min-height: 280px;
+  }
+}
+.portfolio-showcase#vorteile {
+  padding: var(--section-padding);
+  background-color: var(--white);
+  position: relative;
+}
+
+.portfolio-showcase#vorteile .section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.portfolio-showcase#vorteile .section-title {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 800;
+  color: #1a1a1a;
+  margin: 0 0 0.75rem;
+  line-height: 1.2;
+}
+
+.portfolio-showcase#vorteile .section-title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: var(--primary);
+  margin: 1.25rem auto 0;
+  border-radius: 2px;
+}
+
+.portfolio-showcase#vorteile .section-description {
+  font-size: 1.125rem;
+  color: #555555;
+  max-width: 700px;
+  margin: 1rem auto 0;
+  line-height: 1.6;
+}
+
+.portfolio-showcase#vorteile .features-section {
+  margin-top: 2.5rem;
+}
+
+.portfolio-showcase#vorteile .features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+}
+
+.portfolio-showcase#vorteile .benefits-grid {
+  gap: 2.5rem 2.5rem;
+}
+
+.portfolio-showcase#vorteile .feature-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  padding: 2.25rem 2rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.portfolio-showcase#vorteile .feature-card:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.13);
+}
+
+.portfolio-showcase#vorteile .feature-card:hover .feature-icon svg {
+  color: #fff;
+  stroke: #fff;
+}
+
+.portfolio-showcase#vorteile .feature-icon {
+  margin-bottom: 1.25rem;
+  color: var(--primary);
+}
+
+.portfolio-showcase#vorteile .feature-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  color: #1a1a1a;
+}
+
+.portfolio-showcase#vorteile .feature-description {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1.25rem;
+}
+
+.portfolio-showcase#vorteile .feature-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.portfolio-showcase#vorteile .feature-benefit {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.97rem;
+  color: #333;
+}
+
+.portfolio-showcase#vorteile .feature-benefit svg {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+@media (max-width: 992px) {
+  .portfolio-showcase#vorteile .features-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+@media (max-width: 576px) {
+  .portfolio-showcase#vorteile .feature-card {
+    padding: 1.25rem 1rem 1rem 1rem;
+  }
+  .portfolio-showcase#vorteile .features-section {
+    margin-top: 1.5rem;
+  }
+}
 @media (max-width: 768px) {
   .page-content {
     margin-top: 70px;

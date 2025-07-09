@@ -13,6 +13,8 @@
 @use "components/impressum";
 @use "components/datenschutz";
 @use "components/agb";
+@use "components/inner-page-hero";
+@import "components/konferenzen-benefits";
 
 
 @media (max-width: 768px) {
