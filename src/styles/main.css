@@ -838,6 +838,14 @@ body.content-loaded header {
   box-shadow: var(--shadow-sm);
   transform: translateY(0);
   will-change: transform, padding, background-color, box-shadow;
+  height: 73px;
+  display: flex;
+  align-items: center;
+  transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header.scrolled {
+  height: 67px;
 }
 
 @media (max-width: 992px) {
@@ -849,9 +857,11 @@ body.content-loaded header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--spacing-lg);
+  height: 100%;
   gap: var(--spacing-md);
 }
 
@@ -868,7 +878,7 @@ body.content-loaded header {
   color: var(--gray-900);
   font-weight: 700;
   font-size: 1.5rem;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), font-size 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   position: relative;
   z-index: 2;
 }
@@ -912,7 +922,7 @@ body.content-loaded header {
   color: var(--primary);
   border-radius: var(--radius-md);
   margin-right: var(--spacing-xs);
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   overflow: hidden;
   position: relative;
 }
@@ -957,6 +967,9 @@ body.content-loaded header {
 .main-navigation {
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  height: 100%;
 }
 
 .nav-menu {
@@ -977,12 +990,13 @@ body.content-loaded header {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-xs) 0.25rem;
+  height: 100%;
+  padding: 0 1rem;
   color: var(--gray-800);
   text-decoration: none;
   font-weight: 500;
   font-size: 0.95rem;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: color 0.2s, background 0.2s;
   position: relative;
   overflow: hidden;
   white-space: nowrap;
@@ -1036,7 +1050,10 @@ body.content-loaded header {
 .nav-primary {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 0;
+  height: 100%;
+  justify-content: center;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .nav-dropdown {
@@ -1328,55 +1345,72 @@ body.content-loaded header {
 }
 
 .language-switcher {
+  display: flex;
+  align-items: center;
   position: relative;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.header.scrolled .language-switcher {
+  transform: translateX(40px) scale(0.92);
 }
 
 .language-switcher-toggle {
   display: flex;
   align-items: center;
-  gap: 8px;
-  background: var(--gray-50);
-  border: 1px solid var(--gray-200);
+  justify-content: center;
+  height: 40px;
+  min-width: 70px;
+  padding: 0 18px;
+  background: var(--white);
+  border: 1.5px solid var(--gray-200);
   border-radius: 8px;
-  padding: 8px 12px;
-  font-size: 0.85rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--gray-700);
   cursor: pointer;
-  transition: all 0.2s ease;
-  height: 40px;
-  min-width: 70px;
-  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  box-shadow: 0 2px 12px rgba(233, 37, 31, 0.08);
+}
+
+.header.scrolled .language-switcher-toggle {
+  transform: scale(0.92);
 }
 
 .language-switcher-toggle:hover {
-  background: var(--gray-100);
+  background: var(--gray-50);
   border-color: var(--primary);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   color: var(--primary);
 }
 
 .language-switcher-toggle:hover .language-globe-icon {
-  transform: rotate(15deg) scale(1.1);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  color: var(--primary);
-  stroke: var(--primary);
-}
-
-.language-switcher-toggle:hover .language-current {
   color: var(--primary);
 }
 
 .language-globe-icon {
   width: 14px;
   height: 14px;
+  margin-right: 8px;
+  color: var(--gray-600);
   opacity: 0.7;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .language-current {
-  font-weight: 600;
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--gray-700);
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-left: 2px;
+}
+
+.language-switcher-toggle:hover .language-current {
+  color: var(--primary);
 }
 
 .language-switcher-menu {
@@ -1604,24 +1638,37 @@ body.content-loaded header {
 
 .nav-cta {
   margin-left: var(--spacing-lg);
+  transition: margin 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.header.scrolled .nav-cta {
+  margin-left: 16px;
+  transform: scale(0.92);
 }
 
 .nav-cta-btn {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.65rem 1.35rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  position: relative;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--primary) 0%, #d63031 100%);
   color: var(--white);
   text-decoration: none;
-  border-radius: 4px;
-  background-color: var(--primary);
-  box-shadow: 0 2px 8px rgba(233, 37, 31, 0.2);
-  transition: background-color 0.25s ease, box-shadow 0.25s ease;
-  border: 1px solid transparent;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 12px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  position: relative;
   overflow: hidden;
+  min-height: 44px;
+  justify-content: center;
+}
+
+.header.scrolled .nav-cta-btn {
+  transform: translateX(32px) scale(0.92);
 }
 
 .nav-cta-btn::before {
@@ -1917,12 +1964,35 @@ body.content-loaded header {
   .logo {
     font-size: 1.25rem;
   }
+  .header.scrolled .logo {
+    transform: translateX(-12px) scale(0.82);
+  }
   .logo-icon {
     width: 34px;
     height: 34px;
   }
+  .header.scrolled .logo-icon {
+    width: 32px;
+    height: 32px;
+  }
   .scroll-progress-bar {
     height: 2px;
+  }
+  .nav-link {
+    font-size: 0.88rem;
+    padding: 0 0.7rem;
+  }
+  .header.scrolled .nav-link {
+    font-size: 0.88rem;
+    padding: 0 0.7rem;
+  }
+  .nav-cta-btn {
+    font-size: 0.82rem;
+    padding: 0.5rem 1.1rem;
+  }
+  .header.scrolled .nav-cta-btn {
+    font-size: 0.82rem;
+    padding: 0.5rem 1.1rem;
   }
   .mobile-nav-toggle {
     padding: var(--spacing-xxs) var(--spacing-xs);
