@@ -1,0 +1,262 @@
+ /* Pixel-perfect hero section styles migrated from Website/css/style.css */
+
+.hero {
+    position: relative;
+    height: 100vh;
+    height: 100dvh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 1;
+    will-change: auto;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  
+  .hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scale(1.05);
+    will-change: transform;
+    backface-visibility: hidden;
+    animation: enterprise-zoom 40s infinite alternate ease-in-out;
+  }
+  
+  .hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scale(1.05);
+    will-change: transform;
+    backface-visibility: hidden;
+    animation: enterprise-zoom 40s infinite alternate ease-in-out;
+  }
+  
+  @keyframes enterprise-zoom {
+    0% { transform: scale(1.05); }
+    100% { transform: scale(1.08); }
+  }
+  
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.6) 50%, rgba(0, 0, 0, 0.75) 100%);
+    z-index: 2;
+  }
+  
+  .hero-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: var(--content-width);
+    padding: 0 var(--spacing-md);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    margin-left: calc(50% - var(--content-width) / 2 + 24px);
+    margin-right: auto;
+  }
+  
+  .hero-content {
+    max-width: 750px;
+    padding: var(--spacing-md);
+    position: relative;
+    backdrop-filter: blur(2px);
+    border-radius: var(--radius-lg);
+  }
+  
+  .hero-heading {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: var(--spacing-lg);
+    text-align: left;
+    position: relative;
+    animation: fadeInUp 1s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+    animation-delay: 0.3s;
+  }
+  
+  .hero-title-line {
+    font-size: clamp(2.8rem, 9vw, 5.2rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.05;
+  }
+  
+  .hero-title-highlight {
+    color: var(--primary);
+    position: relative;
+    z-index: 1;
+  }
+  
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  
+  .hero-subheading {
+    font-size: 1.25rem;
+    color: var(--gray-100);
+    margin-bottom: var(--spacing-lg);
+    font-weight: 400;
+    line-height: 1.5;
+    animation: fadeInUp 1s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+    animation-delay: 0.4s;
+  }
+  
+  .hero-actions {
+    display: flex;
+    gap: 1.25rem;
+    margin-top: var(--spacing-md);
+    animation: fadeInUp 1s ease forwards;
+    opacity: 0;
+    transform: translateY(20px);
+    animation-delay: 0.5s;
+  }
+  
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: background-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn-primary {
+    background: var(--primary);
+    color: var(--white);
+    box-shadow: 0 2px 8px rgba(233, 37, 31, 0.2);
+  }
+  
+  .btn-primary:hover {
+    background: var(--primary-dark);
+    color: var(--white);
+    box-shadow: 0 4px 12px rgba(233, 37, 31, 0.25);
+  }
+  
+  .btn-primary:active {
+    background: var(--primary-dark);
+    color: var(--white);
+    box-shadow: 0 2px 4px rgba(233, 37, 31, 0.2);
+  }
+  
+  .btn-outline {
+    background: transparent;
+    color: var(--primary);
+    border: 1.5px solid var(--primary);
+    box-shadow: none;
+  }
+  
+  .btn-outline:hover {
+    background: var(--primary);
+    color: var(--white);
+    box-shadow: 0 2px 8px rgba(233, 37, 31, 0.12);
+  }
+  
+  .btn-outline:active {
+    background: var(--primary-dark);
+    color: var(--white);
+    box-shadow: 0 2px 4px rgba(233, 37, 31, 0.12);
+  }
+  
+  .btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .btn-primary:hover .btn-icon {
+    transform: translateX(4px);
+  }
+  
+  .scroll-indicator {
+    position: absolute;
+    left: 50%;
+    bottom: 32px;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    animation: scrollPulse 2.5s infinite ease-in-out;
+  }
+  
+  // Scroll indicator arrow (CSS-based)
+  .scroll-mouse {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: scrollPulse 2.5s infinite ease-in-out;
+  }
+  
+  .scroll-mouse::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid rgba(255, 255, 255, 0.8);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .scroll-indicator:hover .scroll-mouse {
+    transform: scale(1.2);
+  }
+  
+  .scroll-indicator:hover .scroll-mouse::after {
+    border-right-color: rgba(255, 255, 255, 1);
+    border-bottom-color: rgba(255, 255, 255, 1);
+    width: 10px;
+    height: 10px;
+  }
+  
+  @keyframes scrollPulse {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+    100% { transform: translateY(0); }
+  } 

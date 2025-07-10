@@ -5,10 +5,7 @@
 @use 'preloader' as *;
 @use 'animations' as *;
 @use 'components/header' as *;
-@use 'components/hero' as *;
-@use 'components/portfolio-showcase' as *;
-@use 'components/process' as *;
-@use "components/integrated-section";
+@use 'components/home' as *;
 @use "components/footer";
 @use "components/impressum";
 @use "components/datenschutz";

@@ -2840,9 +2840,6 @@ p.feature-description {
     font-size: 0.75rem;
   }
 }
-/* === Process Section (Cloned from /Website/css/style.css and /Website/css/animations.css) === */
-/* 7. Process Section */
-/* Enhanced Enterprise-Grade Process Section */
 .process {
   padding: var(--section-padding);
   background-color: var(--gray-50);
