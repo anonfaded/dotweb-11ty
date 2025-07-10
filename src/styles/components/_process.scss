@@ -1,6 +1,10 @@
 // Process Section Styles
 @use '../_theme.scss' as *;
 
+/* === Process Section (Cloned from /Website/css/style.css and /Website/css/animations.css) === */
+
+/* 7. Process Section */
+/* Enhanced Enterprise-Grade Process Section */
 .process {
   padding: var(--section-padding);
   background-color: var(--gray-50);
@@ -84,6 +88,33 @@
   bottom: -6px;
 }
 
+/* Hover effects for process steps */
+.process-step {
+  cursor: pointer;
+}
+
+.process-step.hover-enhanced .process-step-number {
+  transform: scale(1.1);
+  box-shadow: 0 12px 30px rgba(233, 37, 31, 0.35);
+}
+
+.process-step.hover-enhanced .process-step-title {
+  color: var(--primary);
+}
+
+.process-step.hover-enhanced .process-step-title::after {
+  width: 120px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process-step,
+  .process-step-number,
+  .process-step-content,
+  .timeline-progress-indicator {
+    transition: none !important;
+  }
+}
+
 .process-step {
   display: flex;
   align-items: flex-start;
@@ -95,7 +126,18 @@
   transition: opacity 0.6s ease, transform 0.6s ease;
   animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   animation-delay: calc(var(--delay, 0) * 0.2s);
-  cursor: pointer;
+}
+
+.process-step:nth-child(2) { --delay: 4; }
+.process-step:nth-child(3) { --delay: 6; }
+.process-step:nth-child(4) { --delay: 8; }
+.process-step:nth-child(5) { --delay: 10; }
+
+@keyframes fade-in-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .process-step:last-child {
@@ -103,35 +145,26 @@
 }
 
 .process-step-number {
-  aspect-ratio: 1/1;
-  overflow: visible;
   width: 64px;
   height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--gray-400) 0%, var(--gray-500) 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   border-radius: 50%;
   color: var(--white);
   font-weight: 700;
   font-size: 1.5rem;
   margin-right: var(--spacing-lg);
   flex-shrink: 0;
-  box-shadow: 0 8px 25px rgba(120, 120, 120, 0.12); // gray shadow when inactive
+  box-shadow: 0 8px 25px rgba(233, 37, 31, 0.25);
   position: relative;
   z-index: 2;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border: 4px solid rgba(255, 255, 255, 0.15);
 }
 
-.process-step.animated .process-step-number {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  box-shadow: 0 8px 25px rgba(233, 37, 31, 0.25); // red shadow when active
-}
-
 .process-step-number::before {
-  aspect-ratio: 1/1;
-  overflow: visible;
   content: '';
   position: absolute;
   top: -8px;
@@ -139,24 +172,16 @@
   right: -8px;
   bottom: -8px;
   border-radius: 50%;
-  background: rgba(120, 120, 120, 0.10); // gray background for inactive/hover
+  background: rgba(233, 37, 31, 0.1);
   z-index: -1;
   opacity: 0;
   transform: scale(0.8);
   transition: all 0.3s ease;
 }
 
-.process-step.animated .process-step-number::before {
-  background: rgba(233, 37, 31, 0.10); // red background for active
-}
-
 .process-step:hover .process-step-number {
   transform: scale(1.1);
-  box-shadow: 0 12px 30px rgba(120, 120, 120, 0.18); // gray shadow on hover if inactive
-}
-
-.process-step.animated:hover .process-step-number {
-  box-shadow: 0 12px 30px rgba(233, 37, 31, 0.35); // red shadow on hover if active
+  box-shadow: 0 12px 30px rgba(233, 37, 31, 0.35);
 }
 
 .process-step:hover .process-step-number::before {
@@ -225,7 +250,8 @@
 
 .process-step-description {
   color: var(--gray-700);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
   margin-bottom: var(--spacing-md);
 }
 
@@ -252,27 +278,26 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  justify-content: center;
+}
+
+.process-step-feature:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background-color: var(--primary-ultralight);
+  border-color: var(--primary-light);
+  color: var(--primary-dark);
 }
 
 .process-step-feature svg {
   color: var(--primary);
-  width: 18px;
-  height: 18px;
   flex-shrink: 0;
-  transition: color 0.2s;
-}
-
-.process-step-feature:hover {
-  background: var(--primary);
-  color: var(--white);
+  min-width: 18px;
+  transition: transform 0.3s ease;
 }
 
 .process-step-feature:hover svg {
-  color: var(--white);
+  transform: scale(1.2);
 }
 
-// Alternate layout for even steps
 .process-step:nth-child(even) {
   flex-direction: row-reverse;
 }
@@ -291,15 +316,58 @@
   background: radial-gradient(circle at 85% 15%, rgba(233, 37, 31, 0.03), transparent 60%);
 }
 
+.process-step {
+  filter: grayscale(0.9);
+  opacity: 0.65;
+  transform: translateY(5px);
+  transition: 
+    filter 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.process-step-number {
+  opacity: 0.7;
+  box-shadow: 0 4px 16px rgba(233, 37, 31, 0.1);
+  transition: 
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.process-step-content {
+  box-shadow: var(--shadow-sm);
+  transition: 
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.process-step.animated {
+  filter: grayscale(0);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.process-step.animated .process-step-number {
+  opacity: 1;
+  box-shadow: 0 8px 25px rgba(233, 37, 31, 0.25);
+}
+
+.process-step.animated .process-step-content {
+  box-shadow: var(--shadow-md);
+  border-color: var(--gray-250, #eaeaea);
+}
+
 @media (max-width: 992px) {
-  .process-timeline {
-    max-width: 100%;
+  .timeline-progress {
+    left: 30px;
   }
-  .process-step,
+  .process-step, 
   .process-step:nth-child(even) {
     flex-direction: row;
   }
-  .process-step-number,
+  .process-step-number, 
   .process-step:nth-child(even) .process-step-number {
     margin-right: var(--spacing-md);
     margin-left: 0;
@@ -307,52 +375,60 @@
     height: 50px;
     font-size: 1.2rem;
   }
+  .process-step:nth-child(even) .process-step-content::before {
+    left: 0;
+    right: auto;
+  }
   .process-step:nth-child(even) .process-step-content::after {
     background: radial-gradient(circle at 15% 15%, rgba(233, 37, 31, 0.03), transparent 60%);
-  }
-  .process-step,
-  .process-step-number,
-  .process-step-content {
-    flex-direction: column;
-    align-items: stretch;
   }
 }
 
 @media (max-width: 768px) {
   .process {
-    padding: var(--spacing-lg) 0;
+    padding: var(--section-padding-mobile);
   }
   .process-step-content {
     padding: var(--spacing-md);
   }
   .process-step-title {
-    font-size: 1.2rem;
+    font-size: 1.35rem;
   }
   .process-step-description {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
   .process-step-features {
-    gap: 0.5rem;
+    gap: var(--spacing-sm);
   }
   .process-step-feature {
-    font-size: 0.95rem;
-    padding: 0.3rem 0.7rem;
+    font-size: 0.85rem;
+    padding: var(--spacing-xxs) var(--spacing-sm);
   }
 }
 
 @media (max-width: 576px) {
-  .process-step-number {
-    width: 48px;
-    height: 48px;
-    font-size: 1.1rem;
-    margin-right: var(--spacing-md);
-  }
-  .process-step-number,
+  .process-step-number, 
   .process-step:nth-child(even) .process-step-number {
     width: 40px;
     height: 40px;
     font-size: 1rem;
     margin-right: var(--spacing-sm);
+  }
+  .timeline-progress::after {
+    display: none;
+  }
+  .timeline-progress {
+    left: 20px;
+  }
+  .process-step-content {
+    padding: var(--spacing-sm);
+  }
+  .process-step-title {
+    font-size: 1.25rem;
+  }
+  .process-step-description {
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-sm);
   }
   .process-step-features {
     grid-template-columns: 1fr;
@@ -361,9 +437,207 @@
   }
 }
 
-@keyframes fade-in-up {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+/* === Animations from /Website/css/animations.css === */
+.process .section-header {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.process .section-header.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.process-step {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.process-step.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.process-step.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.process-step.hover-enhanced {
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate,
+  .process-step,
+  .section-header h2,
+  .section-header p,
+  .process .section-header {
+    transition: none !important;
+  }
+} 
+
+/* === Content Section Styles (Cloned from Website/konferenzen-kongresse.html) === */
+
+.content-section {
+  padding: 100px 0;
+  background-color: var(--gray-50);
+  position: relative;
+}
+
+.content-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at bottom left, rgba(255, 255, 255, 0.9) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.content-full-width {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.content-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--gray-900);
+  margin-bottom: 2rem;
+  line-height: 1.2;
+}
+
+.content-paragraph {
+  font-size: 1.15rem;
+  color: var(--gray-800);
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.content-highlight-box {
+  background: var(--primary-ultralight);
+  border-left: 4px solid var(--primary);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 2rem;
+  margin: 2rem 0;
+  box-shadow: 0 2px 8px rgba(233, 37, 31, 0.04);
+}
+
+.content-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.content-list-item {
+  font-size: 1.05rem;
+  color: var(--gray-800);
+  margin-bottom: 0.75rem;
+  padding-left: 1.5em;
+  position: relative;
+}
+
+.content-list-item::before {
+  content: '\2022';
+  color: var(--primary);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 0.1em;
+  font-size: 1.2em;
+}
+
+.content-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.content-feature {
+  display: flex;
+  align-items: flex-start;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+  padding: 1.5rem 2rem;
+  transition: box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  margin-bottom: 0;
+}
+
+.content-feature-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1.25rem;
+  flex-shrink: 0;
+}
+
+.content-feature-text {
+  flex: 1;
+}
+
+.content-feature-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 0.5rem;
+}
+
+.content-feature-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--gray-600);
+  margin: 0;
+}
+
+@media (max-width: 991px) {
+  .content-feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-section {
+    padding: 60px 0;
+  }
+  .content-title {
+    font-size: 1.5rem;
+  }
+  .content-feature {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.25rem 1.25rem;
+  }
+  .content-feature-icon {
+    margin-bottom: 1rem;
+    margin-right: 0;
+  }
+  .content-feature-grid {
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-section {
+    padding: 40px 0;
+  }
+  .content-title {
+    font-size: 1.15rem;
+  }
+  .content-feature {
+    padding: 1rem 0.75rem;
   }
 } 
