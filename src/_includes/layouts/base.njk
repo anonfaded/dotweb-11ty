@@ -8,11 +8,11 @@
 </head>
 <body>
   {% include "components/preloader.njk" %}
-  {% include "components/header.njk" %}
+  {% include "components/header/header.njk" %}
   <div class="page-content">
   {{ content | safe }}
   </div>
-  {% include "components/footer.njk" %}
+  {% include "components/footer/footer.njk" %}
   <script src="/js/bundle.js" defer></script>
 </body>
 </html> 

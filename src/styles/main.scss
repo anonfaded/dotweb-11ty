@@ -4,22 +4,20 @@
 @use 'layout' as *;
 @use 'preloader' as *;
 @use 'animations' as *;
-@use 'components/header' as *;
+@use './components/header';
 @use 'components/home' as *;
-@use "components/footer";
-@use "./components/impressum";
-@use "./components/datenschutz";
-@use "./components/agb";
-@use "./components/widerrufsbelehrung";
-@use "components/inner-page-hero";
-@use "components/konferenzen-benefits" as *;
-@use "components/konferenzen-content" as *;
-@use "components/testimonials-section" as *;
-@use "components/pricing-cta-section" as *;
-@use "components/messen-ausstellungen" as *;
-@use "components/sport-lauf-events" as *;
-@use "components/outdoor-kultur-festivals" as *;
-@use "components/dorf-quartierfeste" as *;
+@use './components/footer';
+@use './components/impressum';
+@use './components/datenschutz';
+@use './components/agb';
+@use './components/widerrufsbelehrung';
+@use './components/konferenzen-kongresse/index' as *;
+@use './components/konferenzen-benefits' as *;
+@use './components/konferenzen-content' as *;
+@use 'components/messen-ausstellungen' as *;
+@use 'components/sport-lauf-events' as *;
+@use 'components/outdoor-kultur-festivals' as *;
+@use 'components/dorf-quartierfeste' as *;
 
 @media (max-width: 768px) {
   .page-content {
