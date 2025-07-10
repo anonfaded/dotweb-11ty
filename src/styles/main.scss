@@ -2,7 +2,7 @@
 @use 'theme' as *;
 @use 'base' as *;
 @use 'layout' as *;
-@use 'preloader' as *;
+@use './components/preloader/preloader';
 @use 'animations' as *;
 @use './components/header';
 @use 'components/home' as *;

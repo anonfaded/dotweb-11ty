@@ -8681,7 +8681,6 @@ a.contact-value:hover, a.contact-value:focus { /* Added focus */
     margin-bottom: 28px;
   }
 }
-/* Pixel-perfect benefits (portfolio-showcase) section styles migrated from Website/css/style.css */
 .portfolio-showcase {
   padding: var(--section-padding);
   background-color: var(--white);
