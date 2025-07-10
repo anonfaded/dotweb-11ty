@@ -1,0 +1,186 @@
+.impressum-section {
+    padding: 60px 0 80px 0;
+    background: linear-gradient(135deg, #FBFBFB 0%, #f0efef 100%);
+    min-height: 100vh;
+  }
+  
+  .impressum-container {
+    max-width: 1000px;
+    margin: 65px auto 0 auto;
+    background: white;
+    border-radius: 16px;
+    padding: 60px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(226, 232, 240, 0.6);
+  }
+  
+  .impressum-header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #e2e8f0;
+  }
+  
+  .impressum-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  
+  .impressum-subtitle {
+    font-size: 1.125rem;
+    color: #64748b;
+    line-height: 1.6;
+  }
+  
+  .impressum-content {
+    line-height: 1.8;
+  }
+  
+  .impressum-section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 40px 0 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  .impressum-section-title:first-of-type {
+    margin-top: 0;
+  }
+  
+  .impressum-text {
+    font-size: 1rem;
+    color: #475569;
+    margin-bottom: 20px;
+    line-height: 1.7;
+  }
+  
+  .impressum-contact-info {
+    background: linear-gradient(135deg, #FBFBFB 0%, #f0efef 100%);
+    padding: 30px;
+    border-radius: 12px;
+    margin: 30px 0;
+    border-left: 4px solid #dc2626;
+  }
+  
+  .impressum-contact-info h3 {
+    color: #1e293b;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+  
+  .impressum-contact-info p {
+    margin: 8px 0;
+    color: #475569;
+  }
+  
+  .impressum-link {
+    color: #dc2626;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  
+  .impressum-link:hover {
+    color: #b91c1c;
+    text-decoration: underline;
+  }
+  
+  .back-to-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #dc2626;
+    text-decoration: none;
+    font-weight: 500;
+    margin-bottom: 30px;
+    transition: all 0.2s ease;
+  }
+  
+  .back-to-home:hover {
+    color: #b91c1c;
+    transform: translateX(-4px);
+  }
+  
+  .back-to-home svg {
+    transition: transform 0.2s ease;
+  }
+  
+  .back-to-home:hover svg {
+    transform: translateX(-2px);
+  }
+  
+  @media (max-width: 768px) {
+    .impressum-section {
+      padding: 80px 0 40px 0;
+    }
+    .impressum-container {
+      margin: 40px 15px 0 15px;
+      padding: 30px 20px;
+      border-radius: 12px;
+    }
+    .impressum-title {
+      font-size: 1.75rem;
+      line-height: 1.3;
+    }
+    .impressum-subtitle {
+      font-size: 1rem;
+    }
+    .impressum-header {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+    }
+    .impressum-section-title {
+      font-size: 1.25rem;
+      margin: 30px 0 15px 0;
+    }
+    .impressum-text {
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+    .impressum-contact-info {
+      padding: 20px 15px;
+      margin: 20px 0;
+    }
+    .impressum-contact-info h3 {
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+    }
+    .impressum-contact-info p {
+      font-size: 0.9rem;
+      margin: 6px 0;
+    }
+    .back-to-home {
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .impressum-container {
+      margin: 0 10px;
+      padding: 25px 15px;
+    }
+    .impressum-title {
+      font-size: 1.5rem;
+    }
+    .impressum-subtitle {
+      font-size: 0.95rem;
+    }
+    .impressum-section-title {
+      font-size: 1.1rem;
+    }
+    .impressum-text {
+      font-size: 0.9rem;
+    }
+    .impressum-contact-info {
+      padding: 15px 12px;
+    }
+    .container {
+      padding: 0 10px;
+    }
+  } 

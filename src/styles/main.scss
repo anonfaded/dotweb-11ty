@@ -7,9 +7,10 @@
 @use 'components/header' as *;
 @use 'components/home' as *;
 @use "components/footer";
-@use "components/impressum";
-@use "components/datenschutz";
-@use "components/agb";
+@use "./components/impressum";
+@use "./components/datenschutz";
+@use "./components/agb";
+@use "./components/widerrufsbelehrung";
 @use "components/inner-page-hero";
 @use "components/konferenzen-benefits" as *;
 @use "components/konferenzen-content" as *;
