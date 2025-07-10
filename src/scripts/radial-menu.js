@@ -3,10 +3,10 @@
  */
 
 // Initialize Premium Mobile Navigation
-initPremiumMobileNavigation();
-
-// Initialize Sticky Mobile Header
-initStickyMobileHeader();
+document.addEventListener('DOMContentLoaded', () => {
+  initPremiumMobileNavigation();
+  initStickyMobileHeader();
+});
 
 /**
  * Initializes the premium mobile navigation functionality
@@ -17,6 +17,9 @@ function initPremiumMobileNavigation() {
   const mobileNavOverlay = document.getElementById('mobileNavOverlay');
   const navLinks = document.querySelectorAll('#mobileNavOverlay .mobile-nav-link, #mobileNavOverlay .mobile-nav-sublink');
   const ctaButton = document.querySelector('#mobileNavOverlay .mobile-nav-cta-button');
+  
+  // Initialize eventarten submenu
+  initEventartenSubmenu();
   
   // Check if elements exist
   if (!navToggle || !mobileNavOverlay) return;
@@ -60,7 +63,7 @@ function initPremiumMobileNavigation() {
       
     // Focus first nav link
     setTimeout(() => {
-      const firstNavLink = mobileNavOverlay.querySelector('.mobile-nav-link');
+      const firstNavLink = mobileNavOverlay.querySelector('.mobile-nav-link, .mobile-nav-sublink');
       if (firstNavLink) {
         firstNavLink.focus();
       }
@@ -98,8 +101,8 @@ function initPremiumMobileNavigation() {
       isAnimating = false;
     }, 400);
       
-      // Return focus to toggle button
-      navToggle.focus();
+    // Return focus to toggle button
+    navToggle.focus();
   }
 
   /**
@@ -119,19 +122,7 @@ function initPremiumMobileNavigation() {
   function animateNavigationItems(direction) {
     const items = mobileNavOverlay.querySelectorAll('.mobile-nav-item, .mobile-nav-subitem, .mobile-nav-cta-section');
     
-    items.forEach((item, index) => {
-      setTimeout(() => {
-        if (direction === 'in') {
-          item.style.opacity = '1';
-          item.style.transform = 'translateY(0)';
-    } else {
-          item.style.opacity = '0';
-          item.style.transform = 'translateY(20px)';
-        }
-      }, index * 50);
-    });
-
-    // Reset styles if animating in
+    // Reset styles before animation
     if (direction === 'in') {
       items.forEach(item => {
         item.style.opacity = '0';
@@ -139,6 +130,19 @@ function initPremiumMobileNavigation() {
         item.style.transition = 'all 0.3s ease';
       });
     }
+    
+    // Animate items with staggered timing
+    items.forEach((item, index) => {
+      setTimeout(() => {
+        if (direction === 'in') {
+          item.style.opacity = '1';
+          item.style.transform = 'translateY(0)';
+        } else {
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(20px)';
+        }
+      }, index * 50);
+    });
   }
   
   // Toggle button click handler
@@ -235,14 +239,71 @@ function initPremiumMobileNavigation() {
     }
   });
 
-     // Initialize navigation items for animation
-   const items = mobileNavOverlay.querySelectorAll('.mobile-nav-item, .mobile-nav-subitem, .mobile-nav-cta-section');
-   items.forEach(item => {
-     item.style.opacity = '0';
-     item.style.transform = 'translateY(20px)';
-     item.style.transition = 'all 0.3s ease';
-   });
+  // Initialize navigation items for animation
+  const items = mobileNavOverlay.querySelectorAll('.mobile-nav-item, .mobile-nav-subitem, .mobile-nav-cta-section');
+  items.forEach(item => {
+    item.style.opacity = '0';
+    item.style.transform = 'translateY(20px)';
+    item.style.transition = 'all 0.3s ease';
+  });
 }
+
+/**
+ * Initializes the Eventarten submenu in mobile navigation
+ */
+function initEventartenSubmenu() {
+  // The global function is defined in main.js, but let's open the submenu by default
+  const button = document.querySelector('.mobile-nav-section-header');
+  const submenu = document.getElementById('eventartenSubmenu');
+  const dropdownIcon = document.querySelector('.mobile-nav-dropdown-icon');
+  
+  if (button && submenu) {
+    // Set initial expanded state
+    button.setAttribute('aria-expanded', 'true');
+    
+    // Open the submenu by default
+    submenu.style.maxHeight = submenu.scrollHeight + 'px';
+    submenu.style.opacity = '1';
+    
+    // Rotate the dropdown icon
+    if (dropdownIcon) {
+      dropdownIcon.style.transform = 'rotate(180deg)';
+    }
+    
+    // Apply styles to subitems
+    const subItems = submenu.querySelectorAll('.mobile-nav-subitem');
+    subItems.forEach((item, index) => {
+      item.style.opacity = '1';
+      item.style.transform = 'translateY(0px)';
+      item.style.transition = '0.3s';
+    });
+  }
+}
+
+// Define the toggleEventartenSubmenu function globally
+window.toggleEventartenSubmenu = function() {
+  const button = document.querySelector('.mobile-nav-section-header');
+  const submenu = document.getElementById('eventartenSubmenu');
+  const dropdownIcon = document.querySelector('.mobile-nav-dropdown-icon');
+  
+  if (button && submenu && dropdownIcon) {
+    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+    
+    // Toggle the aria-expanded attribute
+    button.setAttribute('aria-expanded', !isExpanded);
+    
+    // Toggle submenu visibility
+    if (isExpanded) {
+      submenu.style.maxHeight = '0px';
+      submenu.style.opacity = '0';
+      dropdownIcon.style.transform = 'rotate(0deg)';
+    } else {
+      submenu.style.maxHeight = submenu.scrollHeight + 'px';
+      submenu.style.opacity = '1';
+      dropdownIcon.style.transform = 'rotate(180deg)';
+    }
+  }
+};
 
 /**
  * Initializes sticky mobile header behavior

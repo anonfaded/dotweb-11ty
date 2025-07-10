@@ -29,6 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize Legal Drawer
   initLegalDrawer();
   
+  // Initialize Language Drawer
+  initLanguageDrawer();
+  
   // Initialize Video Fallback
   initVideoFallback();
   
@@ -96,6 +99,31 @@ function initMobileNavigation() {
   // Note: The event handler on the navToggle button is now 
   // managed in radial-menu.js with the radial reveal animation
 }
+
+// Toggle Eventarten submenu in mobile navigation
+window.toggleEventartenSubmenu = function() {
+  const button = document.querySelector('.mobile-nav-section-header');
+  const submenu = document.getElementById('eventartenSubmenu');
+  
+  if (button && submenu) {
+    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', !isExpanded);
+    
+    if (isExpanded) {
+      submenu.style.maxHeight = '0';
+      submenu.style.opacity = '0';
+    } else {
+      submenu.style.maxHeight = submenu.scrollHeight + 'px';
+      submenu.style.opacity = '1';
+    }
+    
+    // Toggle icon rotation
+    const icon = button.querySelector('.mobile-nav-dropdown-icon');
+    if (icon) {
+      icon.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
+    }
+  }
+};
 
 // Handle Legal Drawer in Mobile Navigation
 function initLegalDrawer() {
@@ -249,67 +277,326 @@ function initLegalDrawer() {
           gap: 12px;
           padding: 12px 8px;
           text-decoration: none;
+          color: #374151;
           border-radius: 8px;
           transition: background-color 0.2s ease;
-          margin-bottom: 4px;
         }
         
         .legal-drawer-item:hover {
-          background: rgba(233, 37, 31, 0.04);
+          background-color: rgba(0, 0, 0, 0.05);
         }
         
         .legal-drawer-icon {
-          width: 40px;
-          height: 40px;
-          background: rgba(233, 37, 31, 0.1);
-          border-radius: 8px;
           display: flex;
           align-items: center;
           justify-content: center;
-          color: var(--primary, #e9251f);
-          flex-shrink: 0;
+          width: 40px;
+          height: 40px;
+          background: #f3f4f6;
+          border-radius: 8px;
+          color: #6b7280;
         }
         
         .legal-drawer-text {
-          flex: 1;
-          min-width: 0;
+          display: flex;
+          flex-direction: column;
         }
         
         .legal-drawer-title {
-          display: block;
-          font-size: 0.95rem;
           font-weight: 600;
-          color: #2d3748;
-          line-height: 1.2;
+          font-size: 0.9rem;
+          color: #374151;
         }
         
         .legal-drawer-desc {
-          display: block;
           font-size: 0.8rem;
           color: #6b7280;
-          line-height: 1.3;
           margin-top: 2px;
         }
       `;
+      
       document.head.appendChild(style);
       
-      // Show drawer
+      // Make the drawer visible
       setTimeout(() => {
         drawer.classList.add('active');
       }, 10);
       
-      // Close drawer functionality
+      // Close drawer when clicking close button
       const closeDrawer = () => {
         drawer.classList.remove('active');
         setTimeout(() => {
           drawer.remove();
-          document.head.removeChild(style);
         }, 300);
       };
       
       document.getElementById('legalDrawerClose').addEventListener('click', closeDrawer);
-      drawer.addEventListener('click', (e) => {
-        if (e.target === drawer) closeDrawer();
+      
+      // Close drawer when clicking outside
+      drawer.addEventListener('click', function(e) {
+        if (e.target === drawer) {
+          closeDrawer();
+        }
+      });
+    });
+  }
+}
+
+// Handle Language Bottom Sheet in Mobile Navigation
+function initLanguageDrawer() {
+  const languageToggle = document.getElementById('mobileNavLanguageToggle');
+  
+  if (languageToggle) {
+    languageToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Create language drawer bottom sheet
+      const existingDrawer = document.getElementById('languageDrawer');
+      if (existingDrawer) {
+        existingDrawer.remove();
+      }
+      
+      const drawer = document.createElement('div');
+      drawer.id = 'languageDrawer';
+      drawer.className = 'language-drawer-overlay';
+      drawer.innerHTML = `
+        <div class="language-drawer-content">
+          <div class="language-drawer-header">
+            <h3>Sprache wählen</h3>
+            <button class="language-drawer-close" id="languageDrawerClose">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+          <div class="language-drawer-body">
+            <div class="language-drawer-item active" data-lang="de">
+              <div class="language-drawer-badge">DE</div>
+              <div class="language-drawer-text">
+                <span class="language-drawer-title">Deutsch</span>
+                <span class="language-drawer-desc">Schweiz</span>
+              </div>
+              <div class="language-drawer-check">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+            </div>
+            <div class="language-drawer-item" data-lang="fr">
+              <div class="language-drawer-badge">FR</div>
+              <div class="language-drawer-text">
+                <span class="language-drawer-title">Français</span>
+                <span class="language-drawer-desc">Suisse</span>
+              </div>
+              <div class="language-drawer-check"></div>
+            </div>
+            <div class="language-drawer-item" data-lang="it">
+              <div class="language-drawer-badge">IT</div>
+              <div class="language-drawer-text">
+                <span class="language-drawer-title">Italiano</span>
+                <span class="language-drawer-desc">Svizzera</span>
+              </div>
+              <div class="language-drawer-check"></div>
+            </div>
+            <div class="language-drawer-item" data-lang="en">
+              <div class="language-drawer-badge">EN</div>
+              <div class="language-drawer-text">
+                <span class="language-drawer-title">English</span>
+                <span class="language-drawer-desc">International</span>
+              </div>
+              <div class="language-drawer-check"></div>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      document.body.appendChild(drawer);
+      
+      // Add styles for the drawer
+      const style = document.createElement('style');
+      style.textContent = `
+        .language-drawer-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(0, 0, 0, 0.5);
+          backdrop-filter: blur(4px);
+          z-index: 1000;
+          display: flex;
+          align-items: flex-end;
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.3s ease;
+        }
+        
+        .language-drawer-overlay.active {
+          opacity: 1;
+          visibility: visible;
+        }
+        
+        .language-drawer-content {
+          width: 100%;
+          background: white;
+          border-radius: 16px 16px 0 0;
+          padding: 0;
+          transform: translateY(100%);
+          transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          max-height: 60vh;
+          overflow: hidden;
+        }
+        
+        .language-drawer-overlay.active .language-drawer-content {
+          transform: translateY(0);
+        }
+        
+        .language-drawer-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 20px 24px 16px;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .language-drawer-header h3 {
+          margin: 0;
+          font-size: 1.1rem;
+          font-weight: 600;
+          color: #2d3748;
+        }
+        
+        .language-drawer-close {
+          background: none;
+          border: none;
+          padding: 8px;
+          cursor: pointer;
+          border-radius: 50%;
+          transition: background-color 0.2s ease;
+          color: #6b7280;
+        }
+        
+        .language-drawer-close:hover {
+          background: rgba(0, 0, 0, 0.05);
+          color: #374151;
+        }
+        
+        .language-drawer-body {
+          padding: 8px 16px 24px;
+        }
+        
+        .language-drawer-item {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 12px 8px;
+          cursor: pointer;
+          color: #374151;
+          border-radius: 8px;
+          transition: background-color 0.2s ease;
+        }
+        
+        .language-drawer-item:hover {
+          background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .language-drawer-badge {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          background: #f3f4f6;
+          border-radius: 8px;
+          font-weight: bold;
+          color: #6b7280;
+        }
+        
+        .language-drawer-item.active .language-drawer-badge {
+          background: #e32119;
+          color: white;
+        }
+        
+        .language-drawer-text {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+        }
+        
+        .language-drawer-title {
+          font-weight: 600;
+          font-size: 0.9rem;
+          color: #374151;
+        }
+        
+        .language-drawer-desc {
+          font-size: 0.8rem;
+          color: #6b7280;
+          margin-top: 2px;
+        }
+        
+        .language-drawer-check {
+          width: 24px;
+          height: 24px;
+          color: #e32119;
+          opacity: 0;
+        }
+        
+        .language-drawer-item.active .language-drawer-check {
+          opacity: 1;
+        }
+      `;
+      
+      document.head.appendChild(style);
+      
+      // Make the drawer visible
+      setTimeout(() => {
+        drawer.classList.add('active');
+      }, 10);
+      
+      // Close drawer when clicking close button
+      const closeDrawer = () => {
+        drawer.classList.remove('active');
+        setTimeout(() => {
+          drawer.remove();
+        }, 300);
+      };
+      
+      document.getElementById('languageDrawerClose').addEventListener('click', closeDrawer);
+      
+      // Close drawer when clicking outside
+      drawer.addEventListener('click', function(e) {
+        if (e.target === drawer) {
+          closeDrawer();
+        }
+      });
+      
+      // Handle language selection
+      const languageItems = drawer.querySelectorAll('.language-drawer-item');
+      languageItems.forEach(item => {
+        item.addEventListener('click', function() {
+          const lang = this.getAttribute('data-lang');
+          const code = this.querySelector('.language-drawer-badge').textContent;
+          const name = this.querySelector('.language-drawer-title').textContent;
+          const region = this.querySelector('.language-drawer-desc').textContent;
+          
+          // Update mobile nav language display
+          const mobileNavLanguageCode = document.getElementById('mobileNavLanguageCode');
+          const mobileNavLanguageName = document.getElementById('mobileNavLanguageName');
+          const mobileNavLanguageRegion = document.getElementById('mobileNavLanguageRegion');
+          
+          if (mobileNavLanguageCode) mobileNavLanguageCode.textContent = code;
+          if (mobileNavLanguageName) mobileNavLanguageName.textContent = name;
+          if (mobileNavLanguageRegion) mobileNavLanguageRegion.textContent = region;
+          
+          // Update active state in the drawer
+          languageItems.forEach(i => i.classList.remove('active'));
+          this.classList.add('active');
+          
+          // Close the drawer
+          setTimeout(closeDrawer, 300);
+        });
       });
     });
   }
