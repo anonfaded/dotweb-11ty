@@ -14,28 +14,14 @@
 @use "components/datenschutz";
 @use "components/agb";
 @use "components/inner-page-hero";
-@import "components/konferenzen-benefits";
-@import "components/konferenzen-content";
-@import "components/testimonials-section";
-@import "components/pricing-cta-section";
-@import "components/messen-ausstellungen/hero";
-@import "components/messen-ausstellungen/benefits";
-@import "components/messen-ausstellungen/content";
-@import "components/messen-ausstellungen/testimonials";
-@import "components/messen-ausstellungen/pricing-cta-section";
-
-
-@import "components/sport-lauf-events/hero";
-@import "components/sport-lauf-events/benefits";
-@import "components/sport-lauf-events/content";
-@import "components/sport-lauf-events/testimonials";
-@import "components/sport-lauf-events/pricing-cta-section";
-
-@import "components/outdoor-kultur-festivals/hero";
-@import "components/outdoor-kultur-festivals/benefits";
-@import "components/outdoor-kultur-festivals/content";
-@import "components/outdoor-kultur-festivals/testimonials";
-@import "components/outdoor-kultur-festivals/pricing-cta-section";
+@use "components/konferenzen-benefits" as *;
+@use "components/konferenzen-content" as *;
+@use "components/testimonials-section" as *;
+@use "components/pricing-cta-section" as *;
+@use "components/messen-ausstellungen" as *;
+@use "components/sport-lauf-events" as *;
+@use "components/outdoor-kultur-festivals" as *;
+@use "components/dorf-quartierfeste" as *;
 
 @media (max-width: 768px) {
   .page-content {
