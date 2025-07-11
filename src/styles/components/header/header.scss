@@ -812,7 +812,7 @@
   
   // --- HAMBURGER / MOBILE NAV TOGGLE ---
   .mobile-nav-toggle {
-    display: none;
+    display: none; // Hidden by default on desktop
     background: none;
     border: none;
     cursor: pointer;
@@ -909,15 +909,11 @@
   .mobile-nav-content {
     display: none;
   }
+
   @media (max-width: 992px) {
     .premium-mobile-nav,
     .mobile-nav-content {
       display: block;
-    }
-    
-    // Hide desktop navigation completely on mobile
-    .main-navigation {
-      display: none !important;
     }
   }
   
@@ -936,151 +932,226 @@
       padding-left: 24px;
     }
   }
-  @media (max-width: 992px) {
-    .mobile-nav-toggle {
-      display: flex;
-      align-self: center;
-    }
-    .header-container {
-      gap: var(--spacing-sm);
-    }
-    .nav-menu {
-      position: fixed;
-      top: 70px;
-      right: -100%;
-      width: 80%;
-      max-width: 400px;
-      height: calc(100vh - 70px);
-      flex-direction: column;
-      align-items: flex-start;
-      padding: var(--spacing-md);
-      background-color: var(--white);
-      box-shadow: var(--shadow-lg);
-      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-      z-index: 1000;
-      overflow-y: auto;
-      border-left: 1px solid var(--gray-200);
-    }
-    .nav-menu.active {
-      right: 0;
-    }
-    .nav-item {
-      width: 100%;
-      margin: var(--spacing-xxs) 0;
-    }
-    .nav-link {
-      width: 100%;
-      padding: var(--spacing-sm);
-      border-radius: var(--radius-md);
-      justify-content: flex-start;
-    }
-    .nav-link::after {
-      display: none;
-    }
-    .nav-link.active {
-      background-color: var(--primary-light);
-      color: var(--primary);
-      font-weight: 600;
-    }
-    .nav-cta {
-      margin: var(--spacing-md) 0 0 0;
-      width: 100%;
-    }
-    .nav-cta-btn {
-      width: 100%;
-      justify-content: center;
-    }
-    .nav-dropdown-menu,
-    .mega-menu {
-      position: fixed;
-      top: 70px;
-      left: 0;
-      right: 0;
-      transform: none;
-      max-width: none;
-      min-width: auto;
-      width: 100%;
-      border-radius: 0;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-    .nav-dropdown:hover .nav-dropdown-menu,
-    .nav-dropdown-toggle[aria-expanded="true"] + .nav-dropdown-menu {
-      transform: none;
-    }
-    .mega-menu-container {
-      grid-template-columns: 1fr;
-      gap: 20px;
-      padding: 16px;
-    }
-    .mega-menu-promo {
-      border-left: none;
-      border-top: 1px solid var(--gray-100);
-      padding-left: 0;
-      padding-top: 20px;
-    }
-    .language-switcher-menu {
-      right: 0;
-      left: auto;
-    }
+
+// Main breakpoint for mobile navigation - this is the key breakpoint where we switch from desktop to mobile
+@media (max-width: 992px) {
+  // Show hamburger menu
+  .mobile-nav-toggle {
+    display: flex;
+    align-self: center;
   }
-  @media (max-width: 768px) {
-    .nav-secondary {
-      gap: 12px;
-    }
-    .language-switcher-toggle {
-      padding: 6px 10px;
-      font-size: 0.8rem;
-      height: 36px;
-      min-width: 60px;
-    }
-    .promo-card {
-      padding: 16px;
-    }
-    .promo-title {
-      font-size: 1rem;
-    }
-    .promo-description {
-      font-size: 0.8rem;
-    }
+  
+  // Hide desktop navigation
+  .main-navigation {
+    display: none !important;
   }
-  @media (max-width: 576px) {
-    .logo {
-      font-size: 1.25rem;
-    }
-    .header.scrolled .logo {
-      transform: translateX(-12px) scale(0.82);
-    }
-    .logo-icon {
-      width: 34px;
-      height: 34px;
-    }
-    .header.scrolled .logo-icon {
-      width: 32px;
-      height: 32px;
-    }
-    .scroll-progress-bar {
-      height: 2px;
-    }
-    .nav-link {
-      font-size: 0.88rem;
-      padding: 0 0.7rem;
-    }
-    .header.scrolled .nav-link {
-      font-size: 0.88rem;
-      padding: 0 0.7rem;
-    }
-    .nav-cta-btn {
-      font-size: 0.82rem;
-      padding: 0.5rem 1.1rem;
-    }
-    .header.scrolled .nav-cta-btn {
-      font-size: 0.82rem;
-      padding: 0.5rem 1.1rem;
-    }
-    .mobile-nav-toggle {
-      padding: var(--spacing-xxs) var(--spacing-xs);
-    }
-  } 
+  
+  // Other mobile styles
+  .header-container {
+    gap: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .nav-menu {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    width: 80%;
+    max-width: 400px;
+    height: calc(100vh - 70px);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--spacing-md);
+    background-color: var(--white);
+    box-shadow: var(--shadow-lg);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1000;
+    overflow-y: auto;
+    border-left: 1px solid var(--gray-200);
+  }
+  
+  .nav-menu.active {
+    right: 0;
+  }
+  
+  .nav-item {
+    width: 100%;
+    margin: var(--spacing-xxs) 0;
+  }
+  
+  .nav-link {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-md);
+    justify-content: flex-start;
+  }
+  
+  .nav-link::after {
+    display: none;
+  }
+  
+  .nav-link.active {
+    background-color: var(--primary-light);
+    color: var(--primary);
+    font-weight: 600;
+  }
+  
+  .nav-cta {
+    margin: var(--spacing-md) 0 0 0;
+    width: 100%;
+  }
+  
+  .nav-cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .nav-dropdown-menu,
+  .mega-menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    transform: none;
+    max-width: none;
+    min-width: auto;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown-toggle[aria-expanded="true"] + .nav-dropdown-menu {
+    transform: none;
+  }
+  
+  .mega-menu-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 16px;
+  }
+  
+  .mega-menu-promo {
+    border-left: none;
+    border-top: 1px solid var(--gray-100);
+    padding-left: 0;
+    padding-top: 20px;
+  }
+  
+  .language-switcher-menu {
+    right: 0;
+    left: auto;
+  }
+  
+  .nav-secondary {
+    display: none; // Hide secondary nav elements on mobile
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-secondary {
+    gap: 12px;
+  }
+  .language-switcher-toggle {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    height: 36px;
+    min-width: 60px;
+  }
+  .promo-card {
+    padding: 16px;
+  }
+  .promo-title {
+    font-size: 1rem;
+  }
+  .promo-description {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .logo {
+    font-size: 1.25rem;
+  }
+  .header.scrolled .logo {
+    transform: translateX(-12px) scale(0.82);
+  }
+  .logo-icon {
+    width: 34px;
+    height: 34px;
+  }
+  .header.scrolled .logo-icon {
+    width: 32px;
+    height: 32px;
+  }
+  .scroll-progress-bar {
+    height: 2px;
+  }
+  .nav-link {
+    font-size: 0.88rem;
+    padding: 0 0.7rem;
+  }
+  .header.scrolled .nav-link {
+    font-size: 0.88rem;
+    padding: 0 0.7rem;
+  }
+  .nav-cta-btn {
+    font-size: 0.82rem;
+    padding: 0.5rem 1.1rem;
+  }
+  .header.scrolled .nav-cta-btn {
+    font-size: 0.82rem;
+    padding: 0.5rem 1.1rem;
+  }
+  .mobile-nav-toggle {
+    padding: var(--spacing-xxs) var(--spacing-xs);
+  }
+} 
+
+// Mobile responsiveness adjustments for close icon
+@media (max-width: 768px) {
+  .header {
+    height: 70px; // Fixed height for mobile
+  }
+  
+  .header-container {
+    padding: 0 1rem; // Tighter padding
+  }
+  
+  .page-content {
+    margin-top: 70px;
+  }
+} 
+
+// Mobile responsiveness adjustments for smaller screens
+@media (max-width: 480px) {
+  .mobile-nav-content {
+    padding: 1.5rem 1rem;
+  }
+  
+  .mobile-nav-legal-section {
+    margin-left: 0.5rem;
+  }
+  
+  .mobile-nav-language-toggle, .mobile-nav-legal-toggle {
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .mobile-nav-language-badge, .mobile-nav-legal-badge {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .mobile-nav-sublink {
+    padding: 0.5rem 0.75rem;
+  }
+  
+  .mobile-nav-contact-link {
+    padding: 0.5rem 0;
+  }
+}
 
 // ---- PREMIUM MOBILE NAVIGATION ----
 // Mobile navigation overlay
@@ -1444,78 +1515,8 @@
   display: flex;
 }
 
-// Mobile responsiveness adjustments for close icon
-@media (max-width: 768px) {
-  .header {
-    height: 70px; // Fixed height for mobile
-  }
-  
-  .header-container {
-    padding: 0 1rem; // Tighter padding
-  }
-  
-  .page-content {
-    margin-top: 70px;
-  }
-}
-
-// Mobile responsiveness adjustments
-@media (max-width: 480px) {
-  .mobile-nav-content {
-    padding: 1.5rem 1rem;
-  }
-  
-  .mobile-nav-legal-section {
-    margin-left: 0.5rem;
-  }
-  
-  .mobile-nav-language-toggle, .mobile-nav-legal-toggle {
-    padding: 0.5rem 0.75rem;
-  }
-  
-  .mobile-nav-language-badge, .mobile-nav-legal-badge {
-    width: 28px;
-    height: 28px;
-  }
-  
-  .mobile-nav-sublink {
-    padding: 0.5rem 0.75rem;
-  }
-  
-  .mobile-nav-contact-link {
-    padding: 0.5rem 0;
-  }
-}
-
-// Updated header container layout for mobile
+// Logo size adjustment for mobile
 @media (max-width: 992px) {
-  .header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--spacing-sm);
-  }
-  
-  .nav-menu {
-    display: none; // Ensure desktop nav menu is hidden
-  }
-  
-  .nav-secondary {
-    display: none; // Hide secondary nav elements on mobile
-  }
-  
-  .mobile-nav-toggle {
-    display: flex;
-    align-self: center;
-  }
-} 
-
-// Media query to hide desktop navigation links when mobile menu is visible
-@media (max-width: 1024px) {
-  .main-navigation {
-    display: none; // Hide desktop navigation when in mobile view
-  }
-  
   .header .logo {
     font-size: 1.2rem; // Slightly smaller logo on mobile
   }

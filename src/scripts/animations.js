@@ -3,6 +3,49 @@
  * Implements premium entrance animations with performance optimization
  */
 
+// Hero buttons scroll animation
+function initHeroButtonsScrollAnimation() {
+  const heroButtons = document.querySelectorAll('.hero-actions .btn');
+  if (!heroButtons.length) return;
+
+  let lastScrollTop = 0;
+  
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollDistance = Math.min(scrollTop, 300); // Cap at 300px scroll
+    const scrollProgress = scrollDistance / 300; // 0 to 1
+    
+    // Only apply when scrolling down and within the first 300px
+    if (scrollTop > lastScrollTop && scrollTop < 300) {
+      heroButtons.forEach((btn, index) => {
+        // Stagger the animation slightly for each button
+        const delay = index * 0.15;
+        const translateY = -5 * scrollProgress;
+        
+        btn.style.transform = `translateY(${translateY}px)`;
+        
+        // Add glow effect based on scroll
+        if (btn.classList.contains('btn-primary')) {
+          const glowIntensity = 0.15 + (0.1 * scrollProgress);
+          btn.style.boxShadow = `0 2px 8px rgba(233, 37, 31, 0.2), 0 0 ${15 + (scrollProgress * 10)}px rgba(233, 37, 31, ${glowIntensity})`;
+        } else if (btn.classList.contains('btn-outline')) {
+          const glowIntensity = 0.1 + (0.1 * scrollProgress);
+          btn.style.boxShadow = `0 2px 10px rgba(0, 0, 0, 0.1), 0 0 ${5 + (scrollProgress * 10)}px rgba(0, 0, 0, ${glowIntensity})`;
+        }
+      });
+    } else if (scrollTop <= 0) {
+      // Reset when back at top
+      heroButtons.forEach(btn => {
+        btn.style.transform = '';
+        btn.style.boxShadow = '';
+      });
+    }
+    
+    lastScrollTop = scrollTop;
+  }, { passive: true });
+}
+
+// Initialize all animations
 document.addEventListener('DOMContentLoaded', function() {
   // Check for reduced motion preference
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -24,6 +67,9 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
   }
+  
+  // Initialize hero buttons scroll animation
+  initHeroButtonsScrollAnimation();
 });
 
 /**
