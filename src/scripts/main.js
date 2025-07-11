@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize Header Scroll Effects
   initHeaderScroll();
   
+  // Initialize Scroll Progress Bar
+  initScrollProgressBar();
+  
   // Initialize Mobile Navigation
   initMobileNavigation();
   
@@ -43,6 +46,20 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactAnimations();
   initFooterAnimations();
 });
+
+// Scroll Progress Bar
+function initScrollProgressBar() {
+  const scrollProgressBar = document.getElementById('scrollProgressBar');
+  if (!scrollProgressBar) return;
+  
+  window.addEventListener('scroll', () => {
+    const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrolled = window.scrollY;
+    const scrollPercentage = (scrolled / windowHeight) * 100;
+    
+    scrollProgressBar.style.width = `${scrollPercentage}%`;
+  }, { passive: true });
+}
 
 // Header scroll effect
 function initHeaderScroll() {

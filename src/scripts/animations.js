@@ -134,8 +134,30 @@ export function initProcessAnimations() {
 }
 
 export function initPortfolioAnimations() {
-  // Portfolio section is now handled by the standard scroll animations
-  // This function is kept for compatibility with main.js imports
+  // Portfolio section animations
+  const featureCards = document.querySelectorAll('.portfolio-showcase .feature-card');
+  
+  if (featureCards.length) {
+    featureCards.forEach(card => {
+      // Ensure proper animation classes are applied
+      card.classList.add('animate-in');
+      
+      // Add hover effect handling
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-8px) scale(1.05)';
+        card.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.15)';
+        card.style.borderColor = 'rgba(233, 37, 31, 0.15)';
+        card.style.zIndex = '5';
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+        card.style.boxShadow = '';
+        card.style.borderColor = '';
+        card.style.zIndex = '';
+      });
+    });
+  }
 }
 
 export function initContactAnimations() {
