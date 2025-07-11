@@ -98,9 +98,6 @@ function initAnimationSequence() {
   
   // 5. Start scroll-based animations
   initScrollAnimations();
-  
-  // 6. Initialize enhanced section animations
-  initEnhancedSectionAnimations();
 }
 
 /**
@@ -126,212 +123,48 @@ function initHeaderAnimations() {
 }
 
 /**
- * Enhanced section animations with enterprise-grade effects
- */
-function initEnhancedSectionAnimations() {
-  // Portfolio section animations
-  initPortfolioAnimations();
-  
-  // Process section animations
-  initProcessAnimations();
-  
-  // Contact/Testimonials section animations
-  initContactAnimations();
-  
-  // Footer animations
-  initFooterAnimations();
-}
-
-/**
- * Portfolio section specific animations
- */
-function initPortfolioAnimations() {
-  const portfolioSection = document.querySelector('.portfolio-showcase');
-  if (!portfolioSection) return;
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Animate section header first
-        const sectionHeader = entry.target.querySelector('.section-header');
-        if (sectionHeader) {
-          sectionHeader.classList.add('animate-in');
-        }
-        
-        // Animate project card with delay
-        setTimeout(() => {
-          const projectCard = entry.target.querySelector('.project-card');
-          if (projectCard) {
-            projectCard.classList.add('animate-in');
-            
-            // Animate project card children with stagger
-            const cardChildren = projectCard.querySelectorAll('.project-media, .project-content');
-            cardChildren.forEach((child, index) => {
-              setTimeout(() => {
-                child.classList.add('animate-in');
-              }, 200 + (index * 150));
-            });
-          }
-        }, 300);
-        
-        // Animate features section
-        setTimeout(() => {
-          const featuresSection = entry.target.querySelector('.features-section');
-          if (featuresSection) {
-            featuresSection.classList.add('animate-in');
-            
-            // Animate feature cards with stagger
-            const featureCards = featuresSection.querySelectorAll('.feature-card');
-            featureCards.forEach((card, index) => {
-              setTimeout(() => {
-                card.classList.add('animate-in');
-              }, 100 + (index * 100));
-            });
-          }
-        }, 600);
-        
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -10% 0px'
-  });
-  
-  observer.observe(portfolioSection);
-}
-
-/**
  * Process section specific animations
  */
-function initProcessAnimations() {
+export function initProcessAnimations() {
   const processSection = document.querySelector('.process');
   if (!processSection) return;
   
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Animate section header
-        const sectionHeader = entry.target.querySelector('.section-header');
-        if (sectionHeader) {
-          sectionHeader.classList.add('animate-in');
-        }
-        
-        // Animate process steps with stagger
-        const processSteps = entry.target.querySelectorAll('.process-step');
-        processSteps.forEach((step, index) => {
-          setTimeout(() => {
-            step.classList.add('animate-in');
-          }, 400 + (index * 200));
-        });
-        
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.15,
-    rootMargin: '0px 0px -5% 0px'
-  });
-  
-  observer.observe(processSection);
+  // Process section is now handled by the standard scroll animations
+  // This function is kept for compatibility with main.js imports
+}
+
+export function initPortfolioAnimations() {
+  // Portfolio section is now handled by the standard scroll animations
+  // This function is kept for compatibility with main.js imports
 }
 
 export function initContactAnimations() {
-  const contactSection = document.querySelector('.integrated-section');
-  if (!contactSection) return;
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Animate section header
-        const sectionHeader = entry.target.querySelector('.integrated-header');
-        if (sectionHeader) {
-          sectionHeader.classList.add('animate-in');
-        }
-        
-        // Animate contact and testimonials columns
-        const columns = entry.target.querySelectorAll('.contact-column, .testimonials-column');
-        columns.forEach((column, index) => {
-          setTimeout(() => {
-            column.classList.add('animate-in');
-            
-            // Animate form fields with stagger
-            if (column.classList.contains('contact-column')) {
-              const formFields = column.querySelectorAll('.form-field');
-              formFields.forEach((field, fieldIndex) => {
-                setTimeout(() => {
-                  field.classList.add('animate-in');
-                }, 100 + (fieldIndex * 50));
-              });
-            }
-            
-            // Animate guarantee items with stagger
-            if (column.classList.contains('testimonials-column')) {
-              const guaranteeItems = column.querySelectorAll('.guarantee-item');
-              guaranteeItems.forEach((item, itemIndex) => {
-                setTimeout(() => {
-                  item.classList.add('animate-in');
-                }, 100 + (itemIndex * 80));
-              });
-            }
-          }, 300 + (index * 200));
-        });
-        
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -10% 0px'
-  });
-  
-  observer.observe(contactSection);
+  // Contact section is now handled by the standard scroll animations
+  // This function is kept for compatibility with main.js imports
 }
 
 /**
  * Footer animations
  */
 export function initFooterAnimations() {
-  const footer = document.querySelector('.footer');
-  if (!footer) return;
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate-in');
-        
-        // Animate footer columns with stagger
-        const footerColumns = entry.target.querySelectorAll('.footer-brand-column, .footer-nav-column, .footer-contact-column');
-        footerColumns.forEach((column, index) => {
-          setTimeout(() => {
-            column.classList.add('animate-in');
-          }, 100 + (index * 100));
-        });
-        
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.2,
-    rootMargin: '0px 0px -5% 0px'
-  });
-  
-  observer.observe(footer);
+  // Footer is now handled by the standard scroll animations
+  // This function is kept for compatibility with main.js imports
 }
 
 /**
  * Initializes scroll-triggered animations using Intersection Observer
  */
 function initScrollAnimations() {
-  // Main scroll animation observer for legacy elements
+  // Main scroll animation observer for elements with data-effect attribute
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const element = entry.target;
+        const effect = element.dataset.effect || 'fade-in';
         const delay = parseInt(element.dataset.delay || 0);
         
         setTimeout(() => {
-          element.classList.add(element.dataset.effect || 'fade-in');
+          element.classList.add(effect);
         }, delay);
         
         // Unobserve after animation is triggered
@@ -344,8 +177,8 @@ function initScrollAnimations() {
     rootMargin: '0px 0px -10% 0px' // slightly above the bottom of viewport
   });
   
-  // Observe all elements with the animate class that don't have initial animation
-  document.querySelectorAll('.animate:not([data-animation="initial"])').forEach(element => {
+  // Observe all elements with the animate class
+  document.querySelectorAll('.animate').forEach(element => {
     observer.observe(element);
   });
 } 

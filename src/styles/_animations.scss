@@ -124,175 +124,125 @@ body.content-loaded header {
   }
 }
 
-/* Base Animation Utilities */
+/* Base Animation Classes */
 .animate {
   opacity: 0;
-  will-change: transform, opacity;
-  backface-visibility: hidden;
-}
-
-/* Animation Variants */
-.animate.fade-in {
-  animation: fadeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.animate.fade-in-up {
-  animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.animate.fade-in-down {
-  animation: fadeInDown 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.animate.fade-in-left {
-  animation: fadeInLeft 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.animate.fade-in-right {
-  animation: fadeInRight 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.animate.scale-in {
-  animation: scaleIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-/* Hero Section Special Animations */
-.hero {
-  opacity: 0;
-  transform: translateY(5px);
-  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-  visibility: hidden;
-}
-
-.hero.animated {
-  opacity: 1;
-  transform: translateY(0);
-  visibility: visible;
-}
-
-.hero-content > * {
-  opacity: 0;
-  transform: translateY(15px);
-  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-property: opacity, transform;
+  transition-duration: 0.6s;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
 
-.hero-badge {
-  transition-delay: 0.3s;
-}
-
-.hero-heading {
-  transition-delay: 0.5s;
-}
-
-.hero-subheading {
-  transition-delay: 0.7s;
-}
-
-.hero-actions {
-  transition-delay: 0.9s;
-}
-
-.hero.animated .hero-content > * {
+/* Fade In */
+.animate.fade-in {
   opacity: 1;
-  transform: translateY(0);
 }
 
-/* Enhanced Section Animations */
-
-/* Portfolio Section Animations */
-.portfolio-showcase .section-header {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+/* Fade In Up */
+.animate {
+  &[data-effect="fade-in-up"] {
+    transform: translateY(20px);
+    
+    &.fade-in-up {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
-.portfolio-showcase .section-header.animate-in {
-  opacity: 1;
-  transform: translateY(0);
+/* Fade In Down */
+.animate {
+  &[data-effect="fade-in-down"] {
+    transform: translateY(-20px);
+    
+    &.fade-in-down {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
 
-.portfolio-showcase .project-card {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+/* Fade In Left */
+.animate {
+  &[data-effect="fade-in-left"] {
+    transform: translateX(20px);
+    
+    &.fade-in-left {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 }
 
-.portfolio-showcase .project-card.animate-in {
-  opacity: 1;
-  transform: translateY(0);
+/* Fade In Right */
+.animate {
+  &[data-effect="fade-in-right"] {
+    transform: translateX(-20px);
+    
+    &.fade-in-right {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 }
 
-.portfolio-showcase .project-media,
-.portfolio-showcase .project-content {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+/* Scale In */
+.animate {
+  &[data-effect="scale-in"] {
+    transform: scale(0.95);
+    
+    &.scale-in {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
 }
 
-.portfolio-showcase .project-media.animate-in,
-.portfolio-showcase .project-content.animate-in {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.portfolio-showcase .features-section {
-  opacity: 0;
-  transform: translateY(25px);
-  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.portfolio-showcase .features-section.animate-in {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.portfolio-showcase .feature-card {
-  opacity: 0;
-  transform: translateY(20px) scale(0.98);
-  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.portfolio-showcase .feature-card.animate-in {
-  opacity: 1;
-  transform: translateY(0) scale(1);
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate {
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 /* Process Section Animations */
-.process .section-header {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.process .section-header.animate-in {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .process-step {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(20px);
   transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
               transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.process-step.animate-in {
+.process-step.active {
   opacity: 1;
   transform: translateY(0);
 }
 
-.process-step.animated {
+.process-step .step-content {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.2s,
+              transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
+}
+
+.process-step.active .step-content {
   opacity: 1;
   transform: translateY(0);
+}
+
+.process-step .step-number {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.1s,
+              transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.1s,
+              background-color 0.3s ease;
+}
+
+.process-step.active .step-number {
+  opacity: 1;
+  transform: scale(1);
 }
 
 /* Contact/Testimonials Section Animations */
