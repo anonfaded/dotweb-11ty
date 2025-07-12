@@ -699,29 +699,31 @@
   
   .review-stars {
     display: flex;
-    gap: 0.15rem;
-    color: #f59e0b;
+    gap: 0.175rem;
+    color: var(--primary);
   }
   
   .review-quote {
-    font-size: 1.1rem;
-    color: var(--gray-800);
-    font-style: italic;
-    margin: 0 0 0.8rem 0;
+    font-size: 1rem;
     line-height: 1.6;
+    color: var(--gray-700);
+    font-style: italic;
     position: relative;
-    quotes: "\201C" "\201D" "\2018" "\2019";
+    margin: 0 0 1.5rem 0;
+    padding-left: 1.5rem;
+    flex-grow: 1;
   }
   
   .review-quote::before {
-    content: open-quote;
+    content: '"';
     font-size: 2.5rem;
     line-height: 0;
-    color: var(--gray-400);
-    opacity: 0.25;
     position: absolute;
-    left: -1.25rem;
+    left: 0;
     top: 0.5rem;
+    color: var(--primary);
+    opacity: 0.2;
+    font-family: Georgia, serif;
   }
   
   .review-author-row {
@@ -763,20 +765,21 @@
   .review-link {
     display: flex;
     align-items: center;
-    gap: 0.375rem;
-    font-size: 0.875rem;
-    font-weight: 600;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: var(--primary-light);
     color: var(--primary);
     text-decoration: none;
-    transition: all 0.2s ease;
-    padding: 0.5rem 0.75rem;
-    border-radius: 8px;
-    background-color: var(--primary-light);
+    flex-shrink: 0;
+    transition: all 0.3s ease;
   }
   
   .review-link:hover {
-    gap: 0.625rem;
-    background-color: rgba(233, 37, 31, 0.12);
+    background-color: var(--primary);
+    color: var(--white);
+    transform: scale(1.1);
   }
   
   @media (max-width: 992px) {
@@ -853,7 +856,8 @@
       gap: 1rem;
     }
     .review-link {
-      width: 100%;
-      justify-content: center;
+      width: 38px;
+      height: 38px;
+      align-self: flex-end;
     }
   }
