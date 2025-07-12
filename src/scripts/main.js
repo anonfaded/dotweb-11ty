@@ -419,41 +419,489 @@ function initNavigationDropdowns() {
 
 // Legal drawer
 function initLegalDrawer() {
-  const legalToggle = document.querySelector('.legal-toggle');
-  const legalDrawer = document.querySelector('.legal-drawer');
+  const legalToggle = document.getElementById('mobileNavLegalToggle');
   
-  if (!legalToggle || !legalDrawer) return;
-  
-  legalToggle.addEventListener('click', (e) => {
-    e.preventDefault();
-    legalDrawer.classList.toggle('active');
-  });
-  
-  // Close when clicking outside
-  document.addEventListener('click', (e) => {
-    if (legalDrawer.classList.contains('active') && !e.target.closest('.legal-drawer') && !e.target.closest('.legal-toggle')) {
-      legalDrawer.classList.remove('active');
-    }
-  });
+  if (legalToggle) {
+    legalToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Create legal drawer bottom sheet
+      const existingDrawer = document.getElementById('legalDrawer');
+      if (existingDrawer) {
+        existingDrawer.remove();
+      }
+      
+      const drawer = document.createElement('div');
+      drawer.id = 'legalDrawer';
+      drawer.className = 'legal-drawer-overlay';
+      drawer.innerHTML = `
+        <div class="legal-drawer-content">
+          <div class="legal-drawer-header">
+            <h3>Rechtliche Informationen</h3>
+            <button class="legal-drawer-close" id="legalDrawerClose">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+          <div class="legal-drawer-body">
+            <a href="agb.html" class="legal-drawer-item">
+              <div class="legal-drawer-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14,2 14,8 20,8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+              </div>
+              <div class="legal-drawer-text">
+                <span class="legal-drawer-title">Allgemeine Geschäftsbedingungen</span>
+                <span class="legal-drawer-desc">Unsere AGB und Nutzungsbedingungen</span>
+              </div>
+            </a>
+            <a href="datenschutz.html" class="legal-drawer-item">
+              <div class="legal-drawer-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </div>
+              <div class="legal-drawer-text">
+                <span class="legal-drawer-title">Datenschutzerklärung</span>
+                <span class="legal-drawer-desc">Wie wir Ihre Daten schützen</span>
+              </div>
+            </a>
+            <a href="impressum.html" class="legal-drawer-item">
+              <div class="legal-drawer-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+              </div>
+              <div class="legal-drawer-text">
+                <span class="legal-drawer-title">Impressum</span>
+                <span class="legal-drawer-desc">Rechtliche Angaben zu unserem Unternehmen</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      `;
+      
+      document.body.appendChild(drawer);
+      
+      // Add styles for the drawer
+      const style = document.createElement('style');
+      style.textContent = `
+        .legal-drawer-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(0, 0, 0, 0.5);
+          backdrop-filter: blur(4px);
+          z-index: 1000;
+          display: flex;
+          align-items: flex-end;
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.3s ease;
+        }
+        
+        .legal-drawer-overlay.active {
+          opacity: 1;
+          visibility: visible;
+        }
+        
+        .legal-drawer-content {
+          width: 100%;
+          background: white;
+          border-radius: 16px 16px 0 0;
+          padding: 0;
+          transform: translateY(100%);
+          transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          max-height: 60vh;
+          overflow: hidden;
+        }
+        
+        .legal-drawer-overlay.active .legal-drawer-content {
+          transform: translateY(0);
+        }
+        
+        .legal-drawer-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 20px 24px 16px;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .legal-drawer-header h3 {
+          margin: 0;
+          font-size: 1.1rem;
+          font-weight: 600;
+          color: #2d3748;
+        }
+        
+        .legal-drawer-close {
+          background: none;
+          border: none;
+          padding: 8px;
+          cursor: pointer;
+          border-radius: 50%;
+          transition: background-color 0.2s ease;
+          color: #6b7280;
+        }
+        
+        .legal-drawer-close:hover {
+          background: rgba(0, 0, 0, 0.05);
+          color: #374151;
+        }
+        
+        .legal-drawer-body {
+          padding: 8px 16px 24px;
+        }
+        
+        .legal-drawer-item {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 12px 8px;
+          text-decoration: none;
+          border-radius: 8px;
+          transition: background-color 0.2s ease;
+          margin-bottom: 4px;
+        }
+        
+        .legal-drawer-item:hover {
+          background: rgba(233, 37, 31, 0.04);
+        }
+        
+        .legal-drawer-icon {
+          width: 40px;
+          height: 40px;
+          background: rgba(233, 37, 31, 0.1);
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--primary, #e9251f);
+          flex-shrink: 0;
+        }
+        
+        .legal-drawer-text {
+          flex: 1;
+          min-width: 0;
+        }
+        
+        .legal-drawer-title {
+          display: block;
+          font-size: 0.95rem;
+          font-weight: 600;
+          color: #2d3748;
+          line-height: 1.2;
+        }
+        
+        .legal-drawer-desc {
+          display: block;
+          font-size: 0.8rem;
+          color: #6b7280;
+          line-height: 1.3;
+          margin-top: 2px;
+        }
+      `;
+      document.head.appendChild(style);
+      
+      // Show drawer
+      setTimeout(() => {
+        drawer.classList.add('active');
+      }, 10);
+      
+      // Close drawer functionality
+      const closeDrawer = () => {
+        drawer.classList.remove('active');
+        setTimeout(() => {
+          drawer.remove();
+          document.head.removeChild(style);
+        }, 300);
+      };
+      
+      document.getElementById('legalDrawerClose').addEventListener('click', closeDrawer);
+      drawer.addEventListener('click', (e) => {
+        if (e.target === drawer) closeDrawer();
+      });
+    });
+  }
 }
 
 // Language drawer
 function initLanguageDrawer() {
-  const langToggle = document.querySelector('.lang-toggle');
-  const langDrawer = document.querySelector('.lang-drawer');
+  const mobileNavLanguageToggle = document.getElementById('mobileNavLanguageToggle');
   
-  if (!langToggle || !langDrawer) return;
+  if (!mobileNavLanguageToggle) return;
   
-  langToggle.addEventListener('click', (e) => {
+  mobileNavLanguageToggle.addEventListener('click', (e) => {
     e.preventDefault();
-    langDrawer.classList.toggle('active');
-  });
-  
-  // Close when clicking outside
-  document.addEventListener('click', (e) => {
-    if (langDrawer.classList.contains('active') && !e.target.closest('.lang-drawer') && !e.target.closest('.lang-toggle')) {
-      langDrawer.classList.remove('active');
-    }
+    
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'mobile-language-overlay';
+    overlay.id = 'mobileLanguageOverlay';
+    
+    // Create drawer
+    const drawer = document.createElement('div');
+    drawer.className = 'mobile-language-sheet';
+    drawer.id = 'mobileLanguageSheet';
+    
+    drawer.innerHTML = `
+      <div class="mobile-language-header">
+        <h3 class="mobile-language-title">Sprache wählen</h3>
+        <button class="mobile-language-close" id="mobileLanguageClose">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="mobile-language-content">
+        <div class="mobile-language-list">
+          <a href="#" class="mobile-language-option active" data-lang="de">
+            <div class="mobile-lang-code">DE</div>
+            <span class="mobile-lang-name">Deutsch</span>
+          </a>
+          <a href="#" class="mobile-language-option" data-lang="fr">
+            <div class="mobile-lang-code">FR</div>
+            <span class="mobile-lang-name">Français</span>
+          </a>
+          <a href="#" class="mobile-language-option" data-lang="it">
+            <div class="mobile-lang-code">IT</div>
+            <span class="mobile-lang-name">Italiano</span>
+          </a>
+          <a href="#" class="mobile-language-option" data-lang="en">
+            <div class="mobile-lang-code">EN</div>
+            <span class="mobile-lang-name">English</span>
+          </a>
+        </div>
+      </div>
+    `;
+    
+    document.body.appendChild(overlay);
+    document.body.appendChild(drawer);
+    
+    // Add styles
+    const style = document.createElement('style');
+    style.textContent = `
+      .mobile-language-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+      
+      .mobile-language-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      
+      .mobile-language-sheet {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        border-radius: 16px 16px 0 0;
+        z-index: 1001;
+        transform: translateY(100%);
+        transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        max-height: 60vh;
+        overflow: hidden;
+      }
+      
+      .mobile-language-sheet.active {
+        transform: translateY(0);
+      }
+      
+      .mobile-language-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 24px 16px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      
+      .mobile-language-title {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #2d3748;
+      }
+      
+      .mobile-language-close {
+        background: none;
+        border: none;
+        padding: 8px;
+        cursor: pointer;
+        border-radius: 50%;
+        transition: background-color 0.2s ease;
+        color: #6b7280;
+      }
+      
+      .mobile-language-close:hover {
+        background: rgba(0, 0, 0, 0.05);
+        color: #374151;
+      }
+      
+      .mobile-language-content {
+        padding: 8px 16px 24px;
+      }
+      
+      .mobile-language-list {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      
+      .mobile-language-option {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 12px;
+        text-decoration: none;
+        border-radius: 12px;
+        transition: all 0.2s ease;
+        color: #2d3748;
+      }
+      
+      .mobile-language-option:hover {
+        background: rgba(233, 37, 31, 0.04);
+      }
+      
+      .mobile-language-option.active {
+        background: rgba(233, 37, 31, 0.08);
+      }
+      
+      .mobile-lang-code {
+        width: 40px;
+        height: 40px;
+        background: rgba(233, 37, 31, 0.1);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary, #e9251f);
+        font-weight: 600;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+      }
+      
+      .mobile-language-option.active .mobile-lang-code {
+        background: var(--primary, #e9251f);
+        color: white;
+      }
+      
+      .mobile-lang-name {
+        font-size: 1rem;
+        font-weight: 500;
+        color: #2d3748;
+      }
+    `;
+    document.head.appendChild(style);
+    
+    // Show drawer
+    setTimeout(() => {
+      overlay.classList.add('active');
+      drawer.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }, 10);
+    
+    // Close drawer functionality
+    const closeDrawer = () => {
+      overlay.classList.remove('active');
+      drawer.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        overlay.remove();
+        drawer.remove();
+        document.head.removeChild(style);
+      }, 300);
+    };
+    
+    document.getElementById('mobileLanguageClose').addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+    
+    // Handle language selection
+    const mobileLanguageOptions = document.querySelectorAll('.mobile-language-option');
+    mobileLanguageOptions.forEach(option => {
+      option.addEventListener('click', (e) => {
+        e.preventDefault();
+        const lang = option.getAttribute('data-lang');
+        
+        // Get language details
+        let langCode = 'DE', langName = 'Deutsch', langRegion = 'Schweiz';
+        switch(lang) {
+          case 'de': 
+            langCode = 'DE'; 
+            langName = 'Deutsch'; 
+            langRegion = 'Schweiz'; 
+            break;
+          case 'fr': 
+            langCode = 'FR'; 
+            langName = 'Français'; 
+            langRegion = 'Suisse'; 
+            break;
+          case 'it': 
+            langCode = 'IT'; 
+            langName = 'Italiano'; 
+            langRegion = 'Svizzera'; 
+            break;
+          case 'en': 
+            langCode = 'EN'; 
+            langName = 'English'; 
+            langRegion = 'International'; 
+            break;
+        }
+        
+        // Update mobile nav language display if elements exist
+        const mobileNavLanguageCode = document.getElementById('mobileNavLanguageCode');
+        const mobileNavLanguageName = document.getElementById('mobileNavLanguageName');
+        const mobileNavLanguageRegion = document.getElementById('mobileNavLanguageRegion');
+        
+        if (mobileNavLanguageCode) mobileNavLanguageCode.textContent = langCode;
+        if (mobileNavLanguageName) mobileNavLanguageName.textContent = langName;
+        if (mobileNavLanguageRegion) mobileNavLanguageRegion.textContent = langRegion;
+        
+        // Update desktop language display with animation
+        const currentElement = document.querySelector('.language-current');
+        if (currentElement && currentElement.textContent !== langCode) {
+          currentElement.classList.add('changing');
+          
+          setTimeout(() => {
+            currentElement.textContent = langCode;
+          }, 200);
+          
+          setTimeout(() => {
+            currentElement.classList.remove('changing');
+          }, 400);
+        }
+        
+        // Update active state
+        mobileLanguageOptions.forEach(opt => opt.classList.remove('active'));
+        option.classList.add('active');
+        
+        // Close the drawer
+        closeDrawer();
+        
+        console.log('Mobile language changed to:', lang);
+      });
+    });
   });
 }
 
