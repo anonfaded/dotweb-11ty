@@ -18,3 +18,4 @@ Thumbs.db
 .env
 .env.* 
 .cursor/rules/rules.mdc
+.trae/rules/project_rules.md
