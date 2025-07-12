@@ -98,18 +98,79 @@ function initScrollProgressBar() {
   }, { passive: true });
 }
 
-// Header scroll effect
+// Header scroll effect - Enhanced for both mobile and desktop
 function initHeaderScroll() {
-  const header = document.querySelector('.site-header');
+  const header = document.querySelector('.header');
+  const scrollProgressBar = document.getElementById('scrollProgressBar');
+  let isAtTop = true;
+  let isScrollingUp = false;
+  let lastScrollY = window.scrollY;
+  
   if (!header) return;
   
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
+  function updateHeaderState() {
+    const currentScrollY = window.scrollY;
+    isScrollingUp = currentScrollY < lastScrollY;
+    
+    // Detect if we're at the top of the page
+    const wasAtTop = isAtTop;
+    isAtTop = currentScrollY <= 50;
+    
+    // Only apply transitions when needed
+    if (isScrollingUp && !wasAtTop && isAtTop) {
+      // Apply transition only when returning to the top
+      header.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    } else if (!isAtTop) {
+      // Apply transition when scrolling down
+      header.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
     }
-  });
+    
+    // Desktop behavior (min-width: 993px)
+    if (window.innerWidth >= 993) {
+      // Remove mobile classes
+      header.classList.remove('mobile-compact', 'mobile-top');
+      
+      if (currentScrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    } else {
+      // Mobile behavior (max-width: 992px)
+      header.classList.remove('scrolled'); // Remove desktop class
+      
+      if (currentScrollY > 50) {
+        header.classList.add('mobile-compact');
+        header.classList.remove('mobile-top');
+      } else {
+        header.classList.add('mobile-top');
+        header.classList.remove('mobile-compact');
+      }
+    }
+    
+    // Update scroll progress bar
+    if (scrollProgressBar) {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercentage = (currentScrollY / scrollHeight) * 100;
+      scrollProgressBar.style.width = `${scrollPercentage}%`;
+    }
+    
+    // Update last scroll position for next comparison
+    lastScrollY = currentScrollY;
+  }
+  
+  // Initial state setup
+  updateHeaderState();
+  
+  // Scroll event listener
+  window.addEventListener('scroll', updateHeaderState, { passive: true });
+  
+  // Resize event listener to handle mobile/desktop transitions
+  window.addEventListener('resize', () => {
+    // Debounce resize events
+    clearTimeout(window.headerResizeTimeout);
+    window.headerResizeTimeout = setTimeout(updateHeaderState, 100);
+  }, { passive: true });
 }
 
 // Mobile navigation toggle
