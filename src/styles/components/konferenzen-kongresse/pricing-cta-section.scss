@@ -1,4 +1,4 @@
- /* === Pricing CTA Section Styles (Cloned from Website/konferenzen-kongresse.html) === */
+/* === Pricing CTA Section Styles (Cloned from Website/konferenzen-kongresse.html) === */
 
 .pricing-cta {
     padding: 100px 0;
@@ -72,20 +72,21 @@
   .pricing-enterprise-cta {
     display: inline-flex;
     align-items: center;
-    padding: 14px 30px;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-    color: white;
-    font-size: 16px;
+    padding: 16px 35px;
+    background: var(--white);
+    color: var(--gray-700);
+    font-size: 17px;
     font-weight: 600;
     border-radius: 8px;
     text-decoration: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 10px 20px rgba(229, 62, 62, 0.2);
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    border: 2px solid var(--gray-200);
     margin-top: 20px;
   }
   
   .pricing-enterprise-cta:hover {
-    box-shadow: 0 15px 35px rgba(229, 62, 62, 0.35);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
   }
   
   .pricing-enterprise-cta-icon {
@@ -400,7 +401,7 @@
       line-height: 1.4;
     }
     .pricing-enterprise-cta {
-      padding: 14px 28px;
+      padding: 16px 32px;
       font-size: 15px;
       margin-top: 20px;
     }
@@ -459,4 +460,4 @@
       font-size: 8px;
       line-height: 1.2;
     }
-  } 
+  }

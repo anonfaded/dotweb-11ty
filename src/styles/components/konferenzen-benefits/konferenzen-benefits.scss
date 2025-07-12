@@ -1,4 +1,4 @@
- // Benefits Section for Konferenzen & Kongresse
+// Benefits Section for Konferenzen & Kongresse
 .portfolio-showcase#vorteile {
     padding: var(--section-padding);
     background-color: var(--white);
@@ -61,10 +61,30 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    transition: box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1), transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .portfolio-showcase#vorteile .feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 2;
   }
   .portfolio-showcase#vorteile .feature-card:hover {
     box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+    transform: translateY(-4px);
+  }
+  .portfolio-showcase#vorteile .feature-card:hover::before {
+    transform: scaleX(1);
   }
   .portfolio-showcase#vorteile .feature-card:hover .feature-icon svg {
     color: #fff;
@@ -114,4 +134,4 @@
     .portfolio-showcase#vorteile .features-section {
       margin-top: 1.5rem;
     }
-  } 
+  }

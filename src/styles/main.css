@@ -4125,7 +4125,7 @@ p.project-description {
   align-items: flex-start;
   background: var(--white);
   border-radius: var(--radius-lg);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
   padding: 1.5rem 2rem;
   transition: box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   margin-bottom: 0;
@@ -6636,20 +6636,21 @@ a.contact-value:hover, a.contact-value:focus { /* Added focus */
 .pricing-enterprise-cta {
   display: inline-flex;
   align-items: center;
-  padding: 14px 30px;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  color: white;
-  font-size: 16px;
+  padding: 16px 35px;
+  background: var(--white);
+  color: var(--gray-700);
+  font-size: 17px;
   font-weight: 600;
   border-radius: 8px;
   text-decoration: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 10px 20px rgba(229, 62, 62, 0.2);
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border: 2px solid var(--gray-200);
   margin-top: 20px;
 }
 
 .pricing-enterprise-cta:hover {
-  box-shadow: 0 15px 35px rgba(229, 62, 62, 0.35);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
 .pricing-enterprise-cta-icon {
@@ -6960,7 +6961,7 @@ a.contact-value:hover, a.contact-value:focus { /* Added focus */
     line-height: 1.4;
   }
   .pricing-enterprise-cta {
-    padding: 14px 28px;
+    padding: 16px 32px;
     font-size: 15px;
     margin-top: 20px;
   }
@@ -7082,11 +7083,33 @@ a.contact-value:hover, a.contact-value:focus { /* Added focus */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  transition: box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1), transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.portfolio-showcase#vorteile .feature-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 2;
 }
 
 .portfolio-showcase#vorteile .feature-card:hover {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.13);
+  transform: translateY(-4px);
+}
+
+.portfolio-showcase#vorteile .feature-card:hover::before {
+  transform: scaleX(1);
 }
 
 .portfolio-showcase#vorteile .feature-card:hover .feature-icon svg {
@@ -7660,10 +7683,32 @@ a.contact-value:hover, a.contact-value:focus { /* Added focus */
   will-change: transform, box-shadow;
   transform: translateY(0) scale(1);
   backface-visibility: hidden;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.feature-card::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 2;
 }
 
 .feature-card:hover {
   box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
+  transform: translateY(-5px);
+}
+
+.feature-card:hover::before {
+  transform: scaleX(1);
 }
 
 .feature-icon {
@@ -7825,7 +7870,7 @@ a.contact-value:hover, a.contact-value:focus { /* Added focus */
   gap: 18px;
   background: var(--white);
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
   padding: 1.25rem 1.5rem;
   transition: box-shadow 0.2s;
 }
@@ -8303,10 +8348,32 @@ a.contact-value:hover, a.contact-value:focus { /* Added focus */
   will-change: transform, box-shadow;
   transform: translateY(0) scale(1);
   backface-visibility: hidden;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.feature-card::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 2;
 }
 
 .feature-card:hover {
   box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
+  transform: translateY(-5px);
+}
+
+.feature-card:hover::before {
+  transform: scaleX(1);
 }
 
 .feature-icon {
@@ -8468,7 +8535,7 @@ a.contact-value:hover, a.contact-value:focus { /* Added focus */
   gap: 18px;
   background: var(--white);
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
   padding: 1.25rem 1.5rem;
   transition: box-shadow 0.2s;
 }
@@ -8946,10 +9013,32 @@ a.contact-value:hover, a.contact-value:focus { /* Added focus */
   will-change: transform, box-shadow;
   transform: translateY(0) scale(1);
   backface-visibility: hidden;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.feature-card::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 2;
 }
 
 .feature-card:hover {
   box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
+  transform: translateY(-5px);
+}
+
+.feature-card:hover::before {
+  transform: scaleX(1);
 }
 
 .feature-icon {
@@ -9111,7 +9200,7 @@ a.contact-value:hover, a.contact-value:focus { /* Added focus */
   gap: 18px;
   background: var(--white);
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
   padding: 1.25rem 1.5rem;
   transition: box-shadow 0.2s;
 }
@@ -9753,7 +9842,7 @@ a.contact-value:hover, a.contact-value:focus { /* Added focus */
   gap: 18px;
   background: var(--white);
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
   padding: 1.25rem 1.5rem;
   transition: box-shadow 0.2s;
 }
