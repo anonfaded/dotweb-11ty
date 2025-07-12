@@ -1,4 +1,4 @@
- /* 4.2 Footer */
+/* 4.2 Footer */
 .footer {
     background: linear-gradient(to bottom, var(--gray-50), #fff);
     position: relative;
@@ -474,10 +474,10 @@
       width: 40px; /* Keep the same width as desktop */
     }
     .footer-contact-column {
-      text-align: center; /* Center contact details */
+      text-align: left; /* Consistent with other columns */
     }
     .footer-contact-item {
-      justify-content: center; /* Center individual contact items */
+      justify-content: flex-start; /* Align with other columns */
       text-align: left; /* Keep text within item left-aligned */
     }
     .footer-bottom {
@@ -485,4 +485,4 @@
       gap: 1rem; /* var(--spacing-sm) */
       text-align: center;
     }
-  } 
+  }
