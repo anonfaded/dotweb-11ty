@@ -4199,7 +4199,7 @@ p.project-description {
   position: relative;
   z-index: 2;
   border-top: 1px solid rgba(233, 37, 31, 0.06);
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .integrated-section::before {
@@ -4217,6 +4217,8 @@ p.project-description {
 .integrated-header {
   text-align: center;
   margin-bottom: 4rem;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .integrated-header .section-title {
@@ -4226,6 +4228,8 @@ p.project-description {
   margin: 0 0 0.75rem;
   position: relative;
   line-height: 1.2;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .integrated-header .section-title strong {
@@ -4248,17 +4252,18 @@ p.project-description {
   max-width: 700px;
   margin: 1rem auto 0;
   line-height: 1.6;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .integrated-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
   align-items: stretch;
   position: relative;
   z-index: 5;
   margin-bottom: 0.5rem;
-  min-height: 600px;
 }
 
 .integrated-content::before {
@@ -4277,25 +4282,25 @@ p.project-description {
 .contact-column {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  opacity: 1 !important; /* Force visibility */
+  transform: none !important; /* Prevent transform from hiding content */
 }
 
 .contact-form {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgb(255, 255, 255) 100%);
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 20px;
-  padding: 3rem;
+  padding: 2.5rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   position: relative;
-  overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
-  height: 100%;
   backdrop-filter: blur(10px);
   width: 100%;
   min-width: 0;
   flex-shrink: 0;
+  opacity: 1 !important; /* Force visibility */
 }
 
 .contact-form:hover {
@@ -4375,6 +4380,7 @@ p.project-description {
 .form-field {
   position: relative;
   transition: transform 0.2s ease;
+  opacity: 1 !important; /* Force visibility */
 }
 
 .form-field:focus-within {
@@ -4668,12 +4674,14 @@ p.project-description {
   backdrop-filter: blur(4px);
   border-radius: 20px;
   width: 100%;
+  height: 100%;
   box-sizing: border-box;
 }
 
 .form-success-message.visible {
   opacity: 1;
   visibility: visible;
+  display: flex;
 }
 
 .success-icon {
@@ -4744,21 +4752,22 @@ p.project-description {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  height: 100%;
+  opacity: 1 !important; /* Force visibility */
+  transform: none !important; /* Prevent transform from hiding content */
 }
 
 .service-guarantees {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgb(255, 255, 255) 100%);
   border-radius: 20px;
-  padding: 3rem;
+  padding: 2.5rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.8);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 100%;
   backdrop-filter: blur(10px);
+  height: 100%;
 }
 
 .service-guarantees:hover {
@@ -4774,65 +4783,89 @@ p.project-description {
   font-size: 1.625rem;
   font-weight: 700;
   color: var(--gray-900);
-  margin: 0;
+  margin: 0 0 1.5rem 0;
+  position: relative;
+}
+
+.guarantees-title::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: var(--primary);
+  margin: 0.75rem 0 0 0;
+  border-radius: 2px;
 }
 
 .guarantees-list {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  margin-top: 2rem;
+  gap: 1.2rem;
+  flex: 1;
+  justify-content: flex-start;
+  margin-top: 0;
 }
 
 .guarantee-item {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 0.875rem;
+  transition: transform 0.3s ease;
+}
+
+.guarantee-item:hover {
+  transform: translateX(5px);
 }
 
 .guarantee-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--primary-light);
-  color: var(--primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: var(--primary-light);
+  color: var(--primary);
   flex-shrink: 0;
-  margin-top: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.guarantee-item:hover .guarantee-icon {
+  background-color: var(--primary);
+  color: var(--white);
+  transform: scale(1.1);
 }
 
 .guarantee-content {
-  display: flex;
-  flex-direction: column;
+  flex: 1;
 }
 
 .guarantee-title {
-  font-size: 1.1rem;
   font-weight: 700;
+  font-size: 1.05rem;
   color: var(--gray-900);
-  margin-bottom: 0.15rem;
+  margin: 0 0 0.3rem;
 }
 
 .guarantee-description {
   font-size: 0.95rem;
   color: var(--gray-600);
+  margin: 0;
   line-height: 1.5;
 }
 
 .service-guarantees.review-card {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgb(255, 255, 255) 100%);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: 20px;
-  padding: 2.5rem 2rem 2rem 2rem;
+  padding: 2.5rem;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
   position: relative;
+  height: auto;
 }
 
 .card-header {
@@ -4927,18 +4960,18 @@ p.project-description {
 @media (max-width: 992px) {
   .integrated-content {
     grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
+    gap: 2rem;
   }
   .testimonials-column {
     order: -1;
   }
   .service-guarantees {
-    margin-bottom: var(--spacing-md);
+    margin-bottom: 1rem;
   }
   .guarantees-list {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-md);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
   }
 }
 @media (max-width: 768px) {
@@ -4953,6 +4986,18 @@ p.project-description {
   }
   .form-grid {
     grid-template-columns: 1fr;
+  }
+  .guarantees-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .integrated-header {
+    margin-bottom: 2.5rem;
+  }
+  .integrated-header .section-title {
+    font-size: 2rem;
+  }
+  .integrated-header .section-description {
+    font-size: 1rem;
   }
 }
 @media (max-width: 576px) {
@@ -4970,6 +5015,22 @@ p.project-description {
   }
   .form-title {
     font-size: 1.3rem;
+  }
+  .guarantees-list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .guarantee-item {
+    margin-bottom: 0.5rem;
+  }
+  .review-author-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .review-link {
+    width: 100%;
+    justify-content: center;
   }
 }
 /* 4.2 Footer */

@@ -98,6 +98,9 @@ function initAnimationSequence() {
   
   // 5. Start scroll-based animations
   initScrollAnimations();
+  
+  // 6. Initialize enhanced section animations
+  initEnhancedSectionAnimations();
 }
 
 /**
@@ -120,6 +123,23 @@ function initHeaderAnimations() {
       delay += 50;
     }
   });
+}
+
+/**
+ * Enhanced section animations with enterprise-grade effects
+ */
+function initEnhancedSectionAnimations() {
+  // Portfolio section animations
+  initPortfolioAnimations();
+  
+  // Process section animations
+  initProcessAnimations();
+  
+  // Contact/Testimonials section animations
+  initContactAnimations();
+  
+  // Footer animations
+  initFooterAnimations();
 }
 
 /**
@@ -161,8 +181,71 @@ export function initPortfolioAnimations() {
 }
 
 export function initContactAnimations() {
-  // Contact section is now handled by the standard scroll animations
-  // This function is kept for compatibility with main.js imports
+  const contactSection = document.querySelector('.integrated-section');
+  if (!contactSection) return;
+  
+  // Make the header visible
+  const sectionHeader = contactSection.querySelector('.integrated-header');
+  if (sectionHeader) {
+    sectionHeader.style.opacity = '1';
+    sectionHeader.style.visibility = 'visible';
+    
+    // Make header elements visible
+    const sectionTitle = sectionHeader.querySelector('.section-title');
+    const sectionDescription = sectionHeader.querySelector('.section-description');
+    
+    if (sectionTitle) {
+      sectionTitle.style.opacity = '1';
+      sectionTitle.style.visibility = 'visible';
+    }
+    
+    if (sectionDescription) {
+      sectionDescription.style.opacity = '1';
+      sectionDescription.style.visibility = 'visible';
+    }
+  }
+  
+  // Immediately make the contact form visible
+  const contactColumn = contactSection.querySelector('.contact-column');
+  const testimonialsColumn = contactSection.querySelector('.testimonials-column');
+  
+  if (contactColumn) {
+    contactColumn.style.opacity = '1';
+    contactColumn.style.transform = 'translateX(0)';
+    
+    // Make form fields visible
+    const formFields = contactColumn.querySelectorAll('.form-field');
+    formFields.forEach(field => {
+      field.style.opacity = '1';
+      field.style.transform = 'translateY(0)';
+    });
+    
+    // Make form header visible
+    const formHeader = contactColumn.querySelector('.form-header');
+    if (formHeader) {
+      formHeader.style.opacity = '1';
+      formHeader.style.transform = 'translateY(0)';
+    }
+    
+    // Make form footer visible
+    const formFooter = contactColumn.querySelector('.form-footer');
+    if (formFooter) {
+      formFooter.style.opacity = '1';
+      formFooter.style.transform = 'translateY(0)';
+    }
+  }
+  
+  if (testimonialsColumn) {
+    testimonialsColumn.style.opacity = '1';
+    testimonialsColumn.style.transform = 'translateX(0)';
+    
+    // Make guarantee items visible
+    const guaranteeItems = testimonialsColumn.querySelectorAll('.guarantee-item');
+    guaranteeItems.forEach(item => {
+      item.style.opacity = '1';
+      item.style.transform = 'translateY(0)';
+    });
+  }
 }
 
 /**

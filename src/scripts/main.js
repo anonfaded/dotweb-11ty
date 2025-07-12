@@ -1,43 +1,47 @@
 import { initContactAnimations, initFooterAnimations, initPortfolioAnimations, initProcessAnimations } from './animations.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Initialize Header Scroll Effects
+// Document ready function
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize header scroll effect
   initHeaderScroll();
   
   // Initialize Scroll Progress Bar
   initScrollProgressBar();
   
-  // Initialize Mobile Navigation
+  // Initialize mobile navigation
   initMobileNavigation();
   
-  // Initialize Scroll To Top Button
+  // Initialize scroll to top button
   initScrollToTop();
   
-  // Initialize Smooth Scrolling for Anchor Links
+  // Initialize smooth scrolling
   initSmoothScrolling();
   
-  // Initialize Process Timeline Animation
+  // Initialize process timeline
   initProcessTimeline();
   
   // Initialize Contact Form
   initContactForm();
   
-  // Initialize Active Nav Link Highlighting
+  // Make sure integrated section is visible
+  makeIntegratedSectionVisible();
+  
+  // Initialize active nav links
   initActiveNavLinks();
   
-  // Initialize Navigation Dropdowns
+  // Initialize navigation dropdowns
   initNavigationDropdowns();
   
-  // Initialize Legal Drawer
+  // Initialize legal drawer
   initLegalDrawer();
   
-  // Initialize Language Drawer
+  // Initialize language drawer
   initLanguageDrawer();
   
-  // Initialize Video Fallback
+  // Initialize video fallback
   initVideoFallback();
   
-  // Initialize On-Scroll Animations
+  // Initialize on-scroll animations
   animateOnScroll();
   
   // Initialize component-specific animations
@@ -46,6 +50,39 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactAnimations();
   initFooterAnimations();
 });
+
+// Make integrated section visible
+function makeIntegratedSectionVisible() {
+  const integratedSection = document.querySelector('.integrated-section');
+  if (!integratedSection) return;
+  
+  // Make header visible
+  const header = integratedSection.querySelector('.integrated-header');
+  if (header) {
+    header.style.opacity = '1';
+    header.style.visibility = 'visible';
+    
+    const title = header.querySelector('.section-title');
+    const description = header.querySelector('.section-description');
+    
+    if (title) {
+      title.style.opacity = '1';
+      title.style.visibility = 'visible';
+    }
+    
+    if (description) {
+      description.style.opacity = '1';
+      description.style.visibility = 'visible';
+    }
+  }
+  
+  // Make columns visible
+  const columns = integratedSection.querySelectorAll('.contact-column, .testimonials-column');
+  columns.forEach(column => {
+    column.style.opacity = '1';
+    column.style.transform = 'none';
+  });
+}
 
 // Scroll Progress Bar
 function initScrollProgressBar() {
@@ -263,21 +300,74 @@ function initProcessTimeline() {
 
 // Contact form initialization
 function initContactForm() {
-  const contactForm = document.querySelector('.contact-form');
-  if (!contactForm) return;
+  const contactForm = document.querySelector('#eventWebsiteForm');
+  const successMessage = document.getElementById('successMessage');
+  const contactColumn = document.querySelector('.contact-column');
+  const formFields = document.querySelectorAll('.form-field');
+  
+  // Make sure contact form is visible
+  if (contactColumn) {
+    contactColumn.style.opacity = '1';
+    contactColumn.style.transform = 'translateX(0)';
+  }
+  
+  // Make form fields visible
+  formFields.forEach(field => {
+    field.style.opacity = '1';
+    field.style.transform = 'translateY(0)';
+  });
+  
+  if (!contactForm || !successMessage) return;
   
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    // Form submission logic would go here
+    
+    // Basic client-side validation
+    let isValid = true;
+    const requiredFields = contactForm.querySelectorAll('[required]');
+    requiredFields.forEach(field => {
+      if (!field.value.trim()) {
+          isValid = false;
+          if (field.classList.contains('form-input') || field.classList.contains('form-textarea')) {
+              field.style.borderColor = 'var(--primary)';
+          }
+      } else {
+          if (field.classList.contains('form-input') || field.classList.contains('form-textarea')) {
+              field.style.borderColor = 'var(--gray-300)';
+          }
+      }
+    });
+
+    if (!isValid) {
+        console.log("Form is not valid. Please fill all required fields.");
+        alert("Bitte füllen Sie alle Pflichtfelder (*) aus.");
+        return;
+    }
+    
+    // Show loading state
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton.innerHTML;
+    submitButton.innerHTML = '<span>Wird übermittelt...</span>';
+    submitButton.disabled = true;
+    
+    // Form data handling
     const formData = new FormData(contactForm);
     
-    // Example: Display success message
-    const successMessage = document.createElement('div');
-    successMessage.classList.add('form-success');
-    successMessage.textContent = 'Thank you for your message. We will get back to you soon.';
-    
-    contactForm.innerHTML = '';
-    contactForm.appendChild(successMessage);
+    // Simulate form submission (replace with actual API call)
+    setTimeout(() => {
+      // Show success message
+      successMessage.classList.add('visible');
+      
+      // Reset form
+      contactForm.reset();
+      submitButton.innerHTML = originalButtonText;
+      submitButton.disabled = false;
+      
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        successMessage.classList.remove('visible');
+      }, 5000);
+    }, 1500);
   });
 }
 
