@@ -2784,6 +2784,7 @@ body.content-loaded header {
   flex-direction: column;
   background: rgba(0, 0, 0, 0.018);
   border-top: 1px solid rgba(0, 0, 0, 0.035);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* When collapsed */
@@ -2797,6 +2798,15 @@ body.content-loaded header {
 
 .mobile-nav-subitem {
   position: relative;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.2s ease-out, transform 0.3s ease-out;
+}
+
+/* When collapsed, make subitems invisible first */
+.mobile-nav-section-header[aria-expanded=false] ~ .mobile-nav-submenu .mobile-nav-subitem {
+  opacity: 0;
+  transform: translateY(-10px);
 }
 
 /* SUBLINK STYLING - FOUNDER-LEVEL POLISH */
