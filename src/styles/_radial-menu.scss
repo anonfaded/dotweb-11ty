@@ -388,19 +388,22 @@
 }
 
 /* SUBMENU STYLING - FOUNDER-LEVEL POLISH */
+/* SUBMENU STYLING - Open by Default */
 .mobile-nav-submenu {
   list-style: none;
-  padding: 16px 18px 18px 18px;
   margin: 0;
+  padding: 16px 12px 12px; // Adjusted padding
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  max-height: 500px;
-  overflow: visible;
-  opacity: 1;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  gap: 4px;             // Reduced gap for tighter spacing
   background: rgba(0, 0, 0, 0.018);
   border-top: 1px solid rgba(0, 0, 0, 0.035);
+
+  // Remove properties related to hiding/animating
+  // max-height: 1000px;  <-- No longer needed
+  // opacity: 1;         <-- No longer needed
+  // overflow: visible;    <-- No longer needed
+  // transition: ...      <-- Removed to prevent animation glitches on load
 }
 
 /* When collapsed */

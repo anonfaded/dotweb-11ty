@@ -19,7 +19,7 @@ function initPremiumMobileNavigation() {
   const ctaButton = document.querySelector('#mobileNavOverlay .mobile-nav-cta-button');
   
   // Initialize eventarten submenu
-  initEventartenSubmenu();
+  // initEventartenSubmenu();
   
   // Check if elements exist
   if (!navToggle || !mobileNavOverlay) return;
@@ -251,34 +251,34 @@ function initPremiumMobileNavigation() {
 /**
  * Initializes the Eventarten submenu in mobile navigation
  */
-function initEventartenSubmenu() {
-  // The global function is defined in main.js, but let's open the submenu by default
-  const button = document.querySelector('.mobile-nav-section-header');
-  const submenu = document.getElementById('eventartenSubmenu');
-  const dropdownIcon = document.querySelector('.mobile-nav-dropdown-icon');
+// function initEventartenSubmenu() {
+//   // The global function is defined in main.js, but let's open the submenu by default
+//   const button = document.querySelector('.mobile-nav-section-header');
+//   const submenu = document.getElementById('eventartenSubmenu');
+//   const dropdownIcon = document.querySelector('.mobile-nav-dropdown-icon');
   
-  if (button && submenu) {
-    // Set initial expanded state
-    button.setAttribute('aria-expanded', 'true');
+//   if (button && submenu) {
+//     // Set initial expanded state
+//     button.setAttribute('aria-expanded', 'true');
     
-    // Open the submenu by default
-    submenu.style.maxHeight = submenu.scrollHeight + 'px';
-    submenu.style.opacity = '1';
+//     // Open the submenu by default
+//     submenu.style.maxHeight = submenu.scrollHeight + 'px';
+//     submenu.style.opacity = '1';
     
-    // Rotate the dropdown icon
-    if (dropdownIcon) {
-      dropdownIcon.style.transform = 'rotate(180deg)';
-    }
+//     // Rotate the dropdown icon
+//     if (dropdownIcon) {
+//       dropdownIcon.style.transform = 'rotate(180deg)';
+//     }
     
-    // Apply styles to subitems
-    const subItems = submenu.querySelectorAll('.mobile-nav-subitem');
-    subItems.forEach((item, index) => {
-      item.style.opacity = '1';
-      item.style.transform = 'translateY(0px)';
-      item.style.transition = '0.3s';
-    });
-  }
-}
+//     // Apply styles to subitems
+//     const subItems = submenu.querySelectorAll('.mobile-nav-subitem');
+//     subItems.forEach((item, index) => {
+//       item.style.opacity = '1';
+//       item.style.transform = 'translateY(0px)';
+//       item.style.transition = '0.3s';
+//     });
+//   }
+// }
 
 // Define the toggleEventartenSubmenu function globally
 window.toggleEventartenSubmenu = function() {
