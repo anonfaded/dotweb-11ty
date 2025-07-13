@@ -3521,6 +3521,13 @@ body.content-loaded header {
   overflow: hidden;
 }
 
+.container--wide {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
 .section-header {
   text-align: center;
   margin-bottom: 3rem;
@@ -3830,15 +3837,15 @@ p.project-description {
 }
 
 .features-section {
-  margin-top: 2rem;
+  margin-top: 4rem;
 }
 
 .features-header {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
 }
 
-.features-title {
+h3.features-title {
   font-size: 2rem;
   font-weight: 700;
   color: #1a1a1a;
@@ -3847,7 +3854,7 @@ p.project-description {
   display: inline-block;
 }
 
-.features-title::after {
+h3.features-title::after {
   content: "";
   display: block;
   width: 60px;
@@ -3862,30 +3869,33 @@ p.project-description {
   color: #555555;
   max-width: 600px;
   margin: 0.75rem auto 0;
+  line-height: 1.6;
 }
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(3, 346px);
+  justify-content: center;
+  gap: 15px;
+  margin-top: 40px;
 }
 
 .feature-card {
-  background: #fff;
+  background: hsl(var(--card));
   border-radius: 12px;
-  padding: 1.75rem;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 0.75rem;
   transition: all 0.4s ease;
   position: relative;
-  border: 1px solid #f0f0f0;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid hsl(var(--border));
+  box-shadow: 0 5px 20px hsla(0, 0%, 0%, 0.05);
   overflow: hidden;
-  height: 100%;
+  height: 260px;
   z-index: 1;
-  transform: scale(1);
-  will-change: transform, box-shadow;
+  box-sizing: border-box;
+  color: hsl(var(--card-foreground));
 }
 
 .feature-card::before {
@@ -3904,8 +3914,8 @@ p.project-description {
 
 .feature-card:hover {
   transform: translateY(-8px) scale(1.05);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  border-color: rgba(233, 37, 31, 0.15);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border-color: rgba(233, 37, 31, 0.1);
   z-index: 5;
 }
 
@@ -3914,14 +3924,14 @@ p.project-description {
 }
 
 .feature-icon {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: rgba(233, 37, 31, 0.08);
   color: var(--primary);
-  border-radius: 10px;
+  border-radius: 12px;
   margin-bottom: 0.5rem;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -3939,19 +3949,18 @@ p.project-description {
   flex-direction: column;
 }
 
-.feature-title {
-  font-size: 20px;
+h3.feature-title {
+  font-size: 1.375rem;
   font-weight: 700;
-  margin-bottom: 15px;
-  color: var(--gray-900, #1a1a1a);
+  color: #1a1a1a;
+  margin-bottom: 0.75rem;
 }
 
-.feature-description {
-  margin-bottom: 20px;
-  color: var(--gray-700, #555555);
-  font-size: 15px;
+p.feature-description {
+  font-size: 1rem;
+  color: #555555;
   line-height: 1.6;
-  flex: 1;
+  margin-bottom: 1.25rem;
 }
 
 .feature-benefits {
@@ -3965,7 +3974,7 @@ p.project-description {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   color: #444444;
 }
 
@@ -3977,149 +3986,72 @@ p.project-description {
 }
 
 @media (max-width: 1200px) {
-  .primary-action, .secondary-action {
-    flex: 1 1 auto;
-    justify-content: center;
-    min-width: 180px;
-  }
   .features-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
   }
 }
 @media (max-width: 992px) {
-  .project-card {
-    grid-template-columns: 1fr;
-  }
-  .project-media {
-    height: 300px;
-  }
-  p.project-description {
-    font-size: 1.05rem;
+  .features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
   }
   .feature-card {
-    padding: 1.25rem;
+    padding: 1.75rem;
+  }
+  h3.features-title {
+    font-size: 1.75rem;
+  }
+  .features-subtitle {
+    font-size: 1rem;
   }
 }
 @media (max-width: 768px) {
-  .portfolio-showcase {
-    padding: 3rem 0;
+  .features-section {
+    margin-top: 3rem;
   }
-  .section-header {
+  .features-header {
     margin-bottom: 2rem;
-  }
-  .project-content {
-    padding: 1.5rem;
-  }
-  .project-title {
-    font-size: 1.5rem;
-  }
-  p.project-description {
-    font-size: 0.875rem;
-  }
-  .project-highlights {
-    gap: 0.25rem; /* Reduced gap between bullet points */
-  }
-  .metrics-container {
-    flex-wrap: wrap;
-    gap: 0.5rem; /* Reduced gap between metrics */
-    justify-content: space-between;
-  }
-  .metric-item {
-    flex: 0 0 calc(50% - 0.25rem); /* 2 items per row with smaller gap */
-    padding: 0.75rem 0.5rem; /* Smaller padding */
-    min-height: auto;
-    gap: 0.375rem; /* Reduced gap between icon and text */
-  }
-  .metric-item:last-child:nth-child(2n+1) {
-    flex: 0 0 calc(50% - 0.25rem);
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .metric-icon {
-    width: 28px; /* Smaller icon */
-    height: 28px;
-  }
-  .metric-value {
-    font-size: 1.25rem; /* Smaller font */
-  }
-  .metric-label {
-    font-size: 0.75rem; /* Smaller font */
-  }
-  .primary-action, .secondary-action {
-    width: 100%;
-  }
-  .project-actions {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-  .features-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
   }
   h3.features-title {
     font-size: 1.5rem;
-    line-height: 1.4;
-    text-align: center;
-    max-width: 350px;
-    margin: 0 auto 0.75rem;
-    word-spacing: 0.02em;
-    letter-spacing: 0.01em;
-    padding: 0 1rem;
+  }
+  .features-subtitle {
+    font-size: 0.95rem;
+    max-width: 500px;
+  }
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .feature-card {
+    padding: 1.75rem;
+  }
+  .feature-icon {
+    width: 40px;
+    height: 40px;
+  }
+  .feature-title {
+    font-size: 1.125rem;
+  }
+  .feature-description {
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+  }
+  .feature-benefit {
+    font-size: 0.8125rem;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.25rem;
   }
 }
 @media (max-width: 576px) {
-  .project-highlights {
-    gap: 0.2rem; /* Even smaller gap between bullet points */
-  }
-  .project-highlights li {
-    font-size: 0.8125rem; /* Smaller font */
-    gap: 0.375rem; /* Smaller gap between bullet and text */
-  }
-  .metrics-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Force 2x2 grid layout */
-    gap: 0.375rem; /* Even smaller gap */
-  }
-  .metric-item {
-    flex: none;
-    width: 100%;
-    padding: 0.5rem 0.375rem; /* Even smaller padding */
-    border-radius: 6px; /* Smaller border radius */
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.02);
-    background: linear-gradient(135deg, #fff 0%, #fafafa 100%);
-  }
-  /* Center the "18 Sponsoren" card specifically */
-  .metric-item:nth-child(3) {
-    text-align: center;
-    justify-content: center;
-    grid-column: 1/-1; /* Make it span full width */
-    width: 100%;
-    max-width: 100%; /* Full width to match other cards */
-    margin-left: 0;
-    margin-right: 0;
-  }
-  .metric-icon {
-    width: 24px; /* Even smaller icon */
-    height: 24px;
-    margin-bottom: 0.125rem;
-  }
-  .metric-value {
-    font-size: 1.1rem; /* Even smaller font */
-    font-weight: 800;
-    line-height: 1;
-    margin-bottom: 0.125rem;
-  }
-  .metric-label {
-    font-size: 0.6875rem; /* Even smaller font */
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    line-height: 1.2;
-    opacity: 0.8;
-  }
-  .feature-benefit {
-    font-size: 0.75rem; /* Smaller font */
-    gap: 0.375rem; /* Smaller gap */
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 }
 @media (max-width: 480px) {
@@ -4436,7 +4368,7 @@ p.project-description {
 
 .process-step-features {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: var(--spacing-xs);
   margin-top: var(--spacing-sm);
 }
@@ -4860,7 +4792,7 @@ p.project-description {
 
 .content-feature-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
   margin-top: 2.5rem;
 }
@@ -5118,7 +5050,7 @@ p.project-description {
 
 .form-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.5rem 1.75rem;
   margin-bottom: 0;
   padding: 0;
@@ -5744,7 +5676,7 @@ p.project-description {
     grid-template-columns: 1fr;
   }
   .guarantees-list {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   }
   .integrated-header {
     margin-bottom: 2.5rem;
@@ -7613,7 +7545,7 @@ a.contact-value:hover, a.contact-value:focus { /* Added focus */
 
 @media (max-width: 1199px) {
   .pricing-enterprise-container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   }
 }
 @media (max-width: 991px) {
@@ -7812,7 +7744,7 @@ a.contact-value:hover, a.contact-value:focus { /* Added focus */
 
 .portfolio-showcase#vorteile .features-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2.5rem;
 }
 
@@ -8111,7 +8043,7 @@ a.contact-value:hover, a.contact-value:focus { /* Added focus */
 
 .process-step-features {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2.5rem;
   margin-top: var(--spacing-lg);
 }
@@ -8406,13 +8338,9 @@ a.contact-value:hover, a.contact-value:focus { /* Added focus */
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 30px;
   margin-top: 40px;
-}
-
-.benefits-grid {
-  /* No extra rules, just a modifier for context */
 }
 
 .feature-card {
@@ -8512,9 +8440,6 @@ a.contact-value:hover, a.contact-value:focus { /* Added focus */
   }
 }
 @media (max-width: 768px) {
-  .portfolio-showcase {
-    padding: var(--section-padding-mobile);
-  }
   .features-grid {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -8604,7 +8529,7 @@ a.contact-value:hover, a.contact-value:focus { /* Added focus */
 
 .content-feature-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 32px;
   margin-top: 2.5rem;
 }
@@ -9071,13 +8996,9 @@ a.contact-value:hover, a.contact-value:focus { /* Added focus */
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 30px;
   margin-top: 40px;
-}
-
-.benefits-grid {
-  /* No extra rules, just a modifier for context */
 }
 
 .feature-card {
@@ -9269,7 +9190,7 @@ a.contact-value:hover, a.contact-value:focus { /* Added focus */
 
 .content-feature-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 32px;
   margin-top: 2.5rem;
 }
@@ -9736,7 +9657,7 @@ a.contact-value:hover, a.contact-value:focus { /* Added focus */
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 30px;
   margin-top: 40px;
 }
@@ -9934,7 +9855,7 @@ a.contact-value:hover, a.contact-value:focus { /* Added focus */
 
 .content-feature-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 32px;
   margin-top: 2.5rem;
 }
@@ -10400,7 +10321,7 @@ a.contact-value:hover, a.contact-value:focus { /* Added focus */
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 30px;
   margin-top: 40px;
 }
@@ -10576,7 +10497,7 @@ a.contact-value:hover, a.contact-value:focus { /* Added focus */
 
 .content-feature-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 32px;
   margin-top: 2.5rem;
 }

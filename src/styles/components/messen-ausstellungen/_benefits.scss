@@ -48,14 +48,14 @@
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 30px;
   margin-top: 40px;
 }
 
-.benefits-grid {
-  /* No extra rules, just a modifier for context */
-}
+// .benefits-grid {
+//   /* No extra rules, just a modifier for context */
+// }
 
 .feature-card {
   display: flex;
@@ -155,9 +155,6 @@
 }
 
 @media (max-width: 768px) {
-  .portfolio-showcase {
-    padding: var(--section-padding-mobile);
-  }
   .features-grid {
     grid-template-columns: 1fr;
     gap: 24px;

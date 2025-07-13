@@ -3315,7 +3315,7 @@ p.feature-description { /* Specific to feature card if .feature-description is g
   }
   
   .features-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* 2 columns for tablets */
     gap: 1.5rem; /* var(--spacing-md) */
   }
   
@@ -3373,7 +3373,7 @@ p.feature-description { /* Specific to feature card if .feature-description is g
   }
   
   .project-highlights {
-    grid-template-columns: repeat(2, 1fr); /* Stack better on mobile */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Stack better on mobile */
     gap: 0.625rem; /* var(--spacing-xs) */
   }
   
@@ -3803,7 +3803,7 @@ p.feature-description { /* Specific to feature card if .feature-description is g
 
 .process-step-features {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: var(--spacing-sm);
   margin-top: var(--spacing-md);
 }
@@ -4221,7 +4221,7 @@ p.feature-description { /* Specific to feature card if .feature-description is g
 
 .form-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.5rem 1.75rem;
   margin-bottom: 0; /* Remove bottom margin */
   padding: 0;
@@ -4842,7 +4842,7 @@ p.feature-description { /* Specific to feature card if .feature-description is g
   
   .guarantees-list {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: var(--spacing-md);
   }
 }
