@@ -2790,8 +2790,9 @@ body.content-loaded header {
 .mobile-nav-section-header[aria-expanded=false] + .mobile-nav-submenu {
   max-height: 0;
   opacity: 0;
-  padding: 0 18px 18px 18px;
   overflow: hidden;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .mobile-nav-subitem {
