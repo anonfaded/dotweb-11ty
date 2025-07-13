@@ -3035,6 +3035,34 @@ body.content-loaded header {
     padding: 16px 20px;
     font-size: 1rem;
   }
+  .mobile-nav-top-section {
+    gap: 4px;
+    margin: 4px 0 8px 0;
+  }
+  .mobile-nav-language-section,
+  .mobile-nav-legal-section {
+    border-radius: 7px;
+  }
+  .mobile-nav-language-toggle,
+  .mobile-nav-legal-toggle {
+    padding: 8px 8px;
+    border-radius: 6px;
+  }
+  .mobile-nav-language-content,
+  .mobile-nav-legal-content {
+    gap: 4px;
+  }
+  .mobile-nav-language-badge,
+  .mobile-nav-legal-badge {
+    width: 22px;
+    height: 22px;
+    font-size: 0.6rem;
+  }
+  .mobile-nav-language-icon,
+  .mobile-nav-legal-icon {
+    width: 10px;
+    height: 10px;
+  }
 }
 @media (max-width: 360px) {
   .mobile-nav-content {
@@ -3042,6 +3070,25 @@ body.content-loaded header {
   }
   .mobile-nav-submenu {
     padding-left: 12px;
+  }
+  .mobile-nav-top-section {
+    gap: 2px;
+    margin: 2px 0 4px 0;
+  }
+  .mobile-nav-language-toggle,
+  .mobile-nav-legal-toggle {
+    padding: 6px 4px;
+  }
+  .mobile-nav-language-badge,
+  .mobile-nav-legal-badge {
+    width: 18px;
+    height: 18px;
+    font-size: 0.5rem;
+  }
+  .mobile-nav-language-icon,
+  .mobile-nav-legal-icon {
+    width: 8px;
+    height: 8px;
   }
 }
 /* HIDE ON DESKTOP */
