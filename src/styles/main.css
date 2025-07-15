@@ -6288,6 +6288,10 @@ a.contact-value:hover, a.contact-value:focus { /* Added focus */
     gap: 1rem; /* var(--spacing-sm) */
     text-align: center;
   }
+  .footer-nav-column,
+  .footer-contact-column {
+    display: none;
+  }
 }
 .impressum-section {
   padding: 60px 0 80px 0;

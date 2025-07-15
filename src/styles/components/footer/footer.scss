@@ -485,4 +485,9 @@
       gap: 1rem; /* var(--spacing-sm) */
       text-align: center;
     }
+
+    .footer-nav-column,
+.footer-contact-column {
+  display: none;
+}
   }
