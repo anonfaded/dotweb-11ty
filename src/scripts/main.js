@@ -98,79 +98,53 @@ function initScrollProgressBar() {
   }, { passive: true });
 }
 
-// Header scroll effect - Enhanced for both mobile and desktop
+// Header scroll effect
 function initHeaderScroll() {
   const header = document.querySelector('.header');
-  const scrollProgressBar = document.getElementById('scrollProgressBar');
+  const progressBar = document.querySelector('.scroll-progress-bar');
+  if (!header) return;
+
   let isAtTop = true;
   let isScrollingUp = false;
   let lastScrollY = window.scrollY;
-  
-  if (!header) return;
-  
-  function updateHeaderState() {
+
+  function updateHeader() {
     const currentScrollY = window.scrollY;
     isScrollingUp = currentScrollY < lastScrollY;
-    
-    // Detect if we're at the top of the page
+
     const wasAtTop = isAtTop;
     isAtTop = currentScrollY <= 50;
-    
-    // Only apply transitions when needed
+
     if (isScrollingUp && !wasAtTop && isAtTop) {
-      // Apply transition only when returning to the top
       header.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
     } else if (!isAtTop) {
-      // Apply transition when scrolling down
       header.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
     }
-    
-    // Desktop behavior (min-width: 993px)
-    if (window.innerWidth >= 993) {
-      // Remove mobile classes
-      header.classList.remove('mobile-compact', 'mobile-top');
-      
-      if (currentScrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    } else {
-      // Mobile behavior (max-width: 992px)
-      header.classList.remove('scrolled'); // Remove desktop class
-      
-      if (currentScrollY > 50) {
-        header.classList.add('mobile-compact');
-        header.classList.remove('mobile-top');
-      } else {
-        header.classList.add('mobile-top');
-        header.classList.remove('mobile-compact');
-      }
-    }
-    
-    // Update scroll progress bar
-    if (scrollProgressBar) {
-      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercentage = (currentScrollY / scrollHeight) * 100;
-      scrollProgressBar.style.width = `${scrollPercentage}%`;
-    }
-    
-    // Update last scroll position for next comparison
-    lastScrollY = currentScrollY;
+
+    if (currentScrollY > 10) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
   }
   
-  // Initial state setup
-  updateHeaderState();
+  // Force a reflow to ensure accurate height calculation
+  header.offsetHeight;
   
-  // Scroll event listener
-  window.addEventListener('scroll', updateHeaderState, { passive: true });
-  
-  // Resize event listener to handle mobile/desktop transitions
-  window.addEventListener('resize', () => {
-    // Debounce resize events
-    clearTimeout(window.headerResizeTimeout);
-    window.headerResizeTimeout = setTimeout(updateHeaderState, 100);
-  }, { passive: true });
+  // Update header height with more accurate calculation
+  const headerHeight = header.getBoundingClientRect().height;
+  document.documentElement.style.setProperty('--header-height', `${Math.ceil(headerHeight)}px`);
+
+    if (progressBar) {
+      const scrollPercentage = (currentScrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      progressBar.style.width = `${scrollPercentage}%`;
+    }
+
+    lastScrollY = currentScrollY;
+  }
+
+  window.addEventListener('scroll', updateHeader, { passive: true });
+  window.addEventListener('resize', updateHeader, { passive: true });
+  updateHeader();
 }
 
 // Mobile navigation toggle

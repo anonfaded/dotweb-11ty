@@ -21,9 +21,5 @@
 @use 'components/dorf-quartierfeste' as *;
 
 // Mobile responsiveness adjustment for page content
-@media (max-width: 768px) {
-  .page-content {
-    margin-top: 70px;
-  }
-}
+// Removed fixed margin-top as we now use dynamic header height calculation
 
