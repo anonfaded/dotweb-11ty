@@ -282,6 +282,13 @@
   100% { transform: translateY(0); }
 }
 
+// Hide scroll indicator on mobile and tablet
+@media (max-width: 992px) {
+  .scroll-indicator {
+    display: none;
+  }
+}
+
 // Add scroll animation for buttons
 @keyframes floatUp {
   0% { transform: translateY(0); }

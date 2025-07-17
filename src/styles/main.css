@@ -3541,6 +3541,11 @@ body.content-loaded header {
     transform: translateY(0);
   }
 }
+@media (max-width: 992px) {
+  .scroll-indicator {
+    display: none;
+  }
+}
 @keyframes floatUp {
   0% {
     transform: translateY(0);
